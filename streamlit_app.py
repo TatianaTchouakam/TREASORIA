@@ -343,7 +343,7 @@ def render_cash_chart(daily: pd.DataFrame, monthly: pd.DataFrame):
         month_end_balance["month"].isin(last_12_monthly["month"])
     ]
 
-    fig, ax1 = plt.subplots(figsize=(7.4, 3.5), dpi=150)
+    fig, ax1 = plt.subplots(figsize=(11.2, 4.3), dpi=150)
     fig.patch.set_alpha(0)
     ax1.set_facecolor("none")
 
@@ -359,10 +359,10 @@ def render_cash_chart(daily: pd.DataFrame, monthly: pd.DataFrame):
         alpha=0.88,
         zorder=2,
     )
-    ax1.axhline(0, color="#C9A24B", linewidth=0.9, zorder=1)
-    ax1.set_ylabel("Net cash flow (EUR)", fontsize=10, color="#3E4C63")
-    ax1.tick_params(axis="x", rotation=45, labelsize=9, colors="#3E4C63")
-    ax1.tick_params(axis="y", labelsize=9, colors="#3E4C63")
+    ax1.axhline(0, color="#C9A24B", linewidth=1.1, zorder=1)
+    ax1.set_ylabel("Net cash flow (EUR)", fontsize=13, color="#3E4C63")
+    ax1.tick_params(axis="x", rotation=45, labelsize=11, colors="#3E4C63")
+    ax1.tick_params(axis="y", labelsize=11, colors="#3E4C63")
     for spine in ax1.spines.values():
         spine.set_visible(False)
 
@@ -371,13 +371,13 @@ def render_cash_chart(daily: pd.DataFrame, monthly: pd.DataFrame):
         month_end_balance["month"],
         month_end_balance["consolidated_cash_balance"],
         color="#0A1B33",
-        linewidth=2.4,
+        linewidth=3,
         marker="o",
-        markersize=4,
+        markersize=5,
         zorder=3,
     )
-    ax2.set_ylabel("Closing balance (EUR)", fontsize=10, color="#0A1B33")
-    ax2.tick_params(axis="y", labelsize=9, colors="#0A1B33")
+    ax2.set_ylabel("Closing balance (EUR)", fontsize=13, color="#0A1B33")
+    ax2.tick_params(axis="y", labelsize=11, colors="#0A1B33")
     for spine in ax2.spines.values():
         spine.set_visible(False)
 
@@ -464,15 +464,20 @@ st.markdown(
             color: var(--ink);
         }
 
-        /* Wider content area with slimmer side margins so the app
-           fills a real monitor/projector instead of floating in a
-           narrow column with dead space on both sides. */
+        /* Percentage-based width, not a fixed px cap: on a wide
+           monitor a fixed max-width (even a generous one) still
+           leaves a dead strip of ivory on the right, which is
+           exactly the bug in the screenshots. Sizing relative to
+           the actual available area (next to the sidebar) instead
+           of the raw viewport keeps this correct regardless of
+           screen size, without ever needing to zoom the browser. */
         .block-container {
-            max-width: 1720px;
-            padding-top: 2.2rem;
-            padding-bottom: 3rem;
-            padding-left: 2.5rem;
-            padding-right: 2.5rem;
+            width: 96% !important;
+            max-width: 2400px !important;
+            padding-top: 1.6rem;
+            padding-bottom: 2.2rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
 
         h1, h2, h3, h4 {
@@ -518,9 +523,9 @@ st.markdown(
         .treasoria-subtitle, .treasoria-subtitle * {
             color: var(--slate) !important;
             font-size: 21px !important;
-            line-height: 1.65 !important;
-            margin-top: 0.4rem;
-            margin-bottom: 1.6rem;
+            line-height: 1.55 !important;
+            margin-top: 0.3rem;
+            margin-bottom: 1rem;
         }
 
         .subtitle-hero {
@@ -588,7 +593,7 @@ st.markdown(
         .gold-line {
             width: 100%;
             height: 2px;
-            margin: 0.6rem 0 1.7rem 0;
+            margin: 0.4rem 0 1.1rem 0;
             background: linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 45%, rgba(228,205,148,0) 100%);
         }
 
@@ -876,48 +881,7 @@ st.markdown(
             font-size: 30px !important;
             font-weight: 600 !important;
             color: var(--ink) !important;
-            margin: 0.4rem 0 1.1rem;
-        }
-
-        .workflow-card {
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            background: var(--card);
-            box-shadow: 0 10px 28px rgba(10, 27, 51, 0.05);
-            padding: 0.4rem 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .workflow-row {
-            display: flex;
-            align-items: center;
-            gap: 1.1rem;
-            padding: 1.15rem 0;
-            border-bottom: 1px solid #F1ECDE;
-        }
-
-        .workflow-row:last-child {
-            border-bottom: none;
-        }
-
-        .workflow-num {
-            font-family: 'IBM Plex Mono', monospace !important;
-            font-size: 17px !important;
-            font-weight: 600;
-            color: var(--gold);
-            background: var(--gold-bg);
-            width: 2.6rem;
-            height: 2.6rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .workflow-text {
-            font-size: 19px !important;
-            color: var(--ink-soft) !important;
+            margin: 0.2rem 0 0.7rem;
         }
 
         /* Latest Risk Signal card — three tones, same shape as the
@@ -925,20 +889,24 @@ st.markdown(
            whole app reads from one consistent risk vocabulary. */
         .risk-signal-card {
             border-radius: 14px;
-            padding: 28px 24px;
+            padding: 40px 28px;
+            min-height: 128px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             text-align: center;
             box-shadow: 0 10px 28px rgba(10, 27, 51, 0.05);
         }
 
         .risk-signal-level {
             font-family: 'Fraunces', serif;
-            font-size: 34px;
+            font-size: 42px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .risk-signal-reason {
-            font-size: 15px;
+            font-size: 17px;
             line-height: 1.4;
         }
 
@@ -1194,8 +1162,6 @@ if selected_page == "Overview":
 
     render_data_quality_badge()
 
-    st.write("")
-
     try:
         kpi_summary = load_kpi_summary()
 
@@ -1387,37 +1353,12 @@ if selected_page == "Overview":
             unsafe_allow_html=True,
         )
 
-    st.markdown(
-        '<h2 class="section-title">Decision-Intelligence Workflow</h2>',
-        unsafe_allow_html=True,
-    )
-
-    workflow_steps = [
-        "Extract financial information using OCR.",
-        "Validate, clean and transform the extracted data.",
-        "Store trusted financial information.",
-        "Calculate financial KPIs.",
-        "Forecast future cash positions.",
-        "Identify potential liquidity risks.",
-        "Simulate alternative business scenarios.",
-        "Explain results through the financial assistant.",
-    ]
-
-    # No leading whitespace / newlines in the per-row HTML: Markdown
-    # treats a line indented 4+ spaces after a blank line as a code
-    # block, and the row-by-row join() below produces exactly that
-    # blank-line-then-indented pattern if the template isn't kept
-    # flush-left on a single line — that's what showed raw HTML
-    # tags on screen for every row after the first one.
-    workflow_html = "".join(
-        f'<div class="workflow-row"><div class="workflow-num">{i:02d}</div><div class="workflow-text">{step}</div></div>'
-        for i, step in enumerate(workflow_steps, start=1)
-    )
-
-    st.markdown(
-        f'<div class="workflow-card">{workflow_html}</div>',
-        unsafe_allow_html=True,
-    )
+    # The step-by-step Decision-Intelligence Workflow used to render
+    # here. It's a good architecture explainer for the presentation
+    # and documentation, but it added length to Overview without any
+    # new financial information — moved out so the page stays a
+    # short, product-focused financial read: KPIs, cash trend, risk,
+    # data quality, module access. Nothing else.
 
 
 # ============================================================
