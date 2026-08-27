@@ -1,0 +1,14 @@
+{
+  "company_id": "code_and_coffee",
+  "name": "Code & Coffee GmbH",
+  "tagline": "Where Coffee Meets Data.",
+  "owner": "Blue Jesus",
+  "address": "Ravensberger Str. 22",
+  "postal_code": "33602",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "location": "Ravensberger Str. 22, 33602 Bielefeld, Germany",
+  "sector": "International Café & Gastronomy",
+  "currency": "EUR",
+  "disclaimer": "Code & Coffee GmbH, its owner and its address are fictional identities created exclusively for the Treasoria project."
+}

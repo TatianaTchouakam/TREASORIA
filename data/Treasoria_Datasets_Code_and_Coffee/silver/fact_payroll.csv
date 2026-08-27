@@ -1,0 +1,93 @@
+company_id,company_name,pay_date,employee_id,employee_name,role,type,gross_pay,employee_social_contrib,income_tax,net_pay,employer_social_contrib,employer_total_cost,account,data_origin
+code_and_coffee,Code & Coffee GmbH,2022-02-15,E001,Alice Smith,Barista,Employee Pay,1865.0,382.32,205.15,1277.52,367.4,2232.4,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-15,E002,Ben Lee,Barista,Employee Pay,1731.0,354.85,190.41,1185.73,341.01,2072.01,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-15,E003,Carla Gomez,Manager,Employee Pay,2272.0,465.76,363.52,1442.72,447.58,2719.58,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-15,C001,David Jones,Marketing Contractor,Contractor Pay,1134.0,232.47,68.04,833.49,223.4,1357.4,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-15,E001,Alice Smith,Barista,Employee Pay,1857.0,380.69,204.27,1272.05,365.83,2222.83,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-15,E002,Ben Lee,Barista,Employee Pay,1807.0,370.44,198.77,1237.8,355.98,2162.98,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-15,E003,Carla Gomez,Manager,Employee Pay,2233.0,457.76,357.28,1417.96,439.9,2672.9,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-15,C001,David Jones,Marketing Contractor,Contractor Pay,1166.0,239.03,69.96,857.01,229.7,1395.7,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-15,E001,Alice Smith,Barista,Employee Pay,1779.0,364.69,195.69,1218.62,350.46,2129.46,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-15,E002,Ben Lee,Barista,Employee Pay,1656.0,339.48,182.16,1134.36,326.23,1982.23,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-15,E003,Carla Gomez,Manager,Employee Pay,2279.0,467.19,364.64,1447.16,448.96,2727.96,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-15,C001,David Jones,Marketing Contractor,Contractor Pay,1113.0,228.16,66.78,818.06,219.26,1332.26,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-15,E001,Alice Smith,Barista,Employee Pay,1772.0,363.26,194.92,1213.82,349.08,2121.08,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-15,E002,Ben Lee,Barista,Employee Pay,1792.0,367.36,197.12,1227.52,353.02,2145.02,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-15,E003,Carla Gomez,Manager,Employee Pay,2248.0,460.84,359.68,1427.48,442.86,2690.86,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-15,C001,David Jones,Marketing Contractor,Contractor Pay,1262.0,258.71,138.82,864.47,248.61,1510.61,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-15,E001,Alice Smith,Barista,Employee Pay,1765.0,361.82,194.15,1209.02,347.7,2112.7,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-15,E002,Ben Lee,Barista,Employee Pay,1740.0,356.7,191.4,1191.9,342.78,2082.78,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-15,E003,Carla Gomez,Manager,Employee Pay,2229.0,456.94,356.64,1415.41,439.11,2668.11,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-15,C001,David Jones,Marketing Contractor,Contractor Pay,1262.0,258.71,138.82,864.47,248.61,1510.61,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-15,E001,Alice Smith,Barista,Employee Pay,1719.0,352.39,189.09,1177.52,338.64,2057.64,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-15,E002,Ben Lee,Barista,Employee Pay,1659.0,340.09,182.49,1136.41,326.82,1985.82,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-15,E003,Carla Gomez,Manager,Employee Pay,2124.0,435.42,339.84,1348.74,418.43,2542.43,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-15,C001,David Jones,Marketing Contractor,Contractor Pay,1293.0,265.06,142.23,885.7,254.72,1547.72,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-15,E001,Alice Smith,Barista,Employee Pay,1724.0,353.42,189.64,1180.94,339.63,2063.63,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-15,E002,Ben Lee,Barista,Employee Pay,1703.0,349.11,187.33,1166.56,335.49,2038.49,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-15,E003,Carla Gomez,Manager,Employee Pay,2132.0,437.06,341.12,1353.82,420.0,2552.0,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-15,C001,David Jones,Marketing Contractor,Contractor Pay,1263.0,258.91,138.93,865.15,248.81,1511.81,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-15,E001,Alice Smith,Barista,Employee Pay,1794.0,367.77,197.34,1228.89,353.42,2147.42,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-15,E002,Ben Lee,Barista,Employee Pay,1663.0,340.91,182.93,1139.15,327.61,1990.61,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-15,E003,Carla Gomez,Manager,Employee Pay,2164.0,443.62,346.24,1374.14,426.31,2590.31,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-15,C001,David Jones,Marketing Contractor,Contractor Pay,1209.0,247.84,132.99,828.16,238.17,1447.17,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-15,E001,Alice Smith,Barista,Employee Pay,1779.0,364.69,195.69,1218.62,350.46,2129.46,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-15,E002,Ben Lee,Barista,Employee Pay,1703.0,349.11,187.33,1166.56,335.49,2038.49,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-15,E003,Carla Gomez,Manager,Employee Pay,2224.0,455.92,355.84,1412.24,438.13,2662.13,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-15,C001,David Jones,Marketing Contractor,Contractor Pay,1279.0,262.19,140.69,876.12,251.96,1530.96,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-15,E001,Alice Smith,Barista,Employee Pay,1830.0,375.15,201.3,1253.55,360.51,2190.51,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-15,E002,Ben Lee,Barista,Employee Pay,1818.0,372.69,199.98,1245.33,358.15,2176.15,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-15,E003,Carla Gomez,Manager,Employee Pay,2233.0,457.76,357.28,1417.96,439.9,2672.9,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-15,C001,David Jones,Marketing Contractor,Contractor Pay,1124.0,230.42,67.44,826.14,221.43,1345.43,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-15,E001,Alice Smith,Barista,Employee Pay,1840.0,377.2,202.4,1260.4,362.48,2202.48,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-15,E002,Ben Lee,Barista,Employee Pay,1766.0,362.03,194.26,1209.71,347.9,2113.9,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-15,E003,Carla Gomez,Manager,Employee Pay,2235.0,458.17,357.6,1419.22,440.29,2675.3,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-15,C001,David Jones,Marketing Contractor,Contractor Pay,1248.0,255.84,137.28,854.88,245.86,1493.86,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-15,E001,Alice Smith,Barista,Employee Pay,1895.0,388.47,208.45,1298.08,373.31,2268.32,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-15,E002,Ben Lee,Barista,Employee Pay,1674.0,343.17,184.14,1146.69,329.78,2003.78,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-15,E003,Carla Gomez,Manager,Employee Pay,2178.0,446.49,348.48,1383.03,429.07,2607.07,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-15,C001,David Jones,Marketing Contractor,Contractor Pay,1167.0,239.23,70.02,857.75,229.9,1396.9,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,E001,Alice Smith,Barista,Employee Pay,1872.0,383.76,205.92,1282.32,368.78,2240.78,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,E002,Ben Lee,Barista,Employee Pay,1837.0,376.58,202.07,1258.35,361.89,2198.89,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,E003,Carla Gomez,Manager,Employee Pay,2111.0,432.75,337.76,1340.48,415.87,2526.87,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,C001,David Jones,Marketing Contractor,Contractor Pay,1131.0,231.85,67.86,831.28,222.81,1353.81,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-15,E001,Alice Smith,Barista,Employee Pay,1827.0,374.53,200.97,1251.5,359.92,2186.92,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-15,E002,Ben Lee,Barista,Employee Pay,1745.0,357.72,191.95,1195.33,343.76,2088.76,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-15,E003,Carla Gomez,Manager,Employee Pay,2191.0,449.15,350.56,1391.29,431.63,2622.63,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-15,C001,David Jones,Marketing Contractor,Contractor Pay,1240.0,254.2,136.4,849.4,244.28,1484.28,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-15,E001,Alice Smith,Barista,Employee Pay,1730.0,354.65,190.3,1185.05,340.81,2070.81,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-15,E002,Ben Lee,Barista,Employee Pay,1727.0,354.03,189.97,1183.0,340.22,2067.22,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-15,E003,Carla Gomez,Manager,Employee Pay,2119.0,434.39,339.04,1345.57,417.44,2536.44,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-15,C001,David Jones,Marketing Contractor,Contractor Pay,1245.0,255.22,136.95,852.83,245.26,1490.26,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-15,E001,Alice Smith,Barista,Employee Pay,1759.0,360.59,193.49,1204.91,346.52,2105.52,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-15,E002,Ben Lee,Barista,Employee Pay,1840.0,377.2,202.4,1260.4,362.48,2202.48,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-15,E003,Carla Gomez,Manager,Employee Pay,2233.0,457.76,357.28,1417.96,439.9,2672.9,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-15,C001,David Jones,Marketing Contractor,Contractor Pay,1259.0,258.09,138.49,862.41,248.02,1507.02,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-15,E001,Alice Smith,Barista,Employee Pay,1792.0,367.36,197.12,1227.52,353.02,2145.02,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-15,E002,Ben Lee,Barista,Employee Pay,1692.0,346.86,186.12,1159.02,333.32,2025.32,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-15,E003,Carla Gomez,Manager,Employee Pay,2229.0,456.94,356.64,1415.41,439.11,2668.11,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-15,C001,David Jones,Marketing Contractor,Contractor Pay,1159.0,237.59,69.54,851.87,228.32,1387.32,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-15,E001,Alice Smith,Barista,Employee Pay,1850.0,379.25,203.5,1267.25,364.45,2214.45,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-15,E002,Ben Lee,Barista,Employee Pay,1680.0,344.4,184.8,1150.8,330.96,2010.96,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-15,E003,Carla Gomez,Manager,Employee Pay,2104.0,431.32,336.64,1336.04,414.49,2518.49,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-15,C001,David Jones,Marketing Contractor,Contractor Pay,1261.0,258.5,138.71,863.78,248.42,1509.42,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-15,E001,Alice Smith,Barista,Employee Pay,1709.0,350.34,187.99,1170.66,336.67,2045.67,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-15,E002,Ben Lee,Barista,Employee Pay,1738.0,356.29,191.18,1190.53,342.39,2080.39,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-15,E003,Carla Gomez,Manager,Employee Pay,2229.0,456.94,356.64,1415.41,439.11,2668.11,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-15,C001,David Jones,Marketing Contractor,Contractor Pay,1225.0,251.12,134.75,839.12,241.32,1466.33,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-15,E001,Alice Smith,Barista,Employee Pay,1710.0,350.55,188.1,1171.35,336.87,2046.87,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-15,E002,Ben Lee,Barista,Employee Pay,1827.0,374.53,200.97,1251.5,359.92,2186.92,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-15,E003,Carla Gomez,Manager,Employee Pay,2258.0,462.89,361.28,1433.83,444.83,2702.83,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-15,C001,David Jones,Marketing Contractor,Contractor Pay,1155.0,236.77,69.3,848.93,227.53,1382.53,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-15,E001,Alice Smith,Barista,Employee Pay,1782.0,365.31,196.02,1220.67,351.05,2133.05,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-15,E002,Ben Lee,Barista,Employee Pay,1786.0,366.13,196.46,1223.41,351.84,2137.84,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-15,E003,Carla Gomez,Manager,Employee Pay,2198.0,450.59,351.68,1395.73,433.01,2631.01,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-15,C001,David Jones,Marketing Contractor,Contractor Pay,1248.0,255.84,137.28,854.88,245.86,1493.86,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-15,E001,Alice Smith,Barista,Employee Pay,1772.0,363.26,194.92,1213.82,349.08,2121.08,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-15,E002,Ben Lee,Barista,Employee Pay,1805.0,370.02,198.55,1236.42,355.58,2160.59,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-15,E003,Carla Gomez,Manager,Employee Pay,2289.0,469.24,366.24,1453.52,450.93,2739.93,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-15,C001,David Jones,Marketing Contractor,Contractor Pay,1214.0,248.87,133.54,831.59,239.16,1453.16,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-15,E001,Alice Smith,Barista,Employee Pay,1706.0,349.73,187.66,1168.61,336.08,2042.08,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-15,E002,Ben Lee,Barista,Employee Pay,1729.0,354.44,190.19,1184.37,340.61,2069.61,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-15,E003,Carla Gomez,Manager,Employee Pay,2243.0,459.81,358.88,1424.3,441.87,2684.87,Checking Secondary,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-15,C001,David Jones,Marketing Contractor,Contractor Pay,1196.0,245.18,71.76,879.06,235.61,1431.61,Checking Secondary,derived

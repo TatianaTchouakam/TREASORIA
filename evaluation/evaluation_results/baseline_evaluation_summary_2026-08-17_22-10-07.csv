@@ -1,0 +1,2 @@
+chunk_size,chunk_overlap,retriever_k,faithfulness,context_recall
+250,50,2,0.6666666666666666,1.0

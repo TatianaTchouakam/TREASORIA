@@ -1,0 +1,1080 @@
+company_id,company_name,date,transaction_id,description,category,type,amount,balance,data_origin
+code_and_coffee,Code & Coffee GmbH,2022-01-01,TX00001,Daily Sales Deposit,Sales Revenue,Credit,802,15802.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-01,TXD2000,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3403,12399.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-01-02,TX00002,Daily Sales Deposit,Sales Revenue,Credit,970,13369.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-03,TX00003,Daily Sales Deposit,Sales Revenue,Credit,888,14257.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-04,TX00004,Daily Sales Deposit,Sales Revenue,Credit,821,15078.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-04,TX00005,Utility Bill Payment,Operating Expense,Debit,430,14648.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-05,TX00006,Daily Sales Deposit,Sales Revenue,Credit,787,15435.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-06,TX00007,Daily Sales Deposit,Sales Revenue,Credit,1059,16494.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-07,TX00008,Daily Sales Deposit,Sales Revenue,Credit,849,17343.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-07,TX00009,Rent Payment,Operating Expense,Debit,443,16900.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-08,TX00010,Daily Sales Deposit,Sales Revenue,Credit,1113,18013.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-08,TXI6000,Coffee bean restock,COGS,Debit,3458.39,14554.61,derived
+code_and_coffee,Code & Coffee GmbH,2022-01-09,TX00011,Daily Sales Deposit,Sales Revenue,Credit,891,15445.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-10,TX00012,Daily Sales Deposit,Sales Revenue,Credit,860,16305.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-10,TXD2047,Credit Card Bill Payment,Credit Card Payment,Debit,428,15877.61,derived
+code_and_coffee,Code & Coffee GmbH,2022-01-11,TX00013,Daily Sales Deposit,Sales Revenue,Credit,721,16598.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-11,TX00014,Bakery Payment,COGS,Debit,444,16154.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-12,TX00015,Daily Sales Deposit,Sales Revenue,Credit,1174,17328.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-13,TX00016,Daily Sales Deposit,Sales Revenue,Credit,869,18197.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-13,TX00017,Utility Bill Payment,Operating Expense,Debit,287,17910.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-14,TX00018,Daily Sales Deposit,Sales Revenue,Credit,1063,18973.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-15,TX00019,Daily Sales Deposit,Sales Revenue,Credit,1019,19992.61,original
+code_and_coffee,Code & Coffee GmbH,2022-01-15,TXI6001,Dairy restock,COGS,Debit,1921.33,18071.28,derived
+code_and_coffee,Code & Coffee GmbH,2022-01-16,TX00020,Daily Sales Deposit,Sales Revenue,Credit,1184,19255.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-17,TX00021,Daily Sales Deposit,Sales Revenue,Credit,720,19975.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-18,TX00022,Daily Sales Deposit,Sales Revenue,Credit,973,20948.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-19,TX00023,Daily Sales Deposit,Sales Revenue,Credit,1015,21963.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-20,TX00024,Daily Sales Deposit,Sales Revenue,Credit,964,22927.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-20,TX00025,Rent Payment,Operating Expense,Debit,485,22442.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-21,TX00026,Daily Sales Deposit,Sales Revenue,Credit,791,23233.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-22,TX00027,Daily Sales Deposit,Sales Revenue,Credit,1154,24387.28,original
+code_and_coffee,Code & Coffee GmbH,2022-01-22,TXI6002,Bakery ingredient restock,COGS,Debit,2305.59,22081.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-01-23,TX00028,Daily Sales Deposit,Sales Revenue,Credit,963,23044.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-23,TX00029,Bakery Payment,COGS,Debit,305,22739.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-24,TX00030,Daily Sales Deposit,Sales Revenue,Credit,1119,23858.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-24,TX00031,Coffee Supplier Payment,COGS,Debit,487,23371.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-24,TXD2048,Credit Card Bill Payment,Credit Card Payment,Debit,486,22885.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-01-25,TX00032,Daily Sales Deposit,Sales Revenue,Credit,1089,23974.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-26,TX00033,Daily Sales Deposit,Sales Revenue,Credit,959,24933.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-26,TX00034,Coffee Supplier Payment,COGS,Debit,290,24643.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-27,TX00035,Daily Sales Deposit,Sales Revenue,Credit,917,25560.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-28,TX00036,Daily Sales Deposit,Sales Revenue,Credit,901,26461.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-29,TX00037,Daily Sales Deposit,Sales Revenue,Credit,969,27430.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-30,TX00038,Daily Sales Deposit,Sales Revenue,Credit,970,28400.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-30,TX00039,Rent Payment,Operating Expense,Debit,314,28086.69,original
+code_and_coffee,Code & Coffee GmbH,2022-01-31,TX00040,Daily Sales Deposit,Sales Revenue,Credit,889,28975.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-01,TX00041,Daily Sales Deposit,Sales Revenue,Credit,907,29882.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-01,TXD2001,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5779,24103.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-02,TX00042,Daily Sales Deposit,Sales Revenue,Credit,1066,25169.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-03,TX00043,Daily Sales Deposit,Sales Revenue,Credit,1109,26278.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-04,TX00044,Daily Sales Deposit,Sales Revenue,Credit,887,27165.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-05,TX00045,Daily Sales Deposit,Sales Revenue,Credit,740,27905.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-06,TX00046,Daily Sales Deposit,Sales Revenue,Credit,1000,28905.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-06,TX00047,Bakery Payment,COGS,Debit,426,28479.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-07,TX00048,Daily Sales Deposit,Sales Revenue,Credit,1043,29522.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-08,TX00049,Daily Sales Deposit,Sales Revenue,Credit,835,30357.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-08,TX00050,Utility Bill Payment,Operating Expense,Debit,238,30119.69,original
+code_and_coffee,Code & Coffee GmbH,2022-02-08,TXI6003,Coffee bean restock,COGS,Debit,3074.91,27044.78,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-09,TX00051,Daily Sales Deposit,Sales Revenue,Credit,780,27824.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-10,TX00052,Daily Sales Deposit,Sales Revenue,Credit,1118,28942.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-11,TX00053,Daily Sales Deposit,Sales Revenue,Credit,960,29902.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-12,TX00054,Daily Sales Deposit,Sales Revenue,Credit,740,30642.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-13,TX00055,Daily Sales Deposit,Sales Revenue,Credit,900,31542.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-14,TX00056,Daily Sales Deposit,Sales Revenue,Credit,1117,32659.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-14,TX00057,Maintenance Payment,Operating Expense,Debit,161,32498.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-15,TX00058,Daily Sales Deposit,Sales Revenue,Credit,798,33296.78,original
+code_and_coffee,Code & Coffee GmbH,2022-02-15,TXD2024,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,1786.0,31510.78,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-15,TXI6004,Dairy restock,COGS,Debit,1708.28,29802.5,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-16,TX00059,Daily Sales Deposit,Sales Revenue,Credit,913,30715.5,original
+code_and_coffee,Code & Coffee GmbH,2022-02-17,TX00060,Daily Sales Deposit,Sales Revenue,Credit,1148,31863.5,original
+code_and_coffee,Code & Coffee GmbH,2022-02-18,TX00061,Daily Sales Deposit,Sales Revenue,Credit,1130,32993.5,original
+code_and_coffee,Code & Coffee GmbH,2022-02-19,TX00062,Daily Sales Deposit,Sales Revenue,Credit,956,33949.5,original
+code_and_coffee,Code & Coffee GmbH,2022-02-19,TXB3000,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5000),B2B Sales Revenue,Credit,296.76,34246.26,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-02-20,TX00063,Daily Sales Deposit,Sales Revenue,Credit,954,35200.26,original
+code_and_coffee,Code & Coffee GmbH,2022-02-21,TX00064,Daily Sales Deposit,Sales Revenue,Credit,982,36182.26,original
+code_and_coffee,Code & Coffee GmbH,2022-02-22,TX00065,Daily Sales Deposit,Sales Revenue,Credit,714,36896.26,original
+code_and_coffee,Code & Coffee GmbH,2022-02-22,TX00066,Maintenance Payment,Operating Expense,Debit,479,36417.26,original
+code_and_coffee,Code & Coffee GmbH,2022-02-22,TXI6005,Bakery ingredient restock,COGS,Debit,2049.94,34367.32,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-23,TX00067,Daily Sales Deposit,Sales Revenue,Credit,878,35245.32,original
+code_and_coffee,Code & Coffee GmbH,2022-02-23,TX00068,Bakery Payment,COGS,Debit,330,34915.32,original
+code_and_coffee,Code & Coffee GmbH,2022-02-24,TX00069,Daily Sales Deposit,Sales Revenue,Credit,751,35666.32,original
+code_and_coffee,Code & Coffee GmbH,2022-02-25,TX00070,Daily Sales Deposit,Sales Revenue,Credit,1087,36753.32,original
+code_and_coffee,Code & Coffee GmbH,2022-02-26,TX00071,Daily Sales Deposit,Sales Revenue,Credit,1106,37859.32,original
+code_and_coffee,Code & Coffee GmbH,2022-02-27,TX00072,Daily Sales Deposit,Sales Revenue,Credit,842,38701.32,original
+code_and_coffee,Code & Coffee GmbH,2022-02-28,TX00073,Daily Sales Deposit,Sales Revenue,Credit,735,39436.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-01,TX00074,Daily Sales Deposit,Sales Revenue,Credit,726,40162.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-01,TXD2002,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5579,34583.32,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-02,TX00075,Daily Sales Deposit,Sales Revenue,Credit,485,35068.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-03,TX00076,Daily Sales Deposit,Sales Revenue,Credit,569,35637.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-04,TX00077,Daily Sales Deposit,Sales Revenue,Credit,533,36170.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-05,TX00078,Daily Sales Deposit,Sales Revenue,Credit,507,36677.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-05,TX00079,Utility Bill Payment,Operating Expense,Debit,385,36292.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-06,TX00080,Daily Sales Deposit,Sales Revenue,Credit,527,36819.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-07,TX00081,Daily Sales Deposit,Sales Revenue,Credit,747,37566.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-08,TX00082,Daily Sales Deposit,Sales Revenue,Credit,589,38155.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-08,TX00083,Utility Bill Payment,Operating Expense,Debit,476,37679.32,original
+code_and_coffee,Code & Coffee GmbH,2022-03-08,TXI6006,Coffee bean restock,COGS,Debit,2217.79,35461.53,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-09,TX00084,Daily Sales Deposit,Sales Revenue,Credit,520,35981.53,original
+code_and_coffee,Code & Coffee GmbH,2022-03-10,TX00085,Daily Sales Deposit,Sales Revenue,Credit,632,36613.53,original
+code_and_coffee,Code & Coffee GmbH,2022-03-11,TX00086,Daily Sales Deposit,Sales Revenue,Credit,597,37210.53,original
+code_and_coffee,Code & Coffee GmbH,2022-03-11,TXB3001,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5001),B2B Sales Revenue,Credit,733.39,37943.92,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-03-12,TX00087,Daily Sales Deposit,Sales Revenue,Credit,536,38479.92,original
+code_and_coffee,Code & Coffee GmbH,2022-03-13,TX00088,Daily Sales Deposit,Sales Revenue,Credit,624,39103.92,original
+code_and_coffee,Code & Coffee GmbH,2022-03-13,TX00089,Utility Bill Payment,Operating Expense,Debit,271,38832.92,original
+code_and_coffee,Code & Coffee GmbH,2022-03-14,TX00090,Daily Sales Deposit,Sales Revenue,Credit,773,39605.92,original
+code_and_coffee,Code & Coffee GmbH,2022-03-15,TX00091,Daily Sales Deposit,Sales Revenue,Credit,632,40237.92,original
+code_and_coffee,Code & Coffee GmbH,2022-03-15,TXD2025,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,1835.0,38402.92,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-15,TXI6007,Dairy restock,COGS,Debit,1232.11,37170.81,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-16,TX00092,Daily Sales Deposit,Sales Revenue,Credit,717,37887.81,original
+code_and_coffee,Code & Coffee GmbH,2022-03-16,TXB3002,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5002),B2B Sales Revenue,Credit,299.96,38187.77,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-03-17,TX00093,Daily Sales Deposit,Sales Revenue,Credit,451,38638.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-18,TX00094,Daily Sales Deposit,Sales Revenue,Credit,694,39332.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-19,TX00095,Daily Sales Deposit,Sales Revenue,Credit,512,39844.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-19,TX00096,Utility Bill Payment,Operating Expense,Debit,180,39664.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-20,TX00097,Daily Sales Deposit,Sales Revenue,Credit,512,40176.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-21,TX00098,Daily Sales Deposit,Sales Revenue,Credit,619,40795.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-21,TX00099,Bakery Payment,COGS,Debit,323,40472.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-22,TX00100,Daily Sales Deposit,Sales Revenue,Credit,784,41256.77,original
+code_and_coffee,Code & Coffee GmbH,2022-03-22,TXI6008,Bakery ingredient restock,COGS,Debit,1478.53,39778.24,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-23,TX00101,Daily Sales Deposit,Sales Revenue,Credit,529,40307.24,original
+code_and_coffee,Code & Coffee GmbH,2022-03-24,TX00102,Daily Sales Deposit,Sales Revenue,Credit,617,40924.24,original
+code_and_coffee,Code & Coffee GmbH,2022-03-25,TX00103,Daily Sales Deposit,Sales Revenue,Credit,646,41570.24,original
+code_and_coffee,Code & Coffee GmbH,2022-03-26,TX00104,Daily Sales Deposit,Sales Revenue,Credit,602,42172.24,original
+code_and_coffee,Code & Coffee GmbH,2022-03-26,TXB3003,B2B Invoice Payment - Solid Office Supplies eK (CINV5003),B2B Sales Revenue,Credit,413.22,42585.46,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-03-27,TX00105,Daily Sales Deposit,Sales Revenue,Credit,654,43239.46,original
+code_and_coffee,Code & Coffee GmbH,2022-03-28,TX00106,Daily Sales Deposit,Sales Revenue,Credit,724,43963.46,original
+code_and_coffee,Code & Coffee GmbH,2022-03-28,TXD2049,Credit Card Bill Payment,Credit Card Payment,Debit,533,43430.46,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-29,TX00107,Daily Sales Deposit,Sales Revenue,Credit,597,44027.46,original
+code_and_coffee,Code & Coffee GmbH,2022-03-30,TX00108,Daily Sales Deposit,Sales Revenue,Credit,639,44666.46,original
+code_and_coffee,Code & Coffee GmbH,2022-03-31,TX00109,Daily Sales Deposit,Sales Revenue,Credit,600,45266.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-01,TX00110,Daily Sales Deposit,Sales Revenue,Credit,725,45991.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-01,TXD2003,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4712,41279.46,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-02,TX00111,Daily Sales Deposit,Sales Revenue,Credit,658,41937.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-03,TX00112,Daily Sales Deposit,Sales Revenue,Credit,745,42682.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-04,TX00113,Daily Sales Deposit,Sales Revenue,Credit,546,43228.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-04,TXD2050,Credit Card Bill Payment,Credit Card Payment,Debit,481,42747.46,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-05,TX00114,Daily Sales Deposit,Sales Revenue,Credit,598,43345.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-05,TX00115,Coffee Supplier Payment,COGS,Debit,227,43118.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-06,TX00116,Daily Sales Deposit,Sales Revenue,Credit,759,43877.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-06,TX00117,Coffee Supplier Payment,COGS,Debit,250,43627.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-07,TX00118,Daily Sales Deposit,Sales Revenue,Credit,498,44125.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-08,TX00119,Daily Sales Deposit,Sales Revenue,Credit,543,44668.46,original
+code_and_coffee,Code & Coffee GmbH,2022-04-08,TXI6009,Coffee bean restock,COGS,Debit,2114.26,42554.2,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-09,TX00120,Daily Sales Deposit,Sales Revenue,Credit,459,43013.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-10,TX00121,Daily Sales Deposit,Sales Revenue,Credit,784,43797.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-10,TX00122,Maintenance Payment,Operating Expense,Debit,239,43558.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-11,TX00123,Daily Sales Deposit,Sales Revenue,Credit,436,43994.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-11,TXD2051,Credit Card Bill Payment,Credit Card Payment,Debit,684,43310.2,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-12,TX00124,Daily Sales Deposit,Sales Revenue,Credit,408,43718.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-13,TX00125,Daily Sales Deposit,Sales Revenue,Credit,546,44264.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-14,TX00126,Daily Sales Deposit,Sales Revenue,Credit,530,44794.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-15,TX00127,Daily Sales Deposit,Sales Revenue,Credit,453,45247.2,original
+code_and_coffee,Code & Coffee GmbH,2022-04-15,TXD2026,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2734.0,42513.2,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-15,TXB3004,B2B Invoice Payment - Ostpark Buero Services (CINV5004),B2B Sales Revenue,Credit,580.97,43094.17,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-04-15,TXI6010,Dairy restock,COGS,Debit,1174.59,41919.58,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-16,TX00128,Daily Sales Deposit,Sales Revenue,Credit,515,42434.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-16,TX00129,Rent Payment,Operating Expense,Debit,203,42231.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-17,TX00130,Daily Sales Deposit,Sales Revenue,Credit,653,42884.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-17,TX00131,Bakery Payment,COGS,Debit,198,42686.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-18,TX00132,Daily Sales Deposit,Sales Revenue,Credit,748,43434.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-18,TXD2052,Credit Card Bill Payment,Credit Card Payment,Debit,405,43029.58,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-19,TX00133,Daily Sales Deposit,Sales Revenue,Credit,765,43794.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-20,TX00134,Daily Sales Deposit,Sales Revenue,Credit,709,44503.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-21,TX00135,Daily Sales Deposit,Sales Revenue,Credit,568,45071.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-21,TX00136,Bakery Payment,COGS,Debit,167,44904.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-22,TX00137,Daily Sales Deposit,Sales Revenue,Credit,797,45701.58,original
+code_and_coffee,Code & Coffee GmbH,2022-04-22,TXI6011,Bakery ingredient restock,COGS,Debit,1409.51,44292.07,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-23,TX00138,Daily Sales Deposit,Sales Revenue,Credit,783,45075.07,original
+code_and_coffee,Code & Coffee GmbH,2022-04-24,TX00139,Daily Sales Deposit,Sales Revenue,Credit,594,45669.07,original
+code_and_coffee,Code & Coffee GmbH,2022-04-25,TX00140,Daily Sales Deposit,Sales Revenue,Credit,432,46101.07,original
+code_and_coffee,Code & Coffee GmbH,2022-04-25,TXB3005,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5005),B2B Sales Revenue,Credit,507.97,46609.04,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-04-26,TX00141,Daily Sales Deposit,Sales Revenue,Credit,770,47379.04,original
+code_and_coffee,Code & Coffee GmbH,2022-04-27,TX00142,Daily Sales Deposit,Sales Revenue,Credit,421,47800.04,original
+code_and_coffee,Code & Coffee GmbH,2022-04-28,TX00143,Daily Sales Deposit,Sales Revenue,Credit,437,48237.04,original
+code_and_coffee,Code & Coffee GmbH,2022-04-29,TX00144,Daily Sales Deposit,Sales Revenue,Credit,450,48687.04,original
+code_and_coffee,Code & Coffee GmbH,2022-04-30,TX00145,Daily Sales Deposit,Sales Revenue,Credit,682,49369.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-01,TX00146,Daily Sales Deposit,Sales Revenue,Credit,676,50045.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-01,TXD2004,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4273,45772.04,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-02,TX00147,Daily Sales Deposit,Sales Revenue,Credit,683,46455.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-02,TXD2053,Credit Card Bill Payment,Credit Card Payment,Debit,416,46039.04,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-03,TX00148,Daily Sales Deposit,Sales Revenue,Credit,716,46755.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-04,TX00149,Daily Sales Deposit,Sales Revenue,Credit,403,47158.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-04,TX00150,Bakery Payment,COGS,Debit,148,47010.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-05,TX00151,Daily Sales Deposit,Sales Revenue,Credit,571,47581.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-06,TX00152,Daily Sales Deposit,Sales Revenue,Credit,445,48026.04,original
+code_and_coffee,Code & Coffee GmbH,2022-05-06,TXB3006,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5006),B2B Sales Revenue,Credit,534.55,48560.59,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-05-07,TX00153,Daily Sales Deposit,Sales Revenue,Credit,498,49058.59,original
+code_and_coffee,Code & Coffee GmbH,2022-05-08,TX00154,Daily Sales Deposit,Sales Revenue,Credit,436,49494.59,original
+code_and_coffee,Code & Coffee GmbH,2022-05-08,TXI6012,Coffee bean restock,COGS,Debit,2177.41,47317.18,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-09,TX00155,Daily Sales Deposit,Sales Revenue,Credit,701,48018.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-10,TX00156,Daily Sales Deposit,Sales Revenue,Credit,498,48516.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-11,TX00157,Daily Sales Deposit,Sales Revenue,Credit,515,49031.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-12,TX00158,Daily Sales Deposit,Sales Revenue,Credit,560,49591.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-13,TX00159,Daily Sales Deposit,Sales Revenue,Credit,527,50118.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-14,TX00160,Daily Sales Deposit,Sales Revenue,Credit,622,50740.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-15,TX00161,Daily Sales Deposit,Sales Revenue,Credit,722,51462.18,original
+code_and_coffee,Code & Coffee GmbH,2022-05-15,TXD2027,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3117.0,48345.18,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-15,TXI6013,Dairy restock,COGS,Debit,1209.67,47135.51,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-16,TX00162,Daily Sales Deposit,Sales Revenue,Credit,679,47814.51,original
+code_and_coffee,Code & Coffee GmbH,2022-05-17,TX00163,Daily Sales Deposit,Sales Revenue,Credit,741,48555.51,original
+code_and_coffee,Code & Coffee GmbH,2022-05-18,TX00164,Daily Sales Deposit,Sales Revenue,Credit,526,49081.51,original
+code_and_coffee,Code & Coffee GmbH,2022-05-19,TX00165,Daily Sales Deposit,Sales Revenue,Credit,785,49866.51,original
+code_and_coffee,Code & Coffee GmbH,2022-05-19,TXB3007,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5007),B2B Sales Revenue,Credit,768.92,50635.43,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-05-20,TX00166,Daily Sales Deposit,Sales Revenue,Credit,503,51138.43,original
+code_and_coffee,Code & Coffee GmbH,2022-05-21,TX00167,Daily Sales Deposit,Sales Revenue,Credit,698,51836.43,original
+code_and_coffee,Code & Coffee GmbH,2022-05-22,TX00168,Daily Sales Deposit,Sales Revenue,Credit,438,52274.43,original
+code_and_coffee,Code & Coffee GmbH,2022-05-22,TXI6014,Bakery ingredient restock,COGS,Debit,1451.61,50822.82,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-23,TX00169,Daily Sales Deposit,Sales Revenue,Credit,646,51468.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-23,TXD2054,Credit Card Bill Payment,Credit Card Payment,Debit,507,50961.82,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-24,TX00170,Daily Sales Deposit,Sales Revenue,Credit,705,51666.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-25,TX00171,Daily Sales Deposit,Sales Revenue,Credit,412,52078.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-25,TX00172,Bakery Payment,COGS,Debit,490,51588.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-26,TX00173,Daily Sales Deposit,Sales Revenue,Credit,435,52023.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-27,TX00174,Daily Sales Deposit,Sales Revenue,Credit,720,52743.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-27,TX00175,Rent Payment,Operating Expense,Debit,499,52244.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-28,TX00176,Daily Sales Deposit,Sales Revenue,Credit,770,53014.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-29,TX00177,Daily Sales Deposit,Sales Revenue,Credit,491,53505.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-30,TX00178,Daily Sales Deposit,Sales Revenue,Credit,687,54192.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-31,TX00179,Daily Sales Deposit,Sales Revenue,Credit,741,54933.82,original
+code_and_coffee,Code & Coffee GmbH,2022-05-31,TXB3008,B2B Invoice Payment - Solid Office Supplies eK (CINV5008),B2B Sales Revenue,Credit,476.43,55410.25,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-06-01,TX00180,Daily Sales Deposit,Sales Revenue,Credit,585,55995.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-01,TXD2005,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5913,50082.25,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-02,TX00181,Daily Sales Deposit,Sales Revenue,Credit,524,50606.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-03,TX00182,Daily Sales Deposit,Sales Revenue,Credit,457,51063.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-03,TX00183,Coffee Supplier Payment,COGS,Debit,279,50784.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-04,TX00184,Daily Sales Deposit,Sales Revenue,Credit,725,51509.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-05,TX00185,Daily Sales Deposit,Sales Revenue,Credit,500,52009.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-06,TX00186,Daily Sales Deposit,Sales Revenue,Credit,452,52461.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-06,TXD2055,Credit Card Bill Payment,Credit Card Payment,Debit,551,51910.25,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-07,TX00187,Daily Sales Deposit,Sales Revenue,Credit,507,52417.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-08,TX00188,Daily Sales Deposit,Sales Revenue,Credit,595,53012.25,original
+code_and_coffee,Code & Coffee GmbH,2022-06-08,TXI6015,Coffee bean restock,COGS,Debit,2091.73,50920.52,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-09,TX00189,Daily Sales Deposit,Sales Revenue,Credit,771,51691.52,original
+code_and_coffee,Code & Coffee GmbH,2022-06-10,TX00190,Daily Sales Deposit,Sales Revenue,Credit,754,52445.52,original
+code_and_coffee,Code & Coffee GmbH,2022-06-11,TX00191,Daily Sales Deposit,Sales Revenue,Credit,707,53152.52,original
+code_and_coffee,Code & Coffee GmbH,2022-06-11,TX00192,Rent Payment,Operating Expense,Debit,469,52683.52,original
+code_and_coffee,Code & Coffee GmbH,2022-06-12,TX00193,Daily Sales Deposit,Sales Revenue,Credit,505,53188.52,original
+code_and_coffee,Code & Coffee GmbH,2022-06-13,TX00194,Daily Sales Deposit,Sales Revenue,Credit,544,53732.52,original
+code_and_coffee,Code & Coffee GmbH,2022-06-13,TXD2056,Credit Card Bill Payment,Credit Card Payment,Debit,392,53340.52,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-13,TXB3009,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5009),B2B Sales Revenue,Credit,310.7,53651.22,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-06-14,TX00195,Daily Sales Deposit,Sales Revenue,Credit,674,54325.22,original
+code_and_coffee,Code & Coffee GmbH,2022-06-15,TX00196,Daily Sales Deposit,Sales Revenue,Credit,745,55070.22,original
+code_and_coffee,Code & Coffee GmbH,2022-06-15,TX00197,Bakery Payment,COGS,Debit,216,54854.22,original
+code_and_coffee,Code & Coffee GmbH,2022-06-15,TXD2028,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,1794.0,53060.22,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-15,TXI6016,Dairy restock,COGS,Debit,1162.07,51898.15,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-16,TX00198,Daily Sales Deposit,Sales Revenue,Credit,795,52693.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-17,TX00199,Daily Sales Deposit,Sales Revenue,Credit,457,53150.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-18,TX00200,Daily Sales Deposit,Sales Revenue,Credit,638,53788.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-19,TX00201,Daily Sales Deposit,Sales Revenue,Credit,525,54313.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-19,TX00202,Maintenance Payment,Operating Expense,Debit,188,54125.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-20,TX00203,Daily Sales Deposit,Sales Revenue,Credit,772,54897.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-21,TX00204,Daily Sales Deposit,Sales Revenue,Credit,588,55485.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-22,TX00205,Daily Sales Deposit,Sales Revenue,Credit,468,55953.15,original
+code_and_coffee,Code & Coffee GmbH,2022-06-22,TXI6017,Bakery ingredient restock,COGS,Debit,1394.48,54558.67,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-23,TX00206,Daily Sales Deposit,Sales Revenue,Credit,646,55204.67,original
+code_and_coffee,Code & Coffee GmbH,2022-06-23,TX00207,Utility Bill Payment,Operating Expense,Debit,253,54951.67,original
+code_and_coffee,Code & Coffee GmbH,2022-06-23,TXB3010,B2B Invoice Payment - Ostpark Buero Services (CINV5010),B2B Sales Revenue,Credit,860.54,55812.21,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-06-24,TX00208,Daily Sales Deposit,Sales Revenue,Credit,485,56297.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-24,TX00209,Maintenance Payment,Operating Expense,Debit,319,55978.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-25,TX00210,Daily Sales Deposit,Sales Revenue,Credit,446,56424.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-25,TX00211,Rent Payment,Operating Expense,Debit,337,56087.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-26,TX00212,Daily Sales Deposit,Sales Revenue,Credit,603,56690.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-26,TX00213,Rent Payment,Operating Expense,Debit,440,56250.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-27,TX00214,Daily Sales Deposit,Sales Revenue,Credit,688,56938.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-28,TX00215,Daily Sales Deposit,Sales Revenue,Credit,756,57694.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-29,TX00216,Daily Sales Deposit,Sales Revenue,Credit,409,58103.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-30,TX00217,Daily Sales Deposit,Sales Revenue,Credit,499,58602.21,original
+code_and_coffee,Code & Coffee GmbH,2022-06-30,TX00218,Coffee Supplier Payment,COGS,Debit,322,58280.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-01,TX00219,Daily Sales Deposit,Sales Revenue,Credit,749,59029.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-01,TXD2006,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5625,53404.21,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-02,TX00220,Daily Sales Deposit,Sales Revenue,Credit,595,53999.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-03,TX00221,Daily Sales Deposit,Sales Revenue,Credit,824,54823.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-04,TX00222,Daily Sales Deposit,Sales Revenue,Credit,515,55338.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-04,TX00223,Coffee Supplier Payment,COGS,Debit,346,54992.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-05,TX00224,Daily Sales Deposit,Sales Revenue,Credit,996,55988.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-06,TX00225,Daily Sales Deposit,Sales Revenue,Credit,659,56647.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-07,TX00226,Daily Sales Deposit,Sales Revenue,Credit,651,57298.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-08,TX00227,Daily Sales Deposit,Sales Revenue,Credit,662,57960.21,original
+code_and_coffee,Code & Coffee GmbH,2022-07-08,TXI6018,Coffee bean restock,COGS,Debit,2726.99,55233.22,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-09,TX00228,Daily Sales Deposit,Sales Revenue,Credit,916,56149.22,original
+code_and_coffee,Code & Coffee GmbH,2022-07-09,TXB3011,B2B Invoice Payment - Ostpark Buero Services (CINV5011),B2B Sales Revenue,Credit,528.02,56677.24,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-07-10,TX00229,Daily Sales Deposit,Sales Revenue,Credit,926,57603.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-11,TX00230,Daily Sales Deposit,Sales Revenue,Credit,822,58425.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-12,TX00231,Daily Sales Deposit,Sales Revenue,Credit,667,59092.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-13,TX00232,Daily Sales Deposit,Sales Revenue,Credit,543,59635.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-14,TX00233,Daily Sales Deposit,Sales Revenue,Credit,511,60146.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-14,TX00234,Maintenance Payment,Operating Expense,Debit,485,59661.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-15,TX00235,Daily Sales Deposit,Sales Revenue,Credit,998,60659.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-15,TXD2029,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,1704.0,58955.24,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-15,TXI6019,Dairy restock,COGS,Debit,1515.0,57440.24,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-16,TX00236,Daily Sales Deposit,Sales Revenue,Credit,714,58154.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-16,TX00237,Maintenance Payment,Operating Expense,Debit,363,57791.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-17,TX00238,Daily Sales Deposit,Sales Revenue,Credit,909,58700.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-18,TX00239,Daily Sales Deposit,Sales Revenue,Credit,917,59617.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-19,TX00240,Daily Sales Deposit,Sales Revenue,Credit,890,60507.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-19,TX00241,Maintenance Payment,Operating Expense,Debit,213,60294.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-20,TX00242,Daily Sales Deposit,Sales Revenue,Credit,574,60868.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-21,TX00243,Daily Sales Deposit,Sales Revenue,Credit,919,61787.24,original
+code_and_coffee,Code & Coffee GmbH,2022-07-21,TXB3012,B2B Invoice Payment - Solid Office Supplies eK (CINV5012),B2B Sales Revenue,Credit,705.44,62492.68,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-07-22,TX00244,Daily Sales Deposit,Sales Revenue,Credit,748,63240.68,original
+code_and_coffee,Code & Coffee GmbH,2022-07-22,TXI6020,Bakery ingredient restock,COGS,Debit,1817.99,61422.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-23,TX00245,Daily Sales Deposit,Sales Revenue,Credit,856,62278.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-24,TX00246,Daily Sales Deposit,Sales Revenue,Credit,691,62969.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-25,TX00247,Daily Sales Deposit,Sales Revenue,Credit,598,63567.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-26,TX00248,Daily Sales Deposit,Sales Revenue,Credit,965,64532.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-27,TX00249,Daily Sales Deposit,Sales Revenue,Credit,595,65127.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-28,TX00250,Daily Sales Deposit,Sales Revenue,Credit,689,65816.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-29,TX00251,Daily Sales Deposit,Sales Revenue,Credit,767,66583.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-30,TX00252,Daily Sales Deposit,Sales Revenue,Credit,512,67095.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-31,TX00253,Daily Sales Deposit,Sales Revenue,Credit,854,67949.69,original
+code_and_coffee,Code & Coffee GmbH,2022-07-31,TX00254,Bakery Payment,COGS,Debit,372,67577.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-01,TX00255,Daily Sales Deposit,Sales Revenue,Credit,561,68138.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-01,TXD2007,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4441,63697.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-01,TXD2057,Credit Card Bill Payment,Credit Card Payment,Debit,774,62923.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-02,TX00256,Daily Sales Deposit,Sales Revenue,Credit,716,63639.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-03,TX00257,Daily Sales Deposit,Sales Revenue,Credit,686,64325.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-03,TX00258,Rent Payment,Operating Expense,Debit,199,64126.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-04,TX00259,Daily Sales Deposit,Sales Revenue,Credit,944,65070.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-05,TX00260,Daily Sales Deposit,Sales Revenue,Credit,575,65645.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-06,TX00261,Daily Sales Deposit,Sales Revenue,Credit,783,66428.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-07,TX00262,Daily Sales Deposit,Sales Revenue,Credit,883,67311.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-08,TX00263,Daily Sales Deposit,Sales Revenue,Credit,866,68177.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-08,TX00264,Utility Bill Payment,Operating Expense,Debit,168,68009.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-08,TXI6021,Coffee bean restock,COGS,Debit,2681.1,65328.59,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-09,TX00265,Daily Sales Deposit,Sales Revenue,Credit,895,66223.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-10,TX00266,Daily Sales Deposit,Sales Revenue,Credit,878,67101.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-11,TX00267,Daily Sales Deposit,Sales Revenue,Credit,552,67653.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-12,TX00268,Daily Sales Deposit,Sales Revenue,Credit,556,68209.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-12,TX00269,Coffee Supplier Payment,COGS,Debit,280,67929.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-13,TX00270,Daily Sales Deposit,Sales Revenue,Credit,685,68614.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-13,TX00271,Coffee Supplier Payment,COGS,Debit,322,68292.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-14,TX00272,Daily Sales Deposit,Sales Revenue,Credit,632,68924.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-15,TX00273,Daily Sales Deposit,Sales Revenue,Credit,720,69644.59,original
+code_and_coffee,Code & Coffee GmbH,2022-08-15,TXD2030,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2875.0,66769.59,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-15,TXI6022,Dairy restock,COGS,Debit,1489.5,65280.09,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-16,TX00274,Daily Sales Deposit,Sales Revenue,Credit,645,65925.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-17,TX00275,Daily Sales Deposit,Sales Revenue,Credit,508,66433.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-18,TX00276,Daily Sales Deposit,Sales Revenue,Credit,991,67424.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-19,TX00277,Daily Sales Deposit,Sales Revenue,Credit,729,68153.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-19,TX00278,Coffee Supplier Payment,COGS,Debit,240,67913.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-20,TX00279,Daily Sales Deposit,Sales Revenue,Credit,892,68805.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-21,TX00280,Daily Sales Deposit,Sales Revenue,Credit,621,69426.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-21,TX00281,Maintenance Payment,Operating Expense,Debit,128,69298.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-22,TX00282,Daily Sales Deposit,Sales Revenue,Credit,921,70219.09,original
+code_and_coffee,Code & Coffee GmbH,2022-08-22,TXI6023,Bakery ingredient restock,COGS,Debit,1787.4,68431.69,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-23,TX00283,Daily Sales Deposit,Sales Revenue,Credit,995,69426.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-24,TX00284,Daily Sales Deposit,Sales Revenue,Credit,841,70267.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-25,TX00285,Daily Sales Deposit,Sales Revenue,Credit,826,71093.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-26,TX00286,Daily Sales Deposit,Sales Revenue,Credit,631,71724.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-27,TX00287,Daily Sales Deposit,Sales Revenue,Credit,751,72475.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-27,TX00288,Utility Bill Payment,Operating Expense,Debit,463,72012.69,original
+code_and_coffee,Code & Coffee GmbH,2022-08-27,TXB3014,B2B Invoice Payment - Ostpark Buero Services (CINV5014),B2B Sales Revenue,Credit,738.69,72751.38,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-08-28,TX00289,Daily Sales Deposit,Sales Revenue,Credit,701,73452.38,original
+code_and_coffee,Code & Coffee GmbH,2022-08-29,TX00290,Daily Sales Deposit,Sales Revenue,Credit,538,73990.38,original
+code_and_coffee,Code & Coffee GmbH,2022-08-30,TX00291,Daily Sales Deposit,Sales Revenue,Credit,672,74662.38,original
+code_and_coffee,Code & Coffee GmbH,2022-08-30,TX00292,Coffee Supplier Payment,COGS,Debit,319,74343.38,original
+code_and_coffee,Code & Coffee GmbH,2022-08-31,TX00293,Daily Sales Deposit,Sales Revenue,Credit,647,74990.38,original
+code_and_coffee,Code & Coffee GmbH,2022-08-31,TX00294,Bakery Payment,COGS,Debit,416,74574.38,original
+code_and_coffee,Code & Coffee GmbH,2022-09-01,TX00295,Daily Sales Deposit,Sales Revenue,Credit,1122,75696.38,original
+code_and_coffee,Code & Coffee GmbH,2022-09-01,TXD2008,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3754,71942.38,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-02,TX00296,Daily Sales Deposit,Sales Revenue,Credit,1160,73102.38,original
+code_and_coffee,Code & Coffee GmbH,2022-09-03,TX00297,Daily Sales Deposit,Sales Revenue,Credit,890,73992.38,original
+code_and_coffee,Code & Coffee GmbH,2022-09-03,TXB3015,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5015),B2B Sales Revenue,Credit,819.38,74811.76,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-09-04,TX00298,Daily Sales Deposit,Sales Revenue,Credit,1108,75919.76,original
+code_and_coffee,Code & Coffee GmbH,2022-09-05,TX00299,Daily Sales Deposit,Sales Revenue,Credit,1121,77040.76,original
+code_and_coffee,Code & Coffee GmbH,2022-09-06,TX00300,Daily Sales Deposit,Sales Revenue,Credit,757,77797.76,original
+code_and_coffee,Code & Coffee GmbH,2022-09-06,TX00301,Maintenance Payment,Operating Expense,Debit,259,77538.76,original
+code_and_coffee,Code & Coffee GmbH,2022-09-07,TX00302,Daily Sales Deposit,Sales Revenue,Credit,1016,78554.76,original
+code_and_coffee,Code & Coffee GmbH,2022-09-08,TX00303,Daily Sales Deposit,Sales Revenue,Credit,779,79333.76,original
+code_and_coffee,Code & Coffee GmbH,2022-09-08,TXI6024,Coffee bean restock,COGS,Debit,3449.94,75883.82,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-09,TX00304,Daily Sales Deposit,Sales Revenue,Credit,902,76785.82,original
+code_and_coffee,Code & Coffee GmbH,2022-09-10,TX00305,Daily Sales Deposit,Sales Revenue,Credit,863,77648.82,original
+code_and_coffee,Code & Coffee GmbH,2022-09-11,TX00306,Daily Sales Deposit,Sales Revenue,Credit,719,78367.82,original
+code_and_coffee,Code & Coffee GmbH,2022-09-11,TX00307,Bakery Payment,COGS,Debit,146,78221.82,original
+code_and_coffee,Code & Coffee GmbH,2022-09-12,TX00308,Daily Sales Deposit,Sales Revenue,Credit,1004,79225.82,original
+code_and_coffee,Code & Coffee GmbH,2022-09-13,TX00309,Daily Sales Deposit,Sales Revenue,Credit,1114,80339.82,original
+code_and_coffee,Code & Coffee GmbH,2022-09-13,TXB3016,B2B Invoice Payment - Solid Office Supplies eK (CINV5016),B2B Sales Revenue,Credit,867.17,81206.99,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-09-14,TX00310,Daily Sales Deposit,Sales Revenue,Credit,753,81959.99,original
+code_and_coffee,Code & Coffee GmbH,2022-09-15,TX00311,Daily Sales Deposit,Sales Revenue,Credit,843,82802.99,original
+code_and_coffee,Code & Coffee GmbH,2022-09-15,TXD2031,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3646.0,79156.99,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-15,TXI6025,Dairy restock,COGS,Debit,1916.63,77240.36,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-16,TX00312,Daily Sales Deposit,Sales Revenue,Credit,1158,78398.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-17,TX00313,Daily Sales Deposit,Sales Revenue,Credit,923,79321.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-17,TX00314,Rent Payment,Operating Expense,Debit,457,78864.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-18,TX00315,Daily Sales Deposit,Sales Revenue,Credit,1107,79971.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-19,TX00316,Daily Sales Deposit,Sales Revenue,Credit,707,80678.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-19,TX00317,Coffee Supplier Payment,COGS,Debit,263,80415.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-20,TX00318,Daily Sales Deposit,Sales Revenue,Credit,835,81250.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-21,TX00319,Daily Sales Deposit,Sales Revenue,Credit,877,82127.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-22,TX00320,Daily Sales Deposit,Sales Revenue,Credit,1056,83183.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-22,TXB3013,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5013),B2B Sales Revenue,Credit,534.24,83717.6,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-09-22,TXI6026,Bakery ingredient restock,COGS,Debit,2299.96,81417.64,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-23,TX00321,Daily Sales Deposit,Sales Revenue,Credit,891,82308.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-24,TX00322,Daily Sales Deposit,Sales Revenue,Credit,1146,83454.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-25,TX00323,Daily Sales Deposit,Sales Revenue,Credit,1116,84570.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-26,TX00324,Daily Sales Deposit,Sales Revenue,Credit,1160,85730.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-27,TX00325,Daily Sales Deposit,Sales Revenue,Credit,1112,86842.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-27,TX00326,Maintenance Payment,Operating Expense,Debit,134,86708.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-28,TX00327,Daily Sales Deposit,Sales Revenue,Credit,1089,87797.64,original
+code_and_coffee,Code & Coffee GmbH,2022-09-28,TXB3017,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5017),B2B Sales Revenue,Credit,375.72,88173.36,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-09-29,TX00328,Daily Sales Deposit,Sales Revenue,Credit,955,89128.36,original
+code_and_coffee,Code & Coffee GmbH,2022-09-30,TX00329,Daily Sales Deposit,Sales Revenue,Credit,1108,90236.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-01,TX00330,Daily Sales Deposit,Sales Revenue,Credit,1011,91247.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-01,TXD2009,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3185,88062.36,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-02,TX00331,Daily Sales Deposit,Sales Revenue,Credit,950,89012.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-02,TX00332,Bakery Payment,COGS,Debit,218,88794.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-03,TX00333,Daily Sales Deposit,Sales Revenue,Credit,1073,89867.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-04,TX00334,Daily Sales Deposit,Sales Revenue,Credit,923,90790.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-05,TX00335,Daily Sales Deposit,Sales Revenue,Credit,966,91756.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-06,TX00336,Daily Sales Deposit,Sales Revenue,Credit,762,92518.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-07,TX00337,Daily Sales Deposit,Sales Revenue,Credit,1014,93532.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-08,TX00338,Daily Sales Deposit,Sales Revenue,Credit,1160,94692.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-08,TX00339,Utility Bill Payment,Operating Expense,Debit,204,94488.36,original
+code_and_coffee,Code & Coffee GmbH,2022-10-08,TXI6027,Coffee bean restock,COGS,Debit,3571.19,90917.17,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-09,TX00340,Daily Sales Deposit,Sales Revenue,Credit,1084,92001.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-09,TX00341,Rent Payment,Operating Expense,Debit,410,91591.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-10,TX00342,Daily Sales Deposit,Sales Revenue,Credit,1164,92755.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-10,TXD2058,Credit Card Bill Payment,Credit Card Payment,Debit,696,92059.17,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-11,TX00343,Daily Sales Deposit,Sales Revenue,Credit,832,92891.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-12,TX00344,Daily Sales Deposit,Sales Revenue,Credit,1136,94027.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-13,TX00345,Daily Sales Deposit,Sales Revenue,Credit,752,94779.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-14,TX00346,Daily Sales Deposit,Sales Revenue,Credit,1157,95936.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-15,TX00347,Daily Sales Deposit,Sales Revenue,Credit,784,96720.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-15,TXD2032,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4245.0,92475.17,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-15,TXI6028,Dairy restock,COGS,Debit,1984.0,90491.17,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-16,TX00348,Daily Sales Deposit,Sales Revenue,Credit,1065,91556.17,original
+code_and_coffee,Code & Coffee GmbH,2022-10-16,TXB3018,B2B Invoice Payment - Katering Vier Jahreszeiten (CINV5018),B2B Sales Revenue,Credit,780.5,92336.67,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-10-17,TX00349,Daily Sales Deposit,Sales Revenue,Credit,872,93208.67,original
+code_and_coffee,Code & Coffee GmbH,2022-10-17,TXD2059,Credit Card Bill Payment,Credit Card Payment,Debit,202,93006.67,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-18,TX00350,Daily Sales Deposit,Sales Revenue,Credit,1145,94151.67,original
+code_and_coffee,Code & Coffee GmbH,2022-10-19,TX00351,Daily Sales Deposit,Sales Revenue,Credit,1187,95338.67,original
+code_and_coffee,Code & Coffee GmbH,2022-10-20,TX00352,Daily Sales Deposit,Sales Revenue,Credit,1047,96385.67,original
+code_and_coffee,Code & Coffee GmbH,2022-10-21,TX00353,Daily Sales Deposit,Sales Revenue,Credit,738,97123.67,original
+code_and_coffee,Code & Coffee GmbH,2022-10-22,TX00354,Daily Sales Deposit,Sales Revenue,Credit,861,97984.67,original
+code_and_coffee,Code & Coffee GmbH,2022-10-22,TXI6029,Bakery ingredient restock,COGS,Debit,2380.8,95603.87,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-23,TX00355,Daily Sales Deposit,Sales Revenue,Credit,958,96561.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-24,TX00356,Daily Sales Deposit,Sales Revenue,Credit,967,97528.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-25,TX00357,Daily Sales Deposit,Sales Revenue,Credit,935,98463.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-26,TX00358,Daily Sales Deposit,Sales Revenue,Credit,921,99384.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-27,TX00359,Daily Sales Deposit,Sales Revenue,Credit,1100,100484.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-27,TX00360,Maintenance Payment,Operating Expense,Debit,402,100082.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-28,TX00361,Daily Sales Deposit,Sales Revenue,Credit,1040,101122.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-29,TX00362,Daily Sales Deposit,Sales Revenue,Credit,774,101896.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-30,TX00363,Daily Sales Deposit,Sales Revenue,Credit,1121,103017.87,original
+code_and_coffee,Code & Coffee GmbH,2022-10-31,TX00364,Daily Sales Deposit,Sales Revenue,Credit,925,103942.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-01,TX00365,Daily Sales Deposit,Sales Revenue,Credit,797,104739.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-01,TXD2010,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3636,101103.87,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-02,TX00366,Daily Sales Deposit,Sales Revenue,Credit,1034,102137.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-03,TX00367,Daily Sales Deposit,Sales Revenue,Credit,1146,103283.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-04,TX00368,Daily Sales Deposit,Sales Revenue,Credit,948,104231.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-05,TX00369,Daily Sales Deposit,Sales Revenue,Credit,1171,105402.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-06,TX00370,Daily Sales Deposit,Sales Revenue,Credit,729,106131.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-07,TX00371,Daily Sales Deposit,Sales Revenue,Credit,750,106881.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-08,TX00372,Daily Sales Deposit,Sales Revenue,Credit,984,107865.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-08,TX00373,Bakery Payment,COGS,Debit,283,107582.87,original
+code_and_coffee,Code & Coffee GmbH,2022-11-08,TXI6030,Coffee bean restock,COGS,Debit,3332.56,104250.31,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-09,TX00374,Daily Sales Deposit,Sales Revenue,Credit,1029,105279.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-10,TX00375,Daily Sales Deposit,Sales Revenue,Credit,1039,106318.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-11,TX00376,Daily Sales Deposit,Sales Revenue,Credit,733,107051.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-12,TX00377,Daily Sales Deposit,Sales Revenue,Credit,1149,108200.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-13,TX00378,Daily Sales Deposit,Sales Revenue,Credit,934,109134.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-14,TX00379,Daily Sales Deposit,Sales Revenue,Credit,1158,110292.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-14,TX00380,Utility Bill Payment,Operating Expense,Debit,348,109944.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-15,TX00381,Daily Sales Deposit,Sales Revenue,Credit,1073,111017.31,original
+code_and_coffee,Code & Coffee GmbH,2022-11-15,TXD2033,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3836.0,107181.31,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-15,TXI6031,Dairy restock,COGS,Debit,1851.42,105329.89,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-16,TX00382,Daily Sales Deposit,Sales Revenue,Credit,1087,106416.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-16,TX00383,Bakery Payment,COGS,Debit,283,106133.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-17,TX00384,Daily Sales Deposit,Sales Revenue,Credit,894,107027.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-18,TX00385,Daily Sales Deposit,Sales Revenue,Credit,854,107881.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-19,TX00386,Daily Sales Deposit,Sales Revenue,Credit,1133,109014.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-20,TX00387,Daily Sales Deposit,Sales Revenue,Credit,750,109764.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-20,TX00388,Coffee Supplier Payment,COGS,Debit,104,109660.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-21,TX00389,Daily Sales Deposit,Sales Revenue,Credit,791,110451.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-22,TX00390,Daily Sales Deposit,Sales Revenue,Credit,721,111172.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-22,TX00391,Maintenance Payment,Operating Expense,Debit,100,111072.89,original
+code_and_coffee,Code & Coffee GmbH,2022-11-22,TXI6032,Bakery ingredient restock,COGS,Debit,2221.71,108851.18,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-23,TX00392,Daily Sales Deposit,Sales Revenue,Credit,932,109783.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-24,TX00393,Daily Sales Deposit,Sales Revenue,Credit,745,110528.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-25,TX00394,Daily Sales Deposit,Sales Revenue,Credit,777,111305.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-26,TX00395,Daily Sales Deposit,Sales Revenue,Credit,1110,112415.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-26,TX00396,Bakery Payment,COGS,Debit,348,112067.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-27,TX00397,Daily Sales Deposit,Sales Revenue,Credit,913,112980.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-27,TX00398,Utility Bill Payment,Operating Expense,Debit,449,112531.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-28,TX00399,Daily Sales Deposit,Sales Revenue,Credit,1018,113549.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-29,TX00400,Daily Sales Deposit,Sales Revenue,Credit,1036,114585.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-30,TX00401,Daily Sales Deposit,Sales Revenue,Credit,956,115541.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-30,TX00402,Maintenance Payment,Operating Expense,Debit,454,115087.18,original
+code_and_coffee,Code & Coffee GmbH,2022-11-30,TXB3021,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5021),B2B Sales Revenue,Credit,679.59,115766.77,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-12-01,TX00403,Daily Sales Deposit,Sales Revenue,Credit,879,116645.77,original
+code_and_coffee,Code & Coffee GmbH,2022-12-01,TXD2011,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3529,113116.77,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-01,TXB3020,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5020),B2B Sales Revenue,Credit,786.37,113903.14,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-12-02,TX00404,Daily Sales Deposit,Sales Revenue,Credit,826,114729.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-03,TX00405,Daily Sales Deposit,Sales Revenue,Credit,713,115442.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-04,TX00406,Daily Sales Deposit,Sales Revenue,Credit,1170,116612.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-05,TX00407,Daily Sales Deposit,Sales Revenue,Credit,1085,117697.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-05,TXD2060,Credit Card Bill Payment,Credit Card Payment,Debit,316,117381.14,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-06,TX00408,Daily Sales Deposit,Sales Revenue,Credit,713,118094.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-06,TX00409,Utility Bill Payment,Operating Expense,Debit,470,117624.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-07,TX00410,Daily Sales Deposit,Sales Revenue,Credit,810,118434.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-08,TX00411,Daily Sales Deposit,Sales Revenue,Credit,1062,119496.14,original
+code_and_coffee,Code & Coffee GmbH,2022-12-08,TXI6033,Coffee bean restock,COGS,Debit,3327.86,116168.28,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-09,TX00412,Daily Sales Deposit,Sales Revenue,Credit,1192,117360.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-10,TX00413,Daily Sales Deposit,Sales Revenue,Credit,993,118353.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-11,TX00414,Daily Sales Deposit,Sales Revenue,Credit,714,119067.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-11,TX00415,Maintenance Payment,Operating Expense,Debit,218,118849.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-12,TX00416,Daily Sales Deposit,Sales Revenue,Credit,727,119576.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-12,TX00417,Coffee Supplier Payment,COGS,Debit,372,119204.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-13,TX00418,Daily Sales Deposit,Sales Revenue,Credit,825,120029.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-13,TX00419,Maintenance Payment,Operating Expense,Debit,244,119785.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-14,TX00420,Daily Sales Deposit,Sales Revenue,Credit,911,120696.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-15,TX00421,Daily Sales Deposit,Sales Revenue,Credit,1093,121789.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-15,TXD2034,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4311.0,117478.28,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-15,TXI6034,Dairy restock,COGS,Debit,1848.81,115629.47,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-16,TX00422,Daily Sales Deposit,Sales Revenue,Credit,808,116437.47,original
+code_and_coffee,Code & Coffee GmbH,2022-12-17,TX00423,Daily Sales Deposit,Sales Revenue,Credit,927,117364.47,original
+code_and_coffee,Code & Coffee GmbH,2022-12-18,TX00424,Daily Sales Deposit,Sales Revenue,Credit,733,118097.47,original
+code_and_coffee,Code & Coffee GmbH,2022-12-19,TX00425,Daily Sales Deposit,Sales Revenue,Credit,1123,119220.47,original
+code_and_coffee,Code & Coffee GmbH,2022-12-20,TX00426,Daily Sales Deposit,Sales Revenue,Credit,782,120002.47,original
+code_and_coffee,Code & Coffee GmbH,2022-12-21,TX00427,Daily Sales Deposit,Sales Revenue,Credit,800,120802.47,original
+code_and_coffee,Code & Coffee GmbH,2022-12-21,TXB3019,B2B Invoice Payment - Katering Vier Jahreszeiten (CINV5019),B2B Sales Revenue,Credit,426.94,121229.41,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-12-21,TXB3022,B2B Invoice Payment - Solid Office Supplies eK (CINV5022),B2B Sales Revenue,Credit,448.45,121677.86,synthetic
+code_and_coffee,Code & Coffee GmbH,2022-12-22,TX00428,Daily Sales Deposit,Sales Revenue,Credit,981,122658.86,original
+code_and_coffee,Code & Coffee GmbH,2022-12-22,TXI6035,Bakery ingredient restock,COGS,Debit,2218.58,120440.28,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-23,TX00429,Daily Sales Deposit,Sales Revenue,Credit,1142,121582.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-24,TX00430,Daily Sales Deposit,Sales Revenue,Credit,1064,122646.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-25,TX00431,Daily Sales Deposit,Sales Revenue,Credit,1076,123722.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-26,TX00432,Daily Sales Deposit,Sales Revenue,Credit,849,124571.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-26,TXD2061,Credit Card Bill Payment,Credit Card Payment,Debit,572,123999.28,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-27,TX00433,Daily Sales Deposit,Sales Revenue,Credit,769,124768.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-28,TX00434,Daily Sales Deposit,Sales Revenue,Credit,703,125471.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-29,TX00435,Daily Sales Deposit,Sales Revenue,Credit,1145,126616.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-30,TX00436,Daily Sales Deposit,Sales Revenue,Credit,794,127410.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-30,TX00437,Utility Bill Payment,Operating Expense,Debit,236,127174.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-31,TX00438,Daily Sales Deposit,Sales Revenue,Credit,942,128116.28,original
+code_and_coffee,Code & Coffee GmbH,2022-12-31,TX00439,Rent Payment,Operating Expense,Debit,328,127788.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-01,TX00440,Daily Sales Deposit,Sales Revenue,Credit,1107,128895.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-01,TX00441,Rent Payment,Operating Expense,Debit,421,128474.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-01,TXD2012,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5068,123406.28,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-02,TX00442,Daily Sales Deposit,Sales Revenue,Credit,919,124325.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-03,TX00443,Daily Sales Deposit,Sales Revenue,Credit,1034,125359.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-04,TX00444,Daily Sales Deposit,Sales Revenue,Credit,1068,126427.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-05,TX00445,Daily Sales Deposit,Sales Revenue,Credit,1185,127612.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-06,TX00446,Daily Sales Deposit,Sales Revenue,Credit,1140,128752.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-07,TX00447,Daily Sales Deposit,Sales Revenue,Credit,902,129654.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-08,TX00448,Daily Sales Deposit,Sales Revenue,Credit,1134,130788.28,original
+code_and_coffee,Code & Coffee GmbH,2023-01-08,TXI6036,Coffee bean restock,COGS,Debit,3550.54,127237.74,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-09,TX00449,Daily Sales Deposit,Sales Revenue,Credit,832,128069.74,original
+code_and_coffee,Code & Coffee GmbH,2023-01-09,TX00450,Rent Payment,Operating Expense,Debit,217,127852.74,original
+code_and_coffee,Code & Coffee GmbH,2023-01-10,TX00451,Daily Sales Deposit,Sales Revenue,Credit,974,128826.74,original
+code_and_coffee,Code & Coffee GmbH,2023-01-10,TX00452,Bakery Payment,COGS,Debit,119,128707.74,original
+code_and_coffee,Code & Coffee GmbH,2023-01-10,TXB3024,B2B Invoice Payment - Katering Vier Jahreszeiten (CINV5024),B2B Sales Revenue,Credit,571.29,129279.03,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-01-11,TX00453,Daily Sales Deposit,Sales Revenue,Credit,839,130118.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-11,TX00454,Maintenance Payment,Operating Expense,Debit,189,129929.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-12,TX00455,Daily Sales Deposit,Sales Revenue,Credit,1081,131010.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-12,TX00456,Maintenance Payment,Operating Expense,Debit,455,130555.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-13,TX00457,Daily Sales Deposit,Sales Revenue,Credit,1190,131745.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-14,TX00458,Daily Sales Deposit,Sales Revenue,Credit,1089,132834.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-15,TX00459,Daily Sales Deposit,Sales Revenue,Credit,709,133543.03,original
+code_and_coffee,Code & Coffee GmbH,2023-01-15,TXD2035,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2565.0,130978.03,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-15,TXI6037,Dairy restock,COGS,Debit,1972.52,129005.51,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-16,TX00460,Daily Sales Deposit,Sales Revenue,Credit,837,129842.51,original
+code_and_coffee,Code & Coffee GmbH,2023-01-16,TXB3023,B2B Invoice Payment - Solid Office Supplies eK (CINV5023),B2B Sales Revenue,Credit,783.09,130625.6,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-01-17,TX00461,Daily Sales Deposit,Sales Revenue,Credit,712,131337.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-18,TX00462,Daily Sales Deposit,Sales Revenue,Credit,783,132120.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-19,TX00463,Daily Sales Deposit,Sales Revenue,Credit,800,132920.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-19,TX00464,Utility Bill Payment,Operating Expense,Debit,364,132556.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-20,TX00465,Daily Sales Deposit,Sales Revenue,Credit,1098,133654.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-21,TX00466,Daily Sales Deposit,Sales Revenue,Credit,1118,134772.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-22,TX00467,Daily Sales Deposit,Sales Revenue,Credit,1004,135776.6,original
+code_and_coffee,Code & Coffee GmbH,2023-01-22,TXI6038,Bakery ingredient restock,COGS,Debit,2367.02,133409.58,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-23,TX00468,Daily Sales Deposit,Sales Revenue,Credit,1143,134552.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-23,TXD2062,Credit Card Bill Payment,Credit Card Payment,Debit,658,133894.58,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-24,TX00469,Daily Sales Deposit,Sales Revenue,Credit,1033,134927.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-25,TX00470,Daily Sales Deposit,Sales Revenue,Credit,1158,136085.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-26,TX00471,Daily Sales Deposit,Sales Revenue,Credit,775,136860.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-27,TX00472,Daily Sales Deposit,Sales Revenue,Credit,700,137560.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-28,TX00473,Daily Sales Deposit,Sales Revenue,Credit,1105,138665.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-28,TX00474,Utility Bill Payment,Operating Expense,Debit,448,138217.58,original
+code_and_coffee,Code & Coffee GmbH,2023-01-28,TXB3025,B2B Invoice Payment - Ostpark Buero Services (CINV5025),B2B Sales Revenue,Credit,620.15,138837.73,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-01-29,TX00475,Daily Sales Deposit,Sales Revenue,Credit,1060,139897.73,original
+code_and_coffee,Code & Coffee GmbH,2023-01-30,TX00476,Daily Sales Deposit,Sales Revenue,Credit,1015,140912.73,original
+code_and_coffee,Code & Coffee GmbH,2023-01-30,TX00477,Maintenance Payment,Operating Expense,Debit,312,140600.73,original
+code_and_coffee,Code & Coffee GmbH,2023-01-30,TXD2063,Credit Card Bill Payment,Credit Card Payment,Debit,358,140242.73,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-31,TX00478,Daily Sales Deposit,Sales Revenue,Credit,704,140946.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-01,TX00479,Daily Sales Deposit,Sales Revenue,Credit,777,141723.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-01,TXD2013,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5147,136576.73,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-02,TX00480,Daily Sales Deposit,Sales Revenue,Credit,831,137407.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-03,TX00481,Daily Sales Deposit,Sales Revenue,Credit,741,138148.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-04,TX00482,Daily Sales Deposit,Sales Revenue,Credit,995,139143.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-05,TX00483,Daily Sales Deposit,Sales Revenue,Credit,803,139946.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-06,TX00484,Daily Sales Deposit,Sales Revenue,Credit,878,140824.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-07,TX00485,Daily Sales Deposit,Sales Revenue,Credit,1052,141876.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-08,TX00486,Daily Sales Deposit,Sales Revenue,Credit,842,142718.73,original
+code_and_coffee,Code & Coffee GmbH,2023-02-08,TXI6039,Coffee bean restock,COGS,Debit,2981.94,139736.79,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-09,TX00487,Daily Sales Deposit,Sales Revenue,Credit,844,140580.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-10,TX00488,Daily Sales Deposit,Sales Revenue,Credit,1149,141729.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-11,TX00489,Daily Sales Deposit,Sales Revenue,Credit,803,142532.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-12,TX00490,Daily Sales Deposit,Sales Revenue,Credit,738,143270.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-12,TX00491,Utility Bill Payment,Operating Expense,Debit,233,143037.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-13,TX00492,Daily Sales Deposit,Sales Revenue,Credit,1090,144127.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-14,TX00493,Daily Sales Deposit,Sales Revenue,Credit,741,144868.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-14,TX00494,Maintenance Payment,Operating Expense,Debit,114,144754.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-14,TXS9000,Storm damage - emergency roof and awning repair,Operating Expense,Debit,8500.0,136254.79,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,TX00495,Daily Sales Deposit,Sales Revenue,Credit,988,137242.79,original
+code_and_coffee,Code & Coffee GmbH,2023-02-15,TXD2036,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2481.0,134761.79,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,TXI6040,Dairy restock,COGS,Debit,1656.63,133105.16,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-16,TX00496,Daily Sales Deposit,Sales Revenue,Credit,930,134035.16,original
+code_and_coffee,Code & Coffee GmbH,2023-02-16,TXB3026,B2B Invoice Payment - Solid Office Supplies eK (CINV5026),B2B Sales Revenue,Credit,413.27,134448.43,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-02-17,TX00497,Daily Sales Deposit,Sales Revenue,Credit,856,135304.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-17,TX00498,Maintenance Payment,Operating Expense,Debit,196,135108.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-18,TX00499,Daily Sales Deposit,Sales Revenue,Credit,1184,136292.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-19,TX00500,Daily Sales Deposit,Sales Revenue,Credit,988,137280.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-19,TX00501,Coffee Supplier Payment,COGS,Debit,185,137095.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-20,TX00502,Daily Sales Deposit,Sales Revenue,Credit,709,137804.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-21,TX00503,Daily Sales Deposit,Sales Revenue,Credit,1029,138833.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-22,TX00504,Daily Sales Deposit,Sales Revenue,Credit,993,139826.43,original
+code_and_coffee,Code & Coffee GmbH,2023-02-22,TXI6041,Bakery ingredient restock,COGS,Debit,1987.96,137838.47,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-23,TX00505,Daily Sales Deposit,Sales Revenue,Credit,1002,138840.47,original
+code_and_coffee,Code & Coffee GmbH,2023-02-24,TX00506,Daily Sales Deposit,Sales Revenue,Credit,915,139755.47,original
+code_and_coffee,Code & Coffee GmbH,2023-02-25,TX00507,Daily Sales Deposit,Sales Revenue,Credit,714,140469.47,original
+code_and_coffee,Code & Coffee GmbH,2023-02-26,TX00508,Daily Sales Deposit,Sales Revenue,Credit,960,141429.47,original
+code_and_coffee,Code & Coffee GmbH,2023-02-27,TX00509,Daily Sales Deposit,Sales Revenue,Credit,1023,142452.47,original
+code_and_coffee,Code & Coffee GmbH,2023-02-28,TX00510,Daily Sales Deposit,Sales Revenue,Credit,829,143281.47,original
+code_and_coffee,Code & Coffee GmbH,2023-02-28,TX00511,Utility Bill Payment,Operating Expense,Debit,214,143067.47,original
+code_and_coffee,Code & Coffee GmbH,2023-03-01,TX00512,Daily Sales Deposit,Sales Revenue,Credit,691,143758.47,original
+code_and_coffee,Code & Coffee GmbH,2023-03-01,TXD2014,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4622,139136.47,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-02,TX00513,Daily Sales Deposit,Sales Revenue,Credit,682,139818.47,original
+code_and_coffee,Code & Coffee GmbH,2023-03-03,TX00514,Daily Sales Deposit,Sales Revenue,Credit,410,140228.47,original
+code_and_coffee,Code & Coffee GmbH,2023-03-04,TX00515,Daily Sales Deposit,Sales Revenue,Credit,759,140987.47,original
+code_and_coffee,Code & Coffee GmbH,2023-03-04,TXB3027,B2B Invoice Payment - Solid Office Supplies eK (CINV5027),B2B Sales Revenue,Credit,895.39,141882.86,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-03-05,TX00516,Daily Sales Deposit,Sales Revenue,Credit,599,142481.86,original
+code_and_coffee,Code & Coffee GmbH,2023-03-06,TX00517,Daily Sales Deposit,Sales Revenue,Credit,745,143226.86,original
+code_and_coffee,Code & Coffee GmbH,2023-03-07,TX00518,Daily Sales Deposit,Sales Revenue,Credit,795,144021.86,original
+code_and_coffee,Code & Coffee GmbH,2023-03-08,TX00519,Daily Sales Deposit,Sales Revenue,Credit,503,144524.86,original
+code_and_coffee,Code & Coffee GmbH,2023-03-08,TXI6042,Coffee bean restock,COGS,Debit,2293.74,142231.12,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-09,TX00520,Daily Sales Deposit,Sales Revenue,Credit,510,142741.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-10,TX00521,Daily Sales Deposit,Sales Revenue,Credit,570,143311.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-11,TX00522,Daily Sales Deposit,Sales Revenue,Credit,755,144066.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-12,TX00523,Daily Sales Deposit,Sales Revenue,Credit,532,144598.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-13,TX00524,Daily Sales Deposit,Sales Revenue,Credit,727,145325.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-13,TXD2064,Credit Card Bill Payment,Credit Card Payment,Debit,720,144605.12,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-14,TX00525,Daily Sales Deposit,Sales Revenue,Credit,491,145096.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-15,TX00526,Daily Sales Deposit,Sales Revenue,Credit,792,145888.12,original
+code_and_coffee,Code & Coffee GmbH,2023-03-15,TXD2037,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2878.0,143010.12,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-15,TXI6043,Dairy restock,COGS,Debit,1274.3,141735.82,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-16,TX00527,Daily Sales Deposit,Sales Revenue,Credit,428,142163.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-16,TX00528,Utility Bill Payment,Operating Expense,Debit,396,141767.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-17,TX00529,Daily Sales Deposit,Sales Revenue,Credit,656,142423.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-17,TX00530,Rent Payment,Operating Expense,Debit,445,141978.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-18,TX00531,Daily Sales Deposit,Sales Revenue,Credit,581,142559.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-19,TX00532,Daily Sales Deposit,Sales Revenue,Credit,400,142959.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-20,TX00533,Daily Sales Deposit,Sales Revenue,Credit,454,143413.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-21,TX00534,Daily Sales Deposit,Sales Revenue,Credit,798,144211.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-22,TX00535,Daily Sales Deposit,Sales Revenue,Credit,708,144919.82,original
+code_and_coffee,Code & Coffee GmbH,2023-03-22,TXI6044,Bakery ingredient restock,COGS,Debit,1529.16,143390.66,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-23,TX00536,Daily Sales Deposit,Sales Revenue,Credit,712,144102.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-23,TX00537,Rent Payment,Operating Expense,Debit,390,143712.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-24,TX00538,Daily Sales Deposit,Sales Revenue,Credit,424,144136.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-25,TX00539,Daily Sales Deposit,Sales Revenue,Credit,693,144829.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-26,TX00540,Daily Sales Deposit,Sales Revenue,Credit,609,145438.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-27,TX00541,Daily Sales Deposit,Sales Revenue,Credit,746,146184.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-28,TX00542,Daily Sales Deposit,Sales Revenue,Credit,763,146947.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-29,TX00543,Daily Sales Deposit,Sales Revenue,Credit,581,147528.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-29,TX00544,Maintenance Payment,Operating Expense,Debit,279,147249.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-30,TX00545,Daily Sales Deposit,Sales Revenue,Credit,743,147992.66,original
+code_and_coffee,Code & Coffee GmbH,2023-03-30,TXB3029,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5029),B2B Sales Revenue,Credit,441.38,148434.04,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-03-31,TX00546,Daily Sales Deposit,Sales Revenue,Credit,684,149118.04,original
+code_and_coffee,Code & Coffee GmbH,2023-03-31,TXB3028,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5028),B2B Sales Revenue,Credit,902.5,150020.54,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-04-01,TX00547,Daily Sales Deposit,Sales Revenue,Credit,549,150569.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-01,TXD2015,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3939,146630.54,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-02,TX00548,Daily Sales Deposit,Sales Revenue,Credit,769,147399.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-03,TX00549,Daily Sales Deposit,Sales Revenue,Credit,736,148135.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-04,TX00550,Daily Sales Deposit,Sales Revenue,Credit,576,148711.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-05,TX00551,Daily Sales Deposit,Sales Revenue,Credit,741,149452.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-05,TX00552,Bakery Payment,COGS,Debit,288,149164.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-06,TX00553,Daily Sales Deposit,Sales Revenue,Credit,726,149890.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-07,TX00554,Daily Sales Deposit,Sales Revenue,Credit,540,150430.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-08,TX00555,Daily Sales Deposit,Sales Revenue,Credit,778,151208.54,original
+code_and_coffee,Code & Coffee GmbH,2023-04-08,TXI6045,Coffee bean restock,COGS,Debit,2220.85,148987.69,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-09,TX00556,Daily Sales Deposit,Sales Revenue,Credit,717,149704.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-10,TX00557,Daily Sales Deposit,Sales Revenue,Credit,684,150388.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-11,TX00558,Daily Sales Deposit,Sales Revenue,Credit,685,151073.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-12,TX00559,Daily Sales Deposit,Sales Revenue,Credit,418,151491.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-12,TX00560,Utility Bill Payment,Operating Expense,Debit,177,151314.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-13,TX00561,Daily Sales Deposit,Sales Revenue,Credit,574,151888.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-14,TX00562,Daily Sales Deposit,Sales Revenue,Credit,512,152400.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-15,TX00563,Daily Sales Deposit,Sales Revenue,Credit,565,152965.69,original
+code_and_coffee,Code & Coffee GmbH,2023-04-15,TXD2038,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3607.0,149358.69,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-15,TXI6046,Dairy restock,COGS,Debit,1233.8,148124.89,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-16,TX00564,Daily Sales Deposit,Sales Revenue,Credit,531,148655.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-16,TX00565,Utility Bill Payment,Operating Expense,Debit,154,148501.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-17,TX00566,Daily Sales Deposit,Sales Revenue,Credit,687,149188.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-17,TXD2065,Credit Card Bill Payment,Credit Card Payment,Debit,638,148550.89,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-18,TX00567,Daily Sales Deposit,Sales Revenue,Credit,765,149315.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-19,TX00568,Daily Sales Deposit,Sales Revenue,Credit,486,149801.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-20,TX00569,Daily Sales Deposit,Sales Revenue,Credit,687,150488.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-21,TX00570,Daily Sales Deposit,Sales Revenue,Credit,748,151236.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-22,TX00571,Daily Sales Deposit,Sales Revenue,Credit,712,151948.89,original
+code_and_coffee,Code & Coffee GmbH,2023-04-22,TXI6047,Bakery ingredient restock,COGS,Debit,1480.56,150468.33,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-23,TX00572,Daily Sales Deposit,Sales Revenue,Credit,654,151122.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-23,TX00573,Bakery Payment,COGS,Debit,153,150969.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-24,TX00574,Daily Sales Deposit,Sales Revenue,Credit,638,151607.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-24,TXD2066,Credit Card Bill Payment,Credit Card Payment,Debit,307,151300.33,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-25,TX00575,Daily Sales Deposit,Sales Revenue,Credit,450,151750.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-26,TX00576,Daily Sales Deposit,Sales Revenue,Credit,663,152413.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-26,TX00577,Utility Bill Payment,Operating Expense,Debit,195,152218.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-27,TX00578,Daily Sales Deposit,Sales Revenue,Credit,799,153017.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-28,TX00579,Daily Sales Deposit,Sales Revenue,Credit,564,153581.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-28,TX00580,Coffee Supplier Payment,COGS,Debit,497,153084.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-29,TX00581,Daily Sales Deposit,Sales Revenue,Credit,406,153490.33,original
+code_and_coffee,Code & Coffee GmbH,2023-04-30,TX00582,Daily Sales Deposit,Sales Revenue,Credit,560,154050.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-01,TX00583,Daily Sales Deposit,Sales Revenue,Credit,546,154596.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-01,TX00584,Maintenance Payment,Operating Expense,Debit,135,154461.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-01,TXD2016,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5381,149080.33,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-02,TX00585,Daily Sales Deposit,Sales Revenue,Credit,587,149667.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-03,TX00586,Daily Sales Deposit,Sales Revenue,Credit,784,150451.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-04,TX00587,Daily Sales Deposit,Sales Revenue,Credit,410,150861.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-05,TX00588,Daily Sales Deposit,Sales Revenue,Credit,785,151646.33,original
+code_and_coffee,Code & Coffee GmbH,2023-05-05,TXB3032,B2B Invoice Payment - Solid Office Supplies eK (CINV5032),B2B Sales Revenue,Credit,864.53,152510.86,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-05-06,TX00589,Daily Sales Deposit,Sales Revenue,Credit,518,153028.86,original
+code_and_coffee,Code & Coffee GmbH,2023-05-07,TX00590,Daily Sales Deposit,Sales Revenue,Credit,660,153688.86,original
+code_and_coffee,Code & Coffee GmbH,2023-05-08,TX00591,Daily Sales Deposit,Sales Revenue,Credit,655,154343.86,original
+code_and_coffee,Code & Coffee GmbH,2023-05-08,TXI6048,Coffee bean restock,COGS,Debit,2167.08,152176.78,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-09,TX00592,Daily Sales Deposit,Sales Revenue,Credit,625,152801.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-10,TX00593,Daily Sales Deposit,Sales Revenue,Credit,754,153555.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-11,TX00594,Daily Sales Deposit,Sales Revenue,Credit,741,154296.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-12,TX00595,Daily Sales Deposit,Sales Revenue,Credit,480,154776.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-13,TX00596,Daily Sales Deposit,Sales Revenue,Credit,519,155295.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-14,TX00597,Daily Sales Deposit,Sales Revenue,Credit,614,155909.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-15,TX00598,Daily Sales Deposit,Sales Revenue,Credit,608,156517.78,original
+code_and_coffee,Code & Coffee GmbH,2023-05-15,TXD2039,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,1911.0,154606.78,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-15,TXI6049,Dairy restock,COGS,Debit,1203.94,153402.84,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-16,TX00599,Daily Sales Deposit,Sales Revenue,Credit,608,154010.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-17,TX00600,Daily Sales Deposit,Sales Revenue,Credit,439,154449.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-18,TX00601,Daily Sales Deposit,Sales Revenue,Credit,680,155129.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-19,TX00602,Daily Sales Deposit,Sales Revenue,Credit,645,155774.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-20,TX00603,Daily Sales Deposit,Sales Revenue,Credit,403,156177.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-20,TX00604,Maintenance Payment,Operating Expense,Debit,128,156049.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-21,TX00605,Daily Sales Deposit,Sales Revenue,Credit,497,156546.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-22,TX00606,Daily Sales Deposit,Sales Revenue,Credit,474,157020.84,original
+code_and_coffee,Code & Coffee GmbH,2023-05-22,TXB3033,B2B Invoice Payment - Ostpark Buero Services (CINV5033),B2B Sales Revenue,Credit,757.68,157778.52,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-05-22,TXI6050,Bakery ingredient restock,COGS,Debit,1444.72,156333.8,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-23,TX00607,Daily Sales Deposit,Sales Revenue,Credit,527,156860.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-23,TX00608,Bakery Payment,COGS,Debit,455,156405.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-24,TX00609,Daily Sales Deposit,Sales Revenue,Credit,433,156838.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-25,TX00610,Daily Sales Deposit,Sales Revenue,Credit,552,157390.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-26,TX00611,Daily Sales Deposit,Sales Revenue,Credit,475,157865.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-27,TX00612,Daily Sales Deposit,Sales Revenue,Credit,761,158626.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-27,TX00613,Bakery Payment,COGS,Debit,126,158500.8,original
+code_and_coffee,Code & Coffee GmbH,2023-05-27,TXB3030,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5030),B2B Sales Revenue,Credit,826.74,159327.54,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-05-27,TXB3031,B2B Invoice Payment - Ostpark Buero Services (CINV5031),B2B Sales Revenue,Credit,722.03,160049.57,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-05-28,TX00614,Daily Sales Deposit,Sales Revenue,Credit,686,160735.57,original
+code_and_coffee,Code & Coffee GmbH,2023-05-29,TX00615,Daily Sales Deposit,Sales Revenue,Credit,567,161302.57,original
+code_and_coffee,Code & Coffee GmbH,2023-05-29,TXD2067,Credit Card Bill Payment,Credit Card Payment,Debit,462,160840.57,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-30,TX00616,Daily Sales Deposit,Sales Revenue,Credit,636,161476.57,original
+code_and_coffee,Code & Coffee GmbH,2023-05-31,TX00617,Daily Sales Deposit,Sales Revenue,Credit,793,162269.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-01,TX00618,Daily Sales Deposit,Sales Revenue,Credit,589,162858.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-01,TXD2017,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3374,159484.57,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-02,TX00619,Daily Sales Deposit,Sales Revenue,Credit,463,159947.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-03,TX00620,Daily Sales Deposit,Sales Revenue,Credit,709,160656.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-04,TX00621,Daily Sales Deposit,Sales Revenue,Credit,706,161362.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-04,TX00622,Coffee Supplier Payment,COGS,Debit,470,160892.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-05,TX00623,Daily Sales Deposit,Sales Revenue,Credit,428,161320.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-06,TX00624,Daily Sales Deposit,Sales Revenue,Credit,695,162015.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-07,TX00625,Daily Sales Deposit,Sales Revenue,Credit,563,162578.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-08,TX00626,Daily Sales Deposit,Sales Revenue,Credit,694,163272.57,original
+code_and_coffee,Code & Coffee GmbH,2023-06-08,TXI6051,Coffee bean restock,COGS,Debit,2104.87,161167.7,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-09,TX00627,Daily Sales Deposit,Sales Revenue,Credit,709,161876.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-10,TX00628,Daily Sales Deposit,Sales Revenue,Credit,510,162386.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-11,TX00629,Daily Sales Deposit,Sales Revenue,Credit,468,162854.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-12,TX00630,Daily Sales Deposit,Sales Revenue,Credit,649,163503.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-12,TX00631,Utility Bill Payment,Operating Expense,Debit,247,163256.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-12,TXS9001,Emergency walk-in cooler replacement,Operating Expense,Debit,19500.0,143756.7,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-13,TX00632,Daily Sales Deposit,Sales Revenue,Credit,626,144382.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-14,TX00633,Daily Sales Deposit,Sales Revenue,Credit,736,145118.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-15,TX00634,Daily Sales Deposit,Sales Revenue,Credit,764,145882.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-15,TX00635,Coffee Supplier Payment,COGS,Debit,300,145582.7,original
+code_and_coffee,Code & Coffee GmbH,2023-06-15,TXD2040,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3990.0,141592.7,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-15,TXI6052,Dairy restock,COGS,Debit,1169.37,140423.33,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-16,TX00636,Daily Sales Deposit,Sales Revenue,Credit,472,140895.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-16,TX00637,Bakery Payment,COGS,Debit,116,140779.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-17,TX00638,Daily Sales Deposit,Sales Revenue,Credit,616,141395.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-18,TX00639,Daily Sales Deposit,Sales Revenue,Credit,503,141898.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-19,TX00640,Daily Sales Deposit,Sales Revenue,Credit,438,142336.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-19,TX00641,Rent Payment,Operating Expense,Debit,328,142008.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-20,TX00642,Daily Sales Deposit,Sales Revenue,Credit,571,142579.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-20,TXS9003,Energy price surcharge - Stadtwerke Bielefeld,Operating Expense,Debit,950.0,141629.33,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-21,TX00643,Daily Sales Deposit,Sales Revenue,Credit,501,142130.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-22,TX00644,Daily Sales Deposit,Sales Revenue,Credit,674,142804.33,original
+code_and_coffee,Code & Coffee GmbH,2023-06-22,TXI6053,Bakery ingredient restock,COGS,Debit,1403.25,141401.08,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-23,TX00645,Daily Sales Deposit,Sales Revenue,Credit,704,142105.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-23,TX00646,Bakery Payment,COGS,Debit,429,141676.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-24,TX00647,Daily Sales Deposit,Sales Revenue,Credit,710,142386.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-25,TX00648,Daily Sales Deposit,Sales Revenue,Credit,411,142797.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-26,TX00649,Daily Sales Deposit,Sales Revenue,Credit,615,143412.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-27,TX00650,Daily Sales Deposit,Sales Revenue,Credit,548,143960.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-28,TX00651,Daily Sales Deposit,Sales Revenue,Credit,773,144733.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-29,TX00652,Daily Sales Deposit,Sales Revenue,Credit,599,145332.08,original
+code_and_coffee,Code & Coffee GmbH,2023-06-30,TX00653,Daily Sales Deposit,Sales Revenue,Credit,488,145820.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-01,TX00654,Daily Sales Deposit,Sales Revenue,Credit,558,146378.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-01,TXD2018,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5884,140494.08,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-02,TX00655,Daily Sales Deposit,Sales Revenue,Credit,864,141358.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-03,TX00656,Daily Sales Deposit,Sales Revenue,Credit,787,142145.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-03,TXD2068,Credit Card Bill Payment,Credit Card Payment,Debit,552,141593.08,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-04,TX00657,Daily Sales Deposit,Sales Revenue,Credit,698,142291.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-05,TX00658,Daily Sales Deposit,Sales Revenue,Credit,781,143072.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-06,TX00659,Daily Sales Deposit,Sales Revenue,Credit,749,143821.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-07,TX00660,Daily Sales Deposit,Sales Revenue,Credit,834,144655.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-08,TX00661,Daily Sales Deposit,Sales Revenue,Credit,636,145291.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-08,TX00662,Coffee Supplier Payment,COGS,Debit,427,144864.08,original
+code_and_coffee,Code & Coffee GmbH,2023-07-08,TXS9002,Kitchen equipment emergency repair,Operating Expense,Debit,4200.0,140664.08,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-08,TXI6054,Coffee bean restock,COGS,Debit,2719.24,137944.84,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-09,TX00663,Daily Sales Deposit,Sales Revenue,Credit,814,138758.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-10,TX00664,Daily Sales Deposit,Sales Revenue,Credit,581,139339.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-11,TX00665,Daily Sales Deposit,Sales Revenue,Credit,871,140210.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-12,TX00666,Daily Sales Deposit,Sales Revenue,Credit,901,141111.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-13,TX00667,Daily Sales Deposit,Sales Revenue,Credit,602,141713.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-13,TX00668,Utility Bill Payment,Operating Expense,Debit,258,141455.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-14,TX00669,Daily Sales Deposit,Sales Revenue,Credit,607,142062.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-14,TX00670,Utility Bill Payment,Operating Expense,Debit,197,141865.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-15,TX00671,Daily Sales Deposit,Sales Revenue,Credit,792,142657.84,original
+code_and_coffee,Code & Coffee GmbH,2023-07-15,TXD2041,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,1763.0,140894.84,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-15,TXI6055,Dairy restock,COGS,Debit,1510.69,139384.15,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-16,TX00672,Daily Sales Deposit,Sales Revenue,Credit,973,140357.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-17,TX00673,Daily Sales Deposit,Sales Revenue,Credit,863,141220.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-18,TX00674,Daily Sales Deposit,Sales Revenue,Credit,875,142095.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-19,TX00675,Daily Sales Deposit,Sales Revenue,Credit,848,142943.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-20,TX00676,Daily Sales Deposit,Sales Revenue,Credit,896,143839.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-20,TXS9004,Energy price surcharge - Stadtwerke Bielefeld,Operating Expense,Debit,1050.0,142789.15,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-21,TX00677,Daily Sales Deposit,Sales Revenue,Credit,515,143304.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-22,TX00678,Daily Sales Deposit,Sales Revenue,Credit,607,143911.15,original
+code_and_coffee,Code & Coffee GmbH,2023-07-22,TXI6056,Bakery ingredient restock,COGS,Debit,1812.83,142098.32,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-23,TX00679,Daily Sales Deposit,Sales Revenue,Credit,810,142908.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-24,TX00680,Daily Sales Deposit,Sales Revenue,Credit,533,143441.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-24,TX00681,Maintenance Payment,Operating Expense,Debit,346,143095.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-24,TXD2069,Credit Card Bill Payment,Credit Card Payment,Debit,716,142379.32,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-25,TX00682,Daily Sales Deposit,Sales Revenue,Credit,640,143019.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-26,TX00683,Daily Sales Deposit,Sales Revenue,Credit,595,143614.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-27,TX00684,Daily Sales Deposit,Sales Revenue,Credit,538,144152.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-27,TX00685,Bakery Payment,COGS,Debit,128,144024.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-28,TX00686,Daily Sales Deposit,Sales Revenue,Credit,976,145000.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-28,TX00687,Bakery Payment,COGS,Debit,335,144665.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-29,TX00688,Daily Sales Deposit,Sales Revenue,Credit,771,145436.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-30,TX00689,Daily Sales Deposit,Sales Revenue,Credit,738,146174.32,original
+code_and_coffee,Code & Coffee GmbH,2023-07-31,TX00690,Daily Sales Deposit,Sales Revenue,Credit,913,147087.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-01,TX00691,Daily Sales Deposit,Sales Revenue,Credit,858,147945.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-01,TXD2019,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5365,142580.32,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-02,TX00692,Daily Sales Deposit,Sales Revenue,Credit,564,143144.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-03,TX00693,Daily Sales Deposit,Sales Revenue,Credit,502,143646.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-04,TX00694,Daily Sales Deposit,Sales Revenue,Credit,875,144521.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-05,TX00695,Daily Sales Deposit,Sales Revenue,Credit,823,145344.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-06,TX00696,Daily Sales Deposit,Sales Revenue,Credit,792,146136.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-06,TX00697,Maintenance Payment,Operating Expense,Debit,292,145844.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-07,TX00698,Daily Sales Deposit,Sales Revenue,Credit,993,146837.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-07,TX00699,Bakery Payment,COGS,Debit,498,146339.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-08,TX00700,Daily Sales Deposit,Sales Revenue,Credit,876,147215.32,original
+code_and_coffee,Code & Coffee GmbH,2023-08-08,TXI6057,Coffee bean restock,COGS,Debit,2776.06,144439.26,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-09,TX00701,Daily Sales Deposit,Sales Revenue,Credit,639,145078.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-10,TX00702,Daily Sales Deposit,Sales Revenue,Credit,792,145870.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-11,TX00703,Daily Sales Deposit,Sales Revenue,Credit,926,146796.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-12,TX00704,Daily Sales Deposit,Sales Revenue,Credit,794,147590.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-13,TX00705,Daily Sales Deposit,Sales Revenue,Credit,801,148391.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-14,TX00706,Daily Sales Deposit,Sales Revenue,Credit,561,148952.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-15,TX00707,Daily Sales Deposit,Sales Revenue,Credit,652,149604.26,original
+code_and_coffee,Code & Coffee GmbH,2023-08-15,TXD2042,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2237.0,147367.26,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-15,TXI6058,Dairy restock,COGS,Debit,1542.25,145825.01,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-16,TX00708,Daily Sales Deposit,Sales Revenue,Credit,759,146584.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-17,TX00709,Daily Sales Deposit,Sales Revenue,Credit,647,147231.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-18,TX00710,Daily Sales Deposit,Sales Revenue,Credit,809,148040.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-19,TX00711,Daily Sales Deposit,Sales Revenue,Credit,992,149032.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-19,TX00712,Coffee Supplier Payment,COGS,Debit,206,148826.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-20,TX00713,Daily Sales Deposit,Sales Revenue,Credit,812,149638.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-20,TXS9005,Energy price surcharge - Stadtwerke Bielefeld,Operating Expense,Debit,1100.0,148538.01,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-21,TX00714,Daily Sales Deposit,Sales Revenue,Credit,740,149278.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-22,TX00715,Daily Sales Deposit,Sales Revenue,Credit,875,150153.01,original
+code_and_coffee,Code & Coffee GmbH,2023-08-22,TXB3040,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5040),B2B Sales Revenue,Credit,721.52,150874.53,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-08-22,TXI6059,Bakery ingredient restock,COGS,Debit,1850.7,149023.83,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-23,TX00716,Daily Sales Deposit,Sales Revenue,Credit,760,149783.83,original
+code_and_coffee,Code & Coffee GmbH,2023-08-23,TXB3034,B2B Invoice Payment - Solid Office Supplies eK (CINV5034),B2B Sales Revenue,Credit,2709.31,152493.14,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-08-24,TX00717,Daily Sales Deposit,Sales Revenue,Credit,714,153207.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-25,TX00718,Daily Sales Deposit,Sales Revenue,Credit,598,153805.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-26,TX00719,Daily Sales Deposit,Sales Revenue,Credit,740,154545.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-26,TX00720,Coffee Supplier Payment,COGS,Debit,277,154268.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-27,TX00721,Daily Sales Deposit,Sales Revenue,Credit,561,154829.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-28,TX00722,Daily Sales Deposit,Sales Revenue,Credit,502,155331.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-29,TX00723,Daily Sales Deposit,Sales Revenue,Credit,985,156316.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-30,TX00724,Daily Sales Deposit,Sales Revenue,Credit,880,157196.14,original
+code_and_coffee,Code & Coffee GmbH,2023-08-31,TX00725,Daily Sales Deposit,Sales Revenue,Credit,828,158024.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-01,TX00726,Daily Sales Deposit,Sales Revenue,Credit,1056,159080.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-01,TX00727,Utility Bill Payment,Operating Expense,Debit,204,158876.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-01,TXD2020,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4851,154025.14,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-02,TX00728,Daily Sales Deposit,Sales Revenue,Credit,822,154847.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-02,TX00729,Utility Bill Payment,Operating Expense,Debit,236,154611.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-03,TX00730,Daily Sales Deposit,Sales Revenue,Credit,1108,155719.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-04,TX00731,Daily Sales Deposit,Sales Revenue,Credit,869,156588.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-05,TX00732,Daily Sales Deposit,Sales Revenue,Credit,739,157327.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-06,TX00733,Daily Sales Deposit,Sales Revenue,Credit,1094,158421.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-06,TX00734,Utility Bill Payment,Operating Expense,Debit,223,158198.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-07,TX00735,Daily Sales Deposit,Sales Revenue,Credit,1088,159286.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-07,TX00736,Rent Payment,Operating Expense,Debit,136,159150.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-08,TX00737,Daily Sales Deposit,Sales Revenue,Credit,875,160025.14,original
+code_and_coffee,Code & Coffee GmbH,2023-09-08,TXI6060,Coffee bean restock,COGS,Debit,3119.51,156905.63,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-09,TX00738,Daily Sales Deposit,Sales Revenue,Credit,1152,158057.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-10,TX00739,Daily Sales Deposit,Sales Revenue,Credit,813,158870.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-11,TX00740,Daily Sales Deposit,Sales Revenue,Credit,923,159793.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-11,TXD2070,Credit Card Bill Payment,Credit Card Payment,Debit,486,159307.63,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-12,TX00741,Daily Sales Deposit,Sales Revenue,Credit,814,160121.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-13,TX00742,Daily Sales Deposit,Sales Revenue,Credit,755,160876.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-14,TX00743,Daily Sales Deposit,Sales Revenue,Credit,739,161615.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-15,TX00744,Daily Sales Deposit,Sales Revenue,Credit,936,162551.63,original
+code_and_coffee,Code & Coffee GmbH,2023-09-15,TXD2043,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2679.0,159872.63,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-15,TXI6061,Dairy restock,COGS,Debit,1733.06,158139.57,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-16,TX00745,Daily Sales Deposit,Sales Revenue,Credit,915,159054.57,original
+code_and_coffee,Code & Coffee GmbH,2023-09-17,TX00746,Daily Sales Deposit,Sales Revenue,Credit,867,159921.57,original
+code_and_coffee,Code & Coffee GmbH,2023-09-17,TXB3035,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5035),B2B Sales Revenue,Credit,3106.1,163027.67,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-09-17,TXB3036,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5036),B2B Sales Revenue,Credit,3452.74,166480.41,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-09-18,TX00747,Daily Sales Deposit,Sales Revenue,Credit,758,167238.41,original
+code_and_coffee,Code & Coffee GmbH,2023-09-19,TX00748,Daily Sales Deposit,Sales Revenue,Credit,868,168106.41,original
+code_and_coffee,Code & Coffee GmbH,2023-09-20,TX00749,Daily Sales Deposit,Sales Revenue,Credit,744,168850.41,original
+code_and_coffee,Code & Coffee GmbH,2023-09-21,TX00750,Daily Sales Deposit,Sales Revenue,Credit,869,169719.41,original
+code_and_coffee,Code & Coffee GmbH,2023-09-21,TX00751,Rent Payment,Operating Expense,Debit,254,169465.41,original
+code_and_coffee,Code & Coffee GmbH,2023-09-22,TX00752,Daily Sales Deposit,Sales Revenue,Credit,706,170171.41,original
+code_and_coffee,Code & Coffee GmbH,2023-09-22,TXI6062,Bakery ingredient restock,COGS,Debit,2079.68,168091.73,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-23,TX00753,Daily Sales Deposit,Sales Revenue,Credit,744,168835.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-24,TX00754,Daily Sales Deposit,Sales Revenue,Credit,1198,170033.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-25,TX00755,Daily Sales Deposit,Sales Revenue,Credit,1125,171158.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-25,TX00756,Maintenance Payment,Operating Expense,Debit,462,170696.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-26,TX00757,Daily Sales Deposit,Sales Revenue,Credit,857,171553.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-27,TX00758,Daily Sales Deposit,Sales Revenue,Credit,781,172334.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-28,TX00759,Daily Sales Deposit,Sales Revenue,Credit,905,173239.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-29,TX00760,Daily Sales Deposit,Sales Revenue,Credit,711,173950.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-29,TX00761,Maintenance Payment,Operating Expense,Debit,323,173627.73,original
+code_and_coffee,Code & Coffee GmbH,2023-09-29,TXB3042,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5042),B2B Sales Revenue,Credit,767.9,174395.63,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-09-30,TX00762,Daily Sales Deposit,Sales Revenue,Credit,745,175140.63,original
+code_and_coffee,Code & Coffee GmbH,2023-10-01,TX00763,Daily Sales Deposit,Sales Revenue,Credit,932,176072.63,original
+code_and_coffee,Code & Coffee GmbH,2023-10-01,TXD2021,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4646,171426.63,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-01,TXB3043,B2B Invoice Payment - Ostpark Buero Services (CINV5043),B2B Sales Revenue,Credit,407.44,171834.07,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-10-02,TX00764,Daily Sales Deposit,Sales Revenue,Credit,922,172756.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-03,TX00765,Daily Sales Deposit,Sales Revenue,Credit,1147,173903.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-04,TX00766,Daily Sales Deposit,Sales Revenue,Credit,862,174765.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-04,TX00767,Bakery Payment,COGS,Debit,173,174592.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-05,TX00768,Daily Sales Deposit,Sales Revenue,Credit,923,175515.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-06,TX00769,Daily Sales Deposit,Sales Revenue,Credit,1111,176626.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-07,TX00770,Daily Sales Deposit,Sales Revenue,Credit,921,177547.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-08,TX00771,Daily Sales Deposit,Sales Revenue,Credit,977,178524.07,original
+code_and_coffee,Code & Coffee GmbH,2023-10-08,TXI6063,Coffee bean restock,COGS,Debit,3430.57,175093.5,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-09,TX00772,Daily Sales Deposit,Sales Revenue,Credit,1051,176144.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-10,TX00773,Daily Sales Deposit,Sales Revenue,Credit,1023,177167.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-11,TX00774,Daily Sales Deposit,Sales Revenue,Credit,716,177883.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-12,TX00775,Daily Sales Deposit,Sales Revenue,Credit,1100,178983.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-13,TX00776,Daily Sales Deposit,Sales Revenue,Credit,892,179875.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-13,TX00777,Utility Bill Payment,Operating Expense,Debit,219,179656.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-14,TX00778,Daily Sales Deposit,Sales Revenue,Credit,909,180565.5,original
+code_and_coffee,Code & Coffee GmbH,2023-10-14,TXB3041,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5041),B2B Sales Revenue,Credit,731.15,181296.65,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-10-15,TX00779,Daily Sales Deposit,Sales Revenue,Credit,891,182187.65,original
+code_and_coffee,Code & Coffee GmbH,2023-10-15,TXD2044,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2581.0,179606.65,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-15,TXI6064,Dairy restock,COGS,Debit,1905.87,177700.78,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-16,TX00780,Daily Sales Deposit,Sales Revenue,Credit,903,178603.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-16,TXD2071,Credit Card Bill Payment,Credit Card Payment,Debit,716,177887.78,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-17,TX00781,Daily Sales Deposit,Sales Revenue,Credit,926,178813.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-18,TX00782,Daily Sales Deposit,Sales Revenue,Credit,1159,179972.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-18,TX00783,Bakery Payment,COGS,Debit,494,179478.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-19,TX00784,Daily Sales Deposit,Sales Revenue,Credit,833,180311.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-20,TX00785,Daily Sales Deposit,Sales Revenue,Credit,1115,181426.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-21,TX00786,Daily Sales Deposit,Sales Revenue,Credit,757,182183.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-21,TX00787,Maintenance Payment,Operating Expense,Debit,325,181858.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-22,TX00788,Daily Sales Deposit,Sales Revenue,Credit,703,182561.78,original
+code_and_coffee,Code & Coffee GmbH,2023-10-22,TXI6065,Bakery ingredient restock,COGS,Debit,2287.05,180274.73,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-23,TX00789,Daily Sales Deposit,Sales Revenue,Credit,1096,181370.73,original
+code_and_coffee,Code & Coffee GmbH,2023-10-23,TXB3044,B2B Invoice Payment - Katering Vier Jahreszeiten (CINV5044),B2B Sales Revenue,Credit,589.96,181960.69,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-10-24,TX00790,Daily Sales Deposit,Sales Revenue,Credit,970,182930.69,original
+code_and_coffee,Code & Coffee GmbH,2023-10-24,TXB3037,B2B Invoice Payment - Katering Vier Jahreszeiten (CINV5037),B2B Sales Revenue,Credit,1605.49,184536.18,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-10-25,TX00791,Daily Sales Deposit,Sales Revenue,Credit,856,185392.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-26,TX00792,Daily Sales Deposit,Sales Revenue,Credit,987,186379.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-26,TX00793,Utility Bill Payment,Operating Expense,Debit,183,186196.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-27,TX00794,Daily Sales Deposit,Sales Revenue,Credit,726,186922.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-28,TX00795,Daily Sales Deposit,Sales Revenue,Credit,1081,188003.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-28,TX00796,Maintenance Payment,Operating Expense,Debit,191,187812.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-29,TX00797,Daily Sales Deposit,Sales Revenue,Credit,720,188532.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-30,TX00798,Daily Sales Deposit,Sales Revenue,Credit,1056,189588.18,original
+code_and_coffee,Code & Coffee GmbH,2023-10-30,TXD2072,Credit Card Bill Payment,Credit Card Payment,Debit,605,188983.18,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-31,TX00799,Daily Sales Deposit,Sales Revenue,Credit,961,189944.18,original
+code_and_coffee,Code & Coffee GmbH,2023-11-01,TX00800,Daily Sales Deposit,Sales Revenue,Credit,1152,191096.18,original
+code_and_coffee,Code & Coffee GmbH,2023-11-01,TXD2022,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,3503,187593.18,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-02,TX00801,Daily Sales Deposit,Sales Revenue,Credit,956,188549.18,original
+code_and_coffee,Code & Coffee GmbH,2023-11-03,TX00802,Daily Sales Deposit,Sales Revenue,Credit,1121,189670.18,original
+code_and_coffee,Code & Coffee GmbH,2023-11-04,TX00803,Daily Sales Deposit,Sales Revenue,Credit,1144,190814.18,original
+code_and_coffee,Code & Coffee GmbH,2023-11-04,TXB3039,B2B Invoice Payment - Ostpark Buero Services (CINV5039),B2B Sales Revenue,Credit,3675.4,194489.58,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-11-05,TX00804,Daily Sales Deposit,Sales Revenue,Credit,1196,195685.58,original
+code_and_coffee,Code & Coffee GmbH,2023-11-06,TX00805,Daily Sales Deposit,Sales Revenue,Credit,711,196396.58,original
+code_and_coffee,Code & Coffee GmbH,2023-11-07,TX00806,Daily Sales Deposit,Sales Revenue,Credit,1191,197587.58,original
+code_and_coffee,Code & Coffee GmbH,2023-11-08,TX00807,Daily Sales Deposit,Sales Revenue,Credit,771,198358.58,original
+code_and_coffee,Code & Coffee GmbH,2023-11-08,TX00808,Maintenance Payment,Operating Expense,Debit,244,198114.58,original
+code_and_coffee,Code & Coffee GmbH,2023-11-08,TXI6066,Coffee bean restock,COGS,Debit,3412.5,194702.08,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-09,TX00809,Daily Sales Deposit,Sales Revenue,Credit,1008,195710.08,original
+code_and_coffee,Code & Coffee GmbH,2023-11-09,TX00810,Coffee Supplier Payment,COGS,Debit,126,195584.08,original
+code_and_coffee,Code & Coffee GmbH,2023-11-10,TX00811,Daily Sales Deposit,Sales Revenue,Credit,1199,196783.08,original
+code_and_coffee,Code & Coffee GmbH,2023-11-10,TX00812,Rent Payment,Operating Expense,Debit,448,196335.08,original
+code_and_coffee,Code & Coffee GmbH,2023-11-11,TX00813,Daily Sales Deposit,Sales Revenue,Credit,880,197215.08,original
+code_and_coffee,Code & Coffee GmbH,2023-11-11,TXB3038,B2B Invoice Payment - Solid Office Supplies eK (CINV5038),B2B Sales Revenue,Credit,1783.7,198998.78,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-11-12,TX00814,Daily Sales Deposit,Sales Revenue,Credit,1077,200075.78,original
+code_and_coffee,Code & Coffee GmbH,2023-11-13,TX00815,Daily Sales Deposit,Sales Revenue,Credit,745,200820.78,original
+code_and_coffee,Code & Coffee GmbH,2023-11-13,TXD2073,Credit Card Bill Payment,Credit Card Payment,Debit,708,200112.78,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-14,TX00816,Daily Sales Deposit,Sales Revenue,Credit,921,201033.78,original
+code_and_coffee,Code & Coffee GmbH,2023-11-14,TX00817,Rent Payment,Operating Expense,Debit,372,200661.78,original
+code_and_coffee,Code & Coffee GmbH,2023-11-15,TX00818,Daily Sales Deposit,Sales Revenue,Credit,1039,201700.78,original
+code_and_coffee,Code & Coffee GmbH,2023-11-15,TXD2045,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,4007.0,197693.78,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-15,TXI6067,Dairy restock,COGS,Debit,1895.83,195797.95,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-16,TX00819,Daily Sales Deposit,Sales Revenue,Credit,865,196662.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-17,TX00820,Daily Sales Deposit,Sales Revenue,Credit,1143,197805.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-17,TX00821,Coffee Supplier Payment,COGS,Debit,216,197589.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-18,TX00822,Daily Sales Deposit,Sales Revenue,Credit,1043,198632.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-19,TX00823,Daily Sales Deposit,Sales Revenue,Credit,763,199395.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-20,TX00824,Daily Sales Deposit,Sales Revenue,Credit,771,200166.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-20,TXD2074,Credit Card Bill Payment,Credit Card Payment,Debit,777,199389.95,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-21,TX00825,Daily Sales Deposit,Sales Revenue,Credit,1177,200566.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-22,TX00826,Daily Sales Deposit,Sales Revenue,Credit,1065,201631.95,original
+code_and_coffee,Code & Coffee GmbH,2023-11-22,TXB3046,B2B Invoice Payment - Nordwelle Consulting GmbH (CINV5046),B2B Sales Revenue,Credit,900.67,202532.62,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-11-22,TXI6068,Bakery ingredient restock,COGS,Debit,2275.0,200257.62,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-23,TX00827,Daily Sales Deposit,Sales Revenue,Credit,865,201122.62,original
+code_and_coffee,Code & Coffee GmbH,2023-11-24,TX00828,Daily Sales Deposit,Sales Revenue,Credit,1000,202122.62,original
+code_and_coffee,Code & Coffee GmbH,2023-11-24,TXB3045,B2B Invoice Payment - Solid Office Supplies eK (CINV5045),B2B Sales Revenue,Credit,345.6,202468.22,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-11-25,TX00829,Daily Sales Deposit,Sales Revenue,Credit,801,203269.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-26,TX00830,Daily Sales Deposit,Sales Revenue,Credit,966,204235.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-27,TX00831,Daily Sales Deposit,Sales Revenue,Credit,787,205022.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-27,TX00832,Bakery Payment,COGS,Debit,175,204847.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-28,TX00833,Daily Sales Deposit,Sales Revenue,Credit,745,205592.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-28,TX00834,Rent Payment,Operating Expense,Debit,179,205413.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-29,TX00835,Daily Sales Deposit,Sales Revenue,Credit,847,206260.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-30,TX00836,Daily Sales Deposit,Sales Revenue,Credit,1123,207383.22,original
+code_and_coffee,Code & Coffee GmbH,2023-11-30,TX00837,Coffee Supplier Payment,COGS,Debit,452,206931.22,original
+code_and_coffee,Code & Coffee GmbH,2023-12-01,TX00838,Daily Sales Deposit,Sales Revenue,Credit,924,207855.22,original
+code_and_coffee,Code & Coffee GmbH,2023-12-01,TX00839,Rent Payment,Operating Expense,Debit,176,207679.22,original
+code_and_coffee,Code & Coffee GmbH,2023-12-01,TXD2023,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,5008,202671.22,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-02,TX00840,Daily Sales Deposit,Sales Revenue,Credit,853,203524.22,original
+code_and_coffee,Code & Coffee GmbH,2023-12-03,TX00841,Daily Sales Deposit,Sales Revenue,Credit,893,204417.22,original
+code_and_coffee,Code & Coffee GmbH,2023-12-04,TX00842,Daily Sales Deposit,Sales Revenue,Credit,789,205206.22,original
+code_and_coffee,Code & Coffee GmbH,2023-12-04,TXB3047,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5047),B2B Sales Revenue,Credit,602.51,205808.73,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-12-05,TX00843,Daily Sales Deposit,Sales Revenue,Credit,1197,207005.73,original
+code_and_coffee,Code & Coffee GmbH,2023-12-06,TX00844,Daily Sales Deposit,Sales Revenue,Credit,805,207810.73,original
+code_and_coffee,Code & Coffee GmbH,2023-12-06,TX00845,Utility Bill Payment,Operating Expense,Debit,404,207406.73,original
+code_and_coffee,Code & Coffee GmbH,2023-12-07,TX00846,Daily Sales Deposit,Sales Revenue,Credit,1016,208422.73,original
+code_and_coffee,Code & Coffee GmbH,2023-12-07,TXB3048,B2B Invoice Payment - Rheinstadt Event GmbH (CINV5048),B2B Sales Revenue,Credit,281.44,208704.17,synthetic
+code_and_coffee,Code & Coffee GmbH,2023-12-08,TX00847,Daily Sales Deposit,Sales Revenue,Credit,1089,209793.17,original
+code_and_coffee,Code & Coffee GmbH,2023-12-08,TXI6069,Coffee bean restock,COGS,Debit,3409.33,206383.84,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-09,TX00848,Daily Sales Deposit,Sales Revenue,Credit,772,207155.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-09,TX00849,Coffee Supplier Payment,COGS,Debit,140,207015.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-10,TX00850,Daily Sales Deposit,Sales Revenue,Credit,903,207918.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-11,TX00851,Daily Sales Deposit,Sales Revenue,Credit,877,208795.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-12,TX00852,Daily Sales Deposit,Sales Revenue,Credit,783,209578.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-13,TX00853,Daily Sales Deposit,Sales Revenue,Credit,950,210528.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-14,TX00854,Daily Sales Deposit,Sales Revenue,Credit,1158,211686.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-15,TX00855,Daily Sales Deposit,Sales Revenue,Credit,1087,212773.84,original
+code_and_coffee,Code & Coffee GmbH,2023-12-15,TXD2046,Transfer to Secondary Account (payroll funding),Transfer Out,Debit,2149.0,210624.84,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-15,TXI6070,Dairy restock,COGS,Debit,1894.07,208730.77,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-16,TX00856,Daily Sales Deposit,Sales Revenue,Credit,721,209451.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-17,TX00857,Daily Sales Deposit,Sales Revenue,Credit,702,210153.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-17,TX00858,Coffee Supplier Payment,COGS,Debit,287,209866.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-18,TX00859,Daily Sales Deposit,Sales Revenue,Credit,713,210579.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-18,TX00860,Rent Payment,Operating Expense,Debit,111,210468.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-19,TX00861,Daily Sales Deposit,Sales Revenue,Credit,1096,211564.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-20,TX00862,Daily Sales Deposit,Sales Revenue,Credit,942,212506.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-21,TX00863,Daily Sales Deposit,Sales Revenue,Credit,754,213260.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-22,TX00864,Daily Sales Deposit,Sales Revenue,Credit,872,214132.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-22,TX00865,Maintenance Payment,Operating Expense,Debit,218,213914.77,original
+code_and_coffee,Code & Coffee GmbH,2023-12-22,TXI6071,Bakery ingredient restock,COGS,Debit,2272.88,211641.89,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-23,TX00866,Daily Sales Deposit,Sales Revenue,Credit,882,212523.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-23,TX00867,Coffee Supplier Payment,COGS,Debit,399,212124.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-24,TX00868,Daily Sales Deposit,Sales Revenue,Credit,1153,213277.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-25,TX00869,Daily Sales Deposit,Sales Revenue,Credit,849,214126.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-26,TX00870,Daily Sales Deposit,Sales Revenue,Credit,1011,215137.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-27,TX00871,Daily Sales Deposit,Sales Revenue,Credit,830,215967.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-27,TX00872,Utility Bill Payment,Operating Expense,Debit,342,215625.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-28,TX00873,Daily Sales Deposit,Sales Revenue,Credit,1144,216769.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-28,TX00874,Bakery Payment,COGS,Debit,306,216463.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-29,TX00875,Daily Sales Deposit,Sales Revenue,Credit,1090,217553.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-30,TX00876,Daily Sales Deposit,Sales Revenue,Credit,1049,218602.89,original
+code_and_coffee,Code & Coffee GmbH,2023-12-31,TX00877,Daily Sales Deposit,Sales Revenue,Credit,1141,219743.89,original

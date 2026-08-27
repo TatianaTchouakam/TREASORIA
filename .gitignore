@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+.DS_Store
+local_storage/
+evaluation/evaluation_embedding_models/
+evaluation/evaluation_vector_stores/
+
+# Generated synthetic PDF documents
+data/Treasoria_Datasets*/docs/bank_statements_pdf/
+data/Treasoria_Datasets*/docs/customer_invoices_pdf/
+data/Treasoria_Datasets*/docs/invoices_pdf/
+.streamlit/secrets.toml

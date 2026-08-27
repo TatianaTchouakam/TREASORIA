@@ -1,0 +1,7 @@
+streamlit==1.61.1
+pandas
+python-dotenv
+llama-index-core
+llama-index-llms-groq
+llama-index-embeddings-huggingface
+sentence-transformers

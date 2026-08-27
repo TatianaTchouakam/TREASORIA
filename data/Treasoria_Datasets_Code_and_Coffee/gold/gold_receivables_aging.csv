@@ -1,0 +1,52 @@
+company_id,company_name,invoice_id,customer_name,issue_date,due_date,amount,status,payment_date,days_late
+code_and_coffee,Code & Coffee GmbH,CINV5000,Nordwelle Consulting GmbH,2022-01-21,2022-02-20,296.76,paid_on_time,2022-02-19,-1.00
+code_and_coffee,Code & Coffee GmbH,CINV5001,Nordwelle Consulting GmbH,2022-02-02,2022-03-04,733.39,paid_late,2022-03-11,7.00
+code_and_coffee,Code & Coffee GmbH,CINV5002,Nordwelle Consulting GmbH,2022-02-18,2022-03-20,299.96,paid_on_time,2022-03-16,-4.00
+code_and_coffee,Code & Coffee GmbH,CINV5003,Solid Office Supplies eK,2022-02-28,2022-03-30,413.22,paid_on_time,2022-03-26,-4.00
+code_and_coffee,Code & Coffee GmbH,CINV5004,Ostpark Buero Services,2022-03-16,2022-04-15,580.97,paid_on_time,2022-04-15,0.00
+code_and_coffee,Code & Coffee GmbH,CINV5005,Rheinstadt Event GmbH,2022-03-28,2022-04-27,507.97,paid_on_time,2022-04-25,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5006,Nordwelle Consulting GmbH,2022-04-08,2022-05-08,534.55,paid_on_time,2022-05-06,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5007,Nordwelle Consulting GmbH,2022-04-22,2022-05-22,768.92,paid_on_time,2022-05-19,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5008,Solid Office Supplies eK,2022-05-03,2022-06-02,476.43,paid_on_time,2022-05-31,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5009,Nordwelle Consulting GmbH,2022-05-16,2022-06-15,310.70,paid_on_time,2022-06-13,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5010,Ostpark Buero Services,2022-05-27,2022-06-26,860.54,paid_on_time,2022-06-23,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5011,Ostpark Buero Services,2022-06-11,2022-07-11,528.02,paid_on_time,2022-07-09,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5012,Solid Office Supplies eK,2022-06-22,2022-07-22,705.44,paid_on_time,2022-07-21,-1.00
+code_and_coffee,Code & Coffee GmbH,CINV5013,Rheinstadt Event GmbH,2022-07-04,2022-08-03,534.24,paid_late,2022-09-22,50.00
+code_and_coffee,Code & Coffee GmbH,CINV5014,Ostpark Buero Services,2022-07-22,2022-08-21,738.69,paid_late,2022-08-27,6.00
+code_and_coffee,Code & Coffee GmbH,CINV5015,Nordwelle Consulting GmbH,2022-08-04,2022-09-03,819.38,paid_on_time,2022-09-03,0.00
+code_and_coffee,Code & Coffee GmbH,CINV5016,Solid Office Supplies eK,2022-08-17,2022-09-16,867.17,paid_on_time,2022-09-13,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5017,Rheinstadt Event GmbH,2022-09-02,2022-10-02,375.72,paid_on_time,2022-09-28,-4.00
+code_and_coffee,Code & Coffee GmbH,CINV5018,Katering Vier Jahreszeiten,2022-09-20,2022-10-20,780.50,paid_on_time,2022-10-16,-4.00
+code_and_coffee,Code & Coffee GmbH,CINV5019,Katering Vier Jahreszeiten,2022-10-06,2022-11-05,426.94,paid_late,2022-12-21,46.00
+code_and_coffee,Code & Coffee GmbH,CINV5020,Nordwelle Consulting GmbH,2022-10-23,2022-11-22,786.37,paid_late,2022-12-01,9.00
+code_and_coffee,Code & Coffee GmbH,CINV5021,Rheinstadt Event GmbH,2022-11-04,2022-12-04,679.59,paid_on_time,2022-11-30,-4.00
+code_and_coffee,Code & Coffee GmbH,CINV5022,Solid Office Supplies eK,2022-11-21,2022-12-21,448.45,paid_on_time,2022-12-21,0.00
+code_and_coffee,Code & Coffee GmbH,CINV5023,Solid Office Supplies eK,2022-12-02,2023-01-01,783.09,paid_late,2023-01-16,15.00
+code_and_coffee,Code & Coffee GmbH,CINV5024,Katering Vier Jahreszeiten,2022-12-13,2023-01-12,571.29,paid_on_time,2023-01-10,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5025,Ostpark Buero Services,2022-12-31,2023-01-30,620.15,paid_on_time,2023-01-28,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5026,Solid Office Supplies eK,2023-01-18,2023-02-17,413.27,paid_on_time,2023-02-16,-1.00
+code_and_coffee,Code & Coffee GmbH,CINV5027,Solid Office Supplies eK,2023-02-05,2023-03-07,895.39,paid_on_time,2023-03-04,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5028,Nordwelle Consulting GmbH,2023-02-15,2023-03-17,902.50,paid_late,2023-03-31,14.00
+code_and_coffee,Code & Coffee GmbH,CINV5029,Nordwelle Consulting GmbH,2023-02-28,2023-03-30,441.38,paid_on_time,2023-03-30,0.00
+code_and_coffee,Code & Coffee GmbH,CINV5030,Rheinstadt Event GmbH,2023-03-11,2023-04-10,826.74,paid_late,2023-05-27,47.00
+code_and_coffee,Code & Coffee GmbH,CINV5031,Ostpark Buero Services,2023-03-23,2023-04-22,722.03,paid_late,2023-05-27,35.00
+code_and_coffee,Code & Coffee GmbH,CINV5032,Solid Office Supplies eK,2023-04-06,2023-05-06,864.53,paid_on_time,2023-05-05,-1.00
+code_and_coffee,Code & Coffee GmbH,CINV5033,Ostpark Buero Services,2023-04-24,2023-05-24,757.68,paid_on_time,2023-05-22,-2.00
+code_and_coffee,Code & Coffee GmbH,CINV5034,Solid Office Supplies eK,2023-05-11,2023-06-10,2709.31,paid_late,2023-08-23,74.00
+code_and_coffee,Code & Coffee GmbH,CINV5035,Nordwelle Consulting GmbH,2023-05-26,2023-06-25,3106.10,paid_late,2023-09-17,84.00
+code_and_coffee,Code & Coffee GmbH,CINV5036,Nordwelle Consulting GmbH,2023-06-05,2023-07-05,3452.74,paid_late,2023-09-17,74.00
+code_and_coffee,Code & Coffee GmbH,CINV5037,Katering Vier Jahreszeiten,2023-06-15,2023-07-15,1605.49,paid_late,2023-10-24,101.00
+code_and_coffee,Code & Coffee GmbH,CINV5038,Solid Office Supplies eK,2023-06-28,2023-07-28,1783.70,paid_late,2023-11-11,106.00
+code_and_coffee,Code & Coffee GmbH,CINV5039,Ostpark Buero Services,2023-07-15,2023-08-14,3675.40,paid_late,2023-11-04,82.00
+code_and_coffee,Code & Coffee GmbH,CINV5040,Nordwelle Consulting GmbH,2023-07-26,2023-08-25,721.52,paid_on_time,2023-08-22,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5041,Nordwelle Consulting GmbH,2023-08-12,2023-09-11,731.15,paid_late,2023-10-14,33.00
+code_and_coffee,Code & Coffee GmbH,CINV5042,Rheinstadt Event GmbH,2023-08-22,2023-09-21,767.90,paid_late,2023-09-29,8.00
+code_and_coffee,Code & Coffee GmbH,CINV5043,Ostpark Buero Services,2023-09-04,2023-10-04,407.44,paid_on_time,2023-10-01,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5044,Katering Vier Jahreszeiten,2023-09-16,2023-10-16,589.96,paid_late,2023-10-23,7.00
+code_and_coffee,Code & Coffee GmbH,CINV5045,Solid Office Supplies eK,2023-10-03,2023-11-02,345.60,paid_late,2023-11-24,22.00
+code_and_coffee,Code & Coffee GmbH,CINV5046,Nordwelle Consulting GmbH,2023-10-13,2023-11-12,900.67,paid_late,2023-11-22,10.00
+code_and_coffee,Code & Coffee GmbH,CINV5047,Rheinstadt Event GmbH,2023-10-29,2023-11-28,602.51,paid_late,2023-12-04,6.00
+code_and_coffee,Code & Coffee GmbH,CINV5048,Rheinstadt Event GmbH,2023-11-10,2023-12-10,281.44,paid_on_time,2023-12-07,-3.00
+code_and_coffee,Code & Coffee GmbH,CINV5049,Rheinstadt Event GmbH,2023-11-24,2023-12-24,746.72,open_overdue,,
+code_and_coffee,Code & Coffee GmbH,CINV5050,Ostpark Buero Services,2023-12-11,2024-01-10,407.23,open,,

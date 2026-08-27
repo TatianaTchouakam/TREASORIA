@@ -1,0 +1,95 @@
+company_id,company_name,date,transaction_id,description,category,type,amount,balance,data_origin
+code_and_coffee,Code & Coffee GmbH,2022-01-01,SC00001,Transfer from Main,Transfer,Credit,3403,5403.0,original
+code_and_coffee,Code & Coffee GmbH,2022-01-15,SC00002,Payroll Funding,Payroll,Debit,2688,2715.0,original
+code_and_coffee,Code & Coffee GmbH,2022-02-01,SC00003,Transfer from Main,Transfer,Credit,5779,8494.0,original
+code_and_coffee,Code & Coffee GmbH,2022-02-15,SC00004,Payroll Funding,Payroll,Debit,5216,3278.0,original
+code_and_coffee,Code & Coffee GmbH,2022-02-15,SC1000,Transfer from Main (funding top-up),Transfer,Credit,1786.0,5064.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-02-15,SC1001,Payroll Funding (top-up),Payroll,Debit,1786.0,3278.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-01,SC00005,Transfer from Main,Transfer,Credit,5579,8857.0,original
+code_and_coffee,Code & Coffee GmbH,2022-03-15,SC00006,Payroll Funding,Payroll,Debit,5228,3629.0,original
+code_and_coffee,Code & Coffee GmbH,2022-03-15,SC1002,Transfer from Main (funding top-up),Transfer,Credit,1835.0,5464.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-03-15,SC1003,Payroll Funding (top-up),Payroll,Debit,1835.0,3629.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-01,SC00007,Transfer from Main,Transfer,Credit,4712,8341.0,original
+code_and_coffee,Code & Coffee GmbH,2022-04-15,SC00008,Payroll Funding,Payroll,Debit,4093,4248.0,original
+code_and_coffee,Code & Coffee GmbH,2022-04-15,SC1004,Transfer from Main (funding top-up),Transfer,Credit,2734.0,6982.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-04-15,SC1005,Payroll Funding (top-up),Payroll,Debit,2734.0,4248.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-01,SC00009,Transfer from Main,Transfer,Credit,4273,8521.0,original
+code_and_coffee,Code & Coffee GmbH,2022-05-15,SC00010,Payroll Funding,Payroll,Debit,3957,4564.0,original
+code_and_coffee,Code & Coffee GmbH,2022-05-15,SC1006,Transfer from Main (funding top-up),Transfer,Credit,3117.0,7681.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-05-15,SC1007,Payroll Funding (top-up),Payroll,Debit,3117.0,4564.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-01,SC00011,Transfer from Main,Transfer,Credit,5913,10477.0,original
+code_and_coffee,Code & Coffee GmbH,2022-06-15,SC00012,Payroll Funding,Payroll,Debit,5202,5275.0,original
+code_and_coffee,Code & Coffee GmbH,2022-06-15,SC1008,Transfer from Main (funding top-up),Transfer,Credit,1794.0,7069.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-06-15,SC1009,Payroll Funding (top-up),Payroll,Debit,1794.0,5275.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-01,SC00013,Transfer from Main,Transfer,Credit,5625,10900.0,original
+code_and_coffee,Code & Coffee GmbH,2022-07-15,SC00014,Payroll Funding,Payroll,Debit,5091,5809.0,original
+code_and_coffee,Code & Coffee GmbH,2022-07-15,SC1010,Transfer from Main (funding top-up),Transfer,Credit,1704.0,7513.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-07-15,SC1011,Payroll Funding (top-up),Payroll,Debit,1704.0,5809.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-01,SC00015,Transfer from Main,Transfer,Credit,4441,10250.0,original
+code_and_coffee,Code & Coffee GmbH,2022-08-15,SC00016,Payroll Funding,Payroll,Debit,3947,6303.0,original
+code_and_coffee,Code & Coffee GmbH,2022-08-15,SC1012,Transfer from Main (funding top-up),Transfer,Credit,2875.0,9178.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-08-15,SC1013,Payroll Funding (top-up),Payroll,Debit,2875.0,6303.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-01,SC00017,Transfer from Main,Transfer,Credit,3754,10057.0,original
+code_and_coffee,Code & Coffee GmbH,2022-09-15,SC00018,Payroll Funding,Payroll,Debit,3184,6873.0,original
+code_and_coffee,Code & Coffee GmbH,2022-09-15,SC1014,Transfer from Main (funding top-up),Transfer,Credit,3646.0,10519.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-09-15,SC1015,Payroll Funding (top-up),Payroll,Debit,3646.0,6873.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-01,SC00019,Transfer from Main,Transfer,Credit,3185,10058.0,original
+code_and_coffee,Code & Coffee GmbH,2022-10-15,SC00020,Payroll Funding,Payroll,Debit,2740,7318.0,original
+code_and_coffee,Code & Coffee GmbH,2022-10-15,SC1016,Transfer from Main (funding top-up),Transfer,Credit,4245.0,11563.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-10-15,SC1017,Payroll Funding (top-up),Payroll,Debit,4245.0,7318.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-01,SC00021,Transfer from Main,Transfer,Credit,3636,10954.0,original
+code_and_coffee,Code & Coffee GmbH,2022-11-15,SC00022,Payroll Funding,Payroll,Debit,3169,7785.0,original
+code_and_coffee,Code & Coffee GmbH,2022-11-15,SC1018,Transfer from Main (funding top-up),Transfer,Credit,3836.0,11621.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-11-15,SC1019,Payroll Funding (top-up),Payroll,Debit,3836.0,7785.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-01,SC00023,Transfer from Main,Transfer,Credit,3529,11314.0,original
+code_and_coffee,Code & Coffee GmbH,2022-12-15,SC00024,Payroll Funding,Payroll,Debit,2778,8536.0,original
+code_and_coffee,Code & Coffee GmbH,2022-12-15,SC1020,Transfer from Main (funding top-up),Transfer,Credit,4311.0,12847.0,derived
+code_and_coffee,Code & Coffee GmbH,2022-12-15,SC1021,Payroll Funding (top-up),Payroll,Debit,4311.0,8536.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-01,SC00025,Transfer from Main,Transfer,Credit,5068,13604.0,original
+code_and_coffee,Code & Coffee GmbH,2023-01-15,SC00026,Payroll Funding,Payroll,Debit,4349,9255.0,original
+code_and_coffee,Code & Coffee GmbH,2023-01-15,SC1022,Transfer from Main (funding top-up),Transfer,Credit,2565.0,11820.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-01-15,SC1023,Payroll Funding (top-up),Payroll,Debit,2565.0,9255.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-01,SC00027,Transfer from Main,Transfer,Credit,5147,14402.0,original
+code_and_coffee,Code & Coffee GmbH,2023-02-15,SC00028,Payroll Funding,Payroll,Debit,4470,9932.0,original
+code_and_coffee,Code & Coffee GmbH,2023-02-15,SC1024,Transfer from Main (funding top-up),Transfer,Credit,2481.0,12413.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-02-15,SC1025,Payroll Funding (top-up),Payroll,Debit,2481.0,9932.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-01,SC00029,Transfer from Main,Transfer,Credit,4622,14554.0,original
+code_and_coffee,Code & Coffee GmbH,2023-03-15,SC00030,Payroll Funding,Payroll,Debit,4125,10429.0,original
+code_and_coffee,Code & Coffee GmbH,2023-03-15,SC1026,Transfer from Main (funding top-up),Transfer,Credit,2878.0,13307.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-03-15,SC1027,Payroll Funding (top-up),Payroll,Debit,2878.0,10429.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-01,SC00031,Transfer from Main,Transfer,Credit,3939,14368.0,original
+code_and_coffee,Code & Coffee GmbH,2023-04-15,SC00032,Payroll Funding,Payroll,Debit,3214,11154.0,original
+code_and_coffee,Code & Coffee GmbH,2023-04-15,SC1028,Transfer from Main (funding top-up),Transfer,Credit,3607.0,14761.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-04-15,SC1029,Payroll Funding (top-up),Payroll,Debit,3607.0,11154.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-01,SC00033,Transfer from Main,Transfer,Credit,5381,16535.0,original
+code_and_coffee,Code & Coffee GmbH,2023-05-15,SC00034,Payroll Funding,Payroll,Debit,5180,11355.0,original
+code_and_coffee,Code & Coffee GmbH,2023-05-15,SC1030,Transfer from Main (funding top-up),Transfer,Credit,1911.0,13266.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-05-15,SC1031,Payroll Funding (top-up),Payroll,Debit,1911.0,11355.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-01,SC00035,Transfer from Main,Transfer,Credit,3374,14729.0,original
+code_and_coffee,Code & Coffee GmbH,2023-06-15,SC00036,Payroll Funding,Payroll,Debit,2882,11847.0,original
+code_and_coffee,Code & Coffee GmbH,2023-06-15,SC1032,Transfer from Main (funding top-up),Transfer,Credit,3990.0,15837.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-06-15,SC1033,Payroll Funding (top-up),Payroll,Debit,3990.0,11847.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-01,SC00037,Transfer from Main,Transfer,Credit,5884,17731.0,original
+code_and_coffee,Code & Coffee GmbH,2023-07-15,SC00038,Payroll Funding,Payroll,Debit,5132,12599.0,original
+code_and_coffee,Code & Coffee GmbH,2023-07-15,SC1034,Transfer from Main (funding top-up),Transfer,Credit,1763.0,14362.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-07-15,SC1035,Payroll Funding (top-up),Payroll,Debit,1763.0,12599.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-01,SC00039,Transfer from Main,Transfer,Credit,5365,17964.0,original
+code_and_coffee,Code & Coffee GmbH,2023-08-15,SC00040,Payroll Funding,Payroll,Debit,4664,13300.0,original
+code_and_coffee,Code & Coffee GmbH,2023-08-15,SC1036,Transfer from Main (funding top-up),Transfer,Credit,2237.0,15537.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-08-15,SC1037,Payroll Funding (top-up),Payroll,Debit,2237.0,13300.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-01,SC00041,Transfer from Main,Transfer,Credit,4851,18151.0,original
+code_and_coffee,Code & Coffee GmbH,2023-09-15,SC00042,Payroll Funding,Payroll,Debit,4271,13880.0,original
+code_and_coffee,Code & Coffee GmbH,2023-09-15,SC1038,Transfer from Main (funding top-up),Transfer,Credit,2679.0,16559.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-09-15,SC1039,Payroll Funding (top-up),Payroll,Debit,2679.0,13880.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-01,SC00043,Transfer from Main,Transfer,Credit,4646,18526.0,original
+code_and_coffee,Code & Coffee GmbH,2023-10-15,SC00044,Payroll Funding,Payroll,Debit,4433,14093.0,original
+code_and_coffee,Code & Coffee GmbH,2023-10-15,SC1040,Transfer from Main (funding top-up),Transfer,Credit,2581.0,16674.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-10-15,SC1041,Payroll Funding (top-up),Payroll,Debit,2581.0,14093.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-01,SC00045,Transfer from Main,Transfer,Credit,3503,17596.0,original
+code_and_coffee,Code & Coffee GmbH,2023-11-15,SC00046,Payroll Funding,Payroll,Debit,3073,14523.0,original
+code_and_coffee,Code & Coffee GmbH,2023-11-15,SC1042,Transfer from Main (funding top-up),Transfer,Credit,4007.0,18530.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-11-15,SC1043,Payroll Funding (top-up),Payroll,Debit,4007.0,14523.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-01,SC00047,Transfer from Main,Transfer,Credit,5008,19531.0,original
+code_and_coffee,Code & Coffee GmbH,2023-12-15,SC00048,Payroll Funding,Payroll,Debit,4725,14806.0,original
+code_and_coffee,Code & Coffee GmbH,2023-12-15,SC1044,Transfer from Main (funding top-up),Transfer,Credit,2149.0,16955.0,derived
+code_and_coffee,Code & Coffee GmbH,2023-12-15,SC1045,Payroll Funding (top-up),Payroll,Debit,2149.0,14806.0,derived

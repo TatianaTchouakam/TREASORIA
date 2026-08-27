@@ -1,0 +1,331 @@
+company_id,company_name,invoice_id,supplier_name,category,invoice_date,due_date,payment_date,amount,status,source_transaction_id,source_account,data_origin
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00005,Stadtwerke Bielefeld (Energie),Operating Expense,2021-12-30,2022-01-20,2022-01-04,430,paid,TX00005,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00009,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-01-07,2022-02-06,2022-01-07,443,paid,TX00009,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00014,Gebaeck Grosshandel OWL,COGS,2022-01-10,2022-01-17,2022-01-11,444,paid,TX00014,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00017,Stadtwerke Bielefeld (Energie),Operating Expense,2022-01-08,2022-01-29,2022-01-13,287,paid,TX00017,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00025,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-01-20,2022-02-19,2022-01-20,485,paid,TX00025,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00029,Gebaeck Grosshandel OWL,COGS,2022-01-22,2022-01-29,2022-01-23,305,paid,TX00029,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00031,Nordbohnen Roastery,COGS,2022-01-21,2022-01-28,2022-01-24,487,paid,TX00031,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00034,Nordbohnen Roastery,COGS,2022-01-23,2022-01-30,2022-01-26,290,paid,TX00034,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00039,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-01-30,2022-03-01,2022-01-30,314,paid,TX00039,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00047,Gebaeck Grosshandel OWL,COGS,2022-02-05,2022-02-12,2022-02-06,426,paid,TX00047,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00050,Stadtwerke Bielefeld (Energie),Operating Expense,2022-02-03,2022-02-24,2022-02-08,238,paid,TX00050,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00057,Buero- und Ladenausstattung Krause,Operating Expense,2022-02-07,2022-02-21,2022-02-14,161,paid,TX00057,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00066,Buero- und Ladenausstattung Krause,Operating Expense,2022-02-15,2022-03-01,2022-02-22,479,paid,TX00066,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00068,Gebaeck Grosshandel OWL,COGS,2022-02-22,2022-03-01,2022-02-23,330,paid,TX00068,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00079,Stadtwerke Bielefeld (Energie),Operating Expense,2022-02-28,2022-03-21,2022-03-05,385,paid,TX00079,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00083,Stadtwerke Bielefeld (Energie),Operating Expense,2022-03-03,2022-03-24,2022-03-08,476,paid,TX00083,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00089,Stadtwerke Bielefeld (Energie),Operating Expense,2022-03-08,2022-03-29,2022-03-13,271,paid,TX00089,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00096,Stadtwerke Bielefeld (Energie),Operating Expense,2022-03-14,2022-04-04,2022-03-19,180,paid,TX00096,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00099,Gebaeck Grosshandel OWL,COGS,2022-03-20,2022-03-27,2022-03-21,323,paid,TX00099,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00115,Nordbohnen Roastery,COGS,2022-04-02,2022-04-09,2022-04-05,227,paid,TX00115,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00117,Nordbohnen Roastery,COGS,2022-04-03,2022-04-10,2022-04-06,250,paid,TX00117,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00122,Buero- und Ladenausstattung Krause,Operating Expense,2022-04-03,2022-04-17,2022-04-10,239,paid,TX00122,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00129,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-04-16,2022-05-16,2022-04-16,203,paid,TX00129,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00131,Gebaeck Grosshandel OWL,COGS,2022-04-16,2022-04-23,2022-04-17,198,paid,TX00131,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00136,Gebaeck Grosshandel OWL,COGS,2022-04-20,2022-04-27,2022-04-21,167,paid,TX00136,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00150,Gebaeck Grosshandel OWL,COGS,2022-05-03,2022-05-10,2022-05-04,148,paid,TX00150,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00172,Gebaeck Grosshandel OWL,COGS,2022-05-24,2022-05-31,2022-05-25,490,paid,TX00172,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00175,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-05-27,2022-06-26,2022-05-27,499,paid,TX00175,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00183,Nordbohnen Roastery,COGS,2022-05-31,2022-06-07,2022-06-03,279,paid,TX00183,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00192,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-06-11,2022-07-11,2022-06-11,469,paid,TX00192,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00197,Gebaeck Grosshandel OWL,COGS,2022-06-14,2022-06-21,2022-06-15,216,paid,TX00197,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00202,Buero- und Ladenausstattung Krause,Operating Expense,2022-06-12,2022-06-26,2022-06-19,188,paid,TX00202,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00207,Stadtwerke Bielefeld (Energie),Operating Expense,2022-06-18,2022-07-09,2022-06-23,253,paid,TX00207,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00209,Buero- und Ladenausstattung Krause,Operating Expense,2022-06-17,2022-07-01,2022-06-24,319,paid,TX00209,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00211,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-06-25,2022-07-25,2022-06-25,337,paid,TX00211,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00213,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-06-26,2022-07-26,2022-06-26,440,paid,TX00213,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00218,Nordbohnen Roastery,COGS,2022-06-27,2022-07-04,2022-06-30,322,paid,TX00218,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00223,Nordbohnen Roastery,COGS,2022-07-01,2022-07-08,2022-07-04,346,paid,TX00223,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00234,Buero- und Ladenausstattung Krause,Operating Expense,2022-07-07,2022-07-21,2022-07-14,485,paid,TX00234,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00237,Buero- und Ladenausstattung Krause,Operating Expense,2022-07-09,2022-07-23,2022-07-16,363,paid,TX00237,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00241,Buero- und Ladenausstattung Krause,Operating Expense,2022-07-12,2022-07-26,2022-07-19,213,paid,TX00241,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00254,Gebaeck Grosshandel OWL,COGS,2022-07-30,2022-08-06,2022-07-31,372,paid,TX00254,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00258,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-08-03,2022-09-02,2022-08-03,199,paid,TX00258,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00264,Stadtwerke Bielefeld (Energie),Operating Expense,2022-08-03,2022-08-24,2022-08-08,168,paid,TX00264,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00269,Nordbohnen Roastery,COGS,2022-08-09,2022-08-16,2022-08-12,280,paid,TX00269,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00271,Nordbohnen Roastery,COGS,2022-08-10,2022-08-17,2022-08-13,322,paid,TX00271,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00278,Nordbohnen Roastery,COGS,2022-08-16,2022-08-23,2022-08-19,240,paid,TX00278,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00281,Buero- und Ladenausstattung Krause,Operating Expense,2022-08-14,2022-08-28,2022-08-21,128,paid,TX00281,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00288,Stadtwerke Bielefeld (Energie),Operating Expense,2022-08-22,2022-09-12,2022-08-27,463,paid,TX00288,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00292,Nordbohnen Roastery,COGS,2022-08-27,2022-09-03,2022-08-30,319,paid,TX00292,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00294,Gebaeck Grosshandel OWL,COGS,2022-08-30,2022-09-06,2022-08-31,416,paid,TX00294,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00301,Buero- und Ladenausstattung Krause,Operating Expense,2022-08-30,2022-09-13,2022-09-06,259,paid,TX00301,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00307,Gebaeck Grosshandel OWL,COGS,2022-09-10,2022-09-17,2022-09-11,146,paid,TX00307,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00314,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-09-17,2022-10-17,2022-09-17,457,paid,TX00314,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00317,Nordbohnen Roastery,COGS,2022-09-16,2022-09-23,2022-09-19,263,paid,TX00317,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00326,Buero- und Ladenausstattung Krause,Operating Expense,2022-09-20,2022-10-04,2022-09-27,134,paid,TX00326,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00332,Gebaeck Grosshandel OWL,COGS,2022-10-01,2022-10-08,2022-10-02,218,paid,TX00332,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00339,Stadtwerke Bielefeld (Energie),Operating Expense,2022-10-03,2022-10-24,2022-10-08,204,paid,TX00339,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00341,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-10-09,2022-11-08,2022-10-09,410,paid,TX00341,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00360,Buero- und Ladenausstattung Krause,Operating Expense,2022-10-20,2022-11-03,2022-10-27,402,paid,TX00360,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00373,Gebaeck Grosshandel OWL,COGS,2022-11-07,2022-11-14,2022-11-08,283,paid,TX00373,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00380,Stadtwerke Bielefeld (Energie),Operating Expense,2022-11-09,2022-11-30,2022-11-14,348,paid,TX00380,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00383,Gebaeck Grosshandel OWL,COGS,2022-11-15,2022-11-22,2022-11-16,283,paid,TX00383,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00388,Nordbohnen Roastery,COGS,2022-11-17,2022-11-24,2022-11-20,104,paid,TX00388,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00391,Buero- und Ladenausstattung Krause,Operating Expense,2022-11-15,2022-11-29,2022-11-22,100,paid,TX00391,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00396,Gebaeck Grosshandel OWL,COGS,2022-11-25,2022-12-02,2022-11-26,348,paid,TX00396,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00398,Stadtwerke Bielefeld (Energie),Operating Expense,2022-11-22,2022-12-13,2022-11-27,449,paid,TX00398,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00402,Buero- und Ladenausstattung Krause,Operating Expense,2022-11-23,2022-12-07,2022-11-30,454,paid,TX00402,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00409,Stadtwerke Bielefeld (Energie),Operating Expense,2022-12-01,2022-12-22,2022-12-06,470,paid,TX00409,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00415,Buero- und Ladenausstattung Krause,Operating Expense,2022-12-04,2022-12-18,2022-12-11,218,paid,TX00415,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00417,Nordbohnen Roastery,COGS,2022-12-09,2022-12-16,2022-12-12,372,paid,TX00417,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00419,Buero- und Ladenausstattung Krause,Operating Expense,2022-12-06,2022-12-20,2022-12-13,244,paid,TX00419,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00437,Stadtwerke Bielefeld (Energie),Operating Expense,2022-12-25,2023-01-15,2022-12-30,236,paid,TX00437,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00439,Immobilien Bielefeld Mitte (Miete),Operating Expense,2022-12-31,2023-01-30,2022-12-31,328,paid,TX00439,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00441,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-01-01,2023-01-31,2023-01-01,421,paid,TX00441,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00450,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-01-09,2023-02-08,2023-01-09,217,paid,TX00450,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00452,Gebaeck Grosshandel OWL,COGS,2023-01-09,2023-01-16,2023-01-10,119,paid,TX00452,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00454,Buero- und Ladenausstattung Krause,Operating Expense,2023-01-04,2023-01-18,2023-01-11,189,paid,TX00454,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00456,Buero- und Ladenausstattung Krause,Operating Expense,2023-01-05,2023-01-19,2023-01-12,455,paid,TX00456,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00464,Stadtwerke Bielefeld (Energie),Operating Expense,2023-01-14,2023-02-04,2023-01-19,364,paid,TX00464,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00474,Stadtwerke Bielefeld (Energie),Operating Expense,2023-01-23,2023-02-13,2023-01-28,448,paid,TX00474,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00477,Buero- und Ladenausstattung Krause,Operating Expense,2023-01-23,2023-02-06,2023-01-30,312,paid,TX00477,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00491,Stadtwerke Bielefeld (Energie),Operating Expense,2023-02-07,2023-02-28,2023-02-12,233,paid,TX00491,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00494,Buero- und Ladenausstattung Krause,Operating Expense,2023-02-07,2023-02-21,2023-02-14,114,paid,TX00494,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00498,Buero- und Ladenausstattung Krause,Operating Expense,2023-02-10,2023-02-24,2023-02-17,196,paid,TX00498,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00501,Nordbohnen Roastery,COGS,2023-02-16,2023-02-23,2023-02-19,185,paid,TX00501,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00511,Stadtwerke Bielefeld (Energie),Operating Expense,2023-02-23,2023-03-16,2023-02-28,214,paid,TX00511,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00528,Stadtwerke Bielefeld (Energie),Operating Expense,2023-03-11,2023-04-01,2023-03-16,396,paid,TX00528,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00530,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-03-17,2023-04-16,2023-03-17,445,paid,TX00530,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00537,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-03-23,2023-04-22,2023-03-23,390,paid,TX00537,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00544,Buero- und Ladenausstattung Krause,Operating Expense,2023-03-22,2023-04-05,2023-03-29,279,paid,TX00544,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00552,Gebaeck Grosshandel OWL,COGS,2023-04-04,2023-04-11,2023-04-05,288,paid,TX00552,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00560,Stadtwerke Bielefeld (Energie),Operating Expense,2023-04-07,2023-04-28,2023-04-12,177,paid,TX00560,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00565,Stadtwerke Bielefeld (Energie),Operating Expense,2023-04-11,2023-05-02,2023-04-16,154,paid,TX00565,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00573,Gebaeck Grosshandel OWL,COGS,2023-04-22,2023-04-29,2023-04-23,153,paid,TX00573,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00577,Stadtwerke Bielefeld (Energie),Operating Expense,2023-04-21,2023-05-12,2023-04-26,195,paid,TX00577,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00580,Nordbohnen Roastery,COGS,2023-04-25,2023-05-02,2023-04-28,497,paid,TX00580,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00584,Buero- und Ladenausstattung Krause,Operating Expense,2023-04-24,2023-05-08,2023-05-01,135,paid,TX00584,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00604,Buero- und Ladenausstattung Krause,Operating Expense,2023-05-13,2023-05-27,2023-05-20,128,paid,TX00604,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00608,Gebaeck Grosshandel OWL,COGS,2023-05-22,2023-05-29,2023-05-23,455,paid,TX00608,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00613,Gebaeck Grosshandel OWL,COGS,2023-05-26,2023-06-02,2023-05-27,126,paid,TX00613,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00622,Nordbohnen Roastery,COGS,2023-06-01,2023-06-08,2023-06-04,470,paid,TX00622,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00631,Stadtwerke Bielefeld (Energie),Operating Expense,2023-06-07,2023-06-28,2023-06-12,247,paid,TX00631,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00635,Nordbohnen Roastery,COGS,2023-06-12,2023-06-19,2023-06-15,300,paid,TX00635,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00637,Gebaeck Grosshandel OWL,COGS,2023-06-15,2023-06-22,2023-06-16,116,paid,TX00637,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00641,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-06-19,2023-07-19,2023-06-19,328,paid,TX00641,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00646,Gebaeck Grosshandel OWL,COGS,2023-06-22,2023-06-29,2023-06-23,429,paid,TX00646,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00662,Nordbohnen Roastery,COGS,2023-07-05,2023-07-12,2023-07-08,427,paid,TX00662,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00668,Stadtwerke Bielefeld (Energie),Operating Expense,2023-07-08,2023-07-29,2023-07-13,258,paid,TX00668,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00670,Stadtwerke Bielefeld (Energie),Operating Expense,2023-07-09,2023-07-30,2023-07-14,197,paid,TX00670,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00681,Buero- und Ladenausstattung Krause,Operating Expense,2023-07-17,2023-07-31,2023-07-24,346,paid,TX00681,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00685,Gebaeck Grosshandel OWL,COGS,2023-07-26,2023-08-02,2023-07-27,128,paid,TX00685,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00687,Gebaeck Grosshandel OWL,COGS,2023-07-27,2023-08-03,2023-07-28,335,paid,TX00687,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00697,Buero- und Ladenausstattung Krause,Operating Expense,2023-07-30,2023-08-13,2023-08-06,292,paid,TX00697,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00699,Gebaeck Grosshandel OWL,COGS,2023-08-06,2023-08-13,2023-08-07,498,paid,TX00699,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00712,Nordbohnen Roastery,COGS,2023-08-16,2023-08-23,2023-08-19,206,paid,TX00712,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00720,Nordbohnen Roastery,COGS,2023-08-23,2023-08-30,2023-08-26,277,paid,TX00720,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00727,Stadtwerke Bielefeld (Energie),Operating Expense,2023-08-27,2023-09-17,2023-09-01,204,paid,TX00727,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00729,Stadtwerke Bielefeld (Energie),Operating Expense,2023-08-28,2023-09-18,2023-09-02,236,paid,TX00729,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00734,Stadtwerke Bielefeld (Energie),Operating Expense,2023-09-01,2023-09-22,2023-09-06,223,paid,TX00734,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00736,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-09-07,2023-10-07,2023-09-07,136,paid,TX00736,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00751,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-09-21,2023-10-21,2023-09-21,254,paid,TX00751,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00756,Buero- und Ladenausstattung Krause,Operating Expense,2023-09-18,2023-10-02,2023-09-25,462,paid,TX00756,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00761,Buero- und Ladenausstattung Krause,Operating Expense,2023-09-22,2023-10-06,2023-09-29,323,paid,TX00761,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00767,Gebaeck Grosshandel OWL,COGS,2023-10-03,2023-10-10,2023-10-04,173,paid,TX00767,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00777,Stadtwerke Bielefeld (Energie),Operating Expense,2023-10-08,2023-10-29,2023-10-13,219,paid,TX00777,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00783,Gebaeck Grosshandel OWL,COGS,2023-10-17,2023-10-24,2023-10-18,494,paid,TX00783,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00787,Buero- und Ladenausstattung Krause,Operating Expense,2023-10-14,2023-10-28,2023-10-21,325,paid,TX00787,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00793,Stadtwerke Bielefeld (Energie),Operating Expense,2023-10-21,2023-11-11,2023-10-26,183,paid,TX00793,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00796,Buero- und Ladenausstattung Krause,Operating Expense,2023-10-21,2023-11-04,2023-10-28,191,paid,TX00796,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00808,Buero- und Ladenausstattung Krause,Operating Expense,2023-11-01,2023-11-15,2023-11-08,244,paid,TX00808,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00810,Nordbohnen Roastery,COGS,2023-11-06,2023-11-13,2023-11-09,126,paid,TX00810,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00812,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-11-10,2023-12-10,2023-11-10,448,paid,TX00812,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00817,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-11-14,2023-12-14,2023-11-14,372,paid,TX00817,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00821,Nordbohnen Roastery,COGS,2023-11-14,2023-11-21,2023-11-17,216,paid,TX00821,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00832,Gebaeck Grosshandel OWL,COGS,2023-11-26,2023-12-03,2023-11-27,175,paid,TX00832,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00834,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-11-28,2023-12-28,2023-11-28,179,paid,TX00834,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00837,Nordbohnen Roastery,COGS,2023-11-27,2023-12-04,2023-11-30,452,paid,TX00837,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00839,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-12-01,2023-12-31,2023-12-01,176,paid,TX00839,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00845,Stadtwerke Bielefeld (Energie),Operating Expense,2023-12-01,2023-12-22,2023-12-06,404,paid,TX00845,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00849,Nordbohnen Roastery,COGS,2023-12-06,2023-12-13,2023-12-09,140,paid,TX00849,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00858,Nordbohnen Roastery,COGS,2023-12-14,2023-12-21,2023-12-17,287,paid,TX00858,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00860,Immobilien Bielefeld Mitte (Miete),Operating Expense,2023-12-18,2024-01-17,2023-12-18,111,paid,TX00860,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00865,Buero- und Ladenausstattung Krause,Operating Expense,2023-12-15,2023-12-29,2023-12-22,218,paid,TX00865,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00867,Nordbohnen Roastery,COGS,2023-12-20,2023-12-27,2023-12-23,399,paid,TX00867,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00872,Stadtwerke Bielefeld (Energie),Operating Expense,2023-12-22,2024-01-12,2023-12-27,342,paid,TX00872,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_checking_main_TX00874,Gebaeck Grosshandel OWL,COGS,2023-12-27,2024-01-03,2023-12-28,306,paid,TX00874,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00001,Gastro Einweg GmbH,Supplies,2021-12-28,2022-01-11,2022-01-01,229,paid,CC00001,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00002,IT Service OWL,Other,2022-01-02,2022-01-16,2022-01-08,444,paid,CC00002,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00004,Social Ads Agentur Bielefeld,Marketing,2022-01-13,2022-02-03,2022-01-15,360,paid,CC00004,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00005,Social Ads Agentur Bielefeld,Marketing,2022-01-20,2022-02-10,2022-01-22,539,paid,CC00005,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00007,Stadtwerke Bielefeld (Energie),Utilities,2022-01-24,2022-02-14,2022-01-29,494,paid,CC00007,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00008,Social Ads Agentur Bielefeld,Marketing,2022-02-03,2022-02-24,2022-02-05,179,paid,CC00008,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00009,Social Ads Agentur Bielefeld,Marketing,2022-02-10,2022-03-03,2022-02-12,449,paid,CC00009,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00010,Buerobedarf Krause,Other,2022-02-15,2022-03-01,2022-02-19,363,paid,CC00010,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00011,Buerobedarf Krause,Other,2022-02-22,2022-03-08,2022-02-26,163,paid,CC00011,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00012,Telekom Business,Utilities,2022-03-02,2022-03-23,2022-03-05,206,paid,CC00012,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00013,Social Ads Agentur Bielefeld,Marketing,2022-03-10,2022-03-31,2022-03-12,264,paid,CC00013,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00014,Telekom Business,Utilities,2022-03-16,2022-04-06,2022-03-19,411,paid,CC00014,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00015,Print & Flyer Muller,Marketing,2022-03-20,2022-04-10,2022-03-26,207,paid,CC00015,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00017,Telekom Business,Utilities,2022-03-30,2022-04-20,2022-04-02,229,paid,CC00017,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00019,Telekom Business,Utilities,2022-04-06,2022-04-27,2022-04-09,384,paid,CC00019,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00021,Social Ads Agentur Bielefeld,Marketing,2022-04-14,2022-05-05,2022-04-16,344,paid,CC00021,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00023,Buerobedarf Krause,Other,2022-04-19,2022-05-03,2022-04-23,111,paid,CC00023,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00024,Stadtwerke Bielefeld (Energie),Utilities,2022-04-25,2022-05-16,2022-04-30,315,paid,CC00024,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00026,Print & Flyer Muller,Marketing,2022-05-01,2022-05-22,2022-05-07,405,paid,CC00026,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00027,Stadtwerke Bielefeld (Energie),Utilities,2022-05-09,2022-05-30,2022-05-14,283,paid,CC00027,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00028,Buerobedarf Krause,Other,2022-05-17,2022-05-31,2022-05-21,527,paid,CC00028,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00030,Kaffeezubehoer Handel Weber,Supplies,2022-05-25,2022-06-08,2022-05-28,435,paid,CC00030,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00031,Social Ads Agentur Bielefeld,Marketing,2022-06-02,2022-06-23,2022-06-04,107,paid,CC00031,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00033,Stadtwerke Bielefeld (Energie),Utilities,2022-06-06,2022-06-27,2022-06-11,457,paid,CC00033,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00035,Kaffeezubehoer Handel Weber,Supplies,2022-06-15,2022-06-29,2022-06-18,410,paid,CC00035,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00036,Gastro Einweg GmbH,Supplies,2022-06-21,2022-07-05,2022-06-25,513,paid,CC00036,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00037,IT Service OWL,Other,2022-06-26,2022-07-10,2022-07-02,235,paid,CC00037,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00038,Print & Flyer Muller,Marketing,2022-07-03,2022-07-24,2022-07-09,574,paid,CC00038,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00039,Stadtwerke Bielefeld (Energie),Utilities,2022-07-11,2022-08-01,2022-07-16,388,paid,CC00039,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00040,Buerobedarf Krause,Other,2022-07-19,2022-08-02,2022-07-23,241,paid,CC00040,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00041,Buerobedarf Krause,Other,2022-07-26,2022-08-09,2022-07-30,189,paid,CC00041,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00043,Print & Flyer Muller,Marketing,2022-07-31,2022-08-21,2022-08-06,172,paid,CC00043,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00044,Social Ads Agentur Bielefeld,Marketing,2022-08-11,2022-09-01,2022-08-13,368,paid,CC00044,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00045,Buerobedarf Krause,Other,2022-08-16,2022-08-30,2022-08-20,588,paid,CC00045,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00046,Buerobedarf Krause,Other,2022-08-23,2022-09-06,2022-08-27,201,paid,CC00046,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00047,Kaffeezubehoer Handel Weber,Supplies,2022-08-31,2022-09-14,2022-09-03,553,paid,CC00047,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00048,Social Ads Agentur Bielefeld,Marketing,2022-09-08,2022-09-29,2022-09-10,378,paid,CC00048,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00049,Kaffeezubehoer Handel Weber,Supplies,2022-09-14,2022-09-28,2022-09-17,443,paid,CC00049,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00050,Social Ads Agentur Bielefeld,Marketing,2022-09-22,2022-10-13,2022-09-24,312,paid,CC00050,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00051,Social Ads Agentur Bielefeld,Marketing,2022-09-29,2022-10-20,2022-10-01,298,paid,CC00051,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00052,Print & Flyer Muller,Marketing,2022-10-02,2022-10-23,2022-10-08,192,paid,CC00052,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00054,Kaffeezubehoer Handel Weber,Supplies,2022-10-12,2022-10-26,2022-10-15,390,paid,CC00054,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00056,Buerobedarf Krause,Other,2022-10-18,2022-11-01,2022-10-22,184,paid,CC00056,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00057,Print & Flyer Muller,Marketing,2022-10-23,2022-11-13,2022-10-29,553,paid,CC00057,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00058,Print & Flyer Muller,Marketing,2022-10-30,2022-11-20,2022-11-05,252,paid,CC00058,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00059,Buerobedarf Krause,Other,2022-11-08,2022-11-22,2022-11-12,392,paid,CC00059,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00060,Stadtwerke Bielefeld (Energie),Utilities,2022-11-14,2022-12-05,2022-11-19,142,paid,CC00060,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00061,Telekom Business,Utilities,2022-11-23,2022-12-14,2022-11-26,597,paid,CC00061,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00062,Telekom Business,Utilities,2022-11-30,2022-12-21,2022-12-03,120,paid,CC00062,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00064,Print & Flyer Muller,Marketing,2022-12-04,2022-12-25,2022-12-10,223,paid,CC00064,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00065,Buerobedarf Krause,Other,2022-12-13,2022-12-27,2022-12-17,150,paid,CC00065,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00066,Gastro Einweg GmbH,Supplies,2022-12-20,2023-01-03,2022-12-24,569,paid,CC00066,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00068,Telekom Business,Utilities,2022-12-28,2023-01-18,2022-12-31,151,paid,CC00068,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00069,IT Service OWL,Other,2023-01-01,2023-01-15,2023-01-07,255,paid,CC00069,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00070,Kaffeezubehoer Handel Weber,Supplies,2023-01-11,2023-01-25,2023-01-14,519,paid,CC00070,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00071,Gastro Einweg GmbH,Supplies,2023-01-17,2023-01-31,2023-01-21,176,paid,CC00071,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00073,IT Service OWL,Other,2023-01-22,2023-02-05,2023-01-28,362,paid,CC00073,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00075,Buerobedarf Krause,Other,2023-01-31,2023-02-14,2023-02-04,170,paid,CC00075,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00076,IT Service OWL,Other,2023-02-05,2023-02-19,2023-02-11,544,paid,CC00076,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00077,Stadtwerke Bielefeld (Energie),Utilities,2023-02-13,2023-03-06,2023-02-18,551,paid,CC00077,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00078,Print & Flyer Muller,Marketing,2023-02-19,2023-03-12,2023-02-25,271,paid,CC00078,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00079,Telekom Business,Utilities,2023-03-01,2023-03-22,2023-03-04,478,paid,CC00079,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00080,Buerobedarf Krause,Other,2023-03-07,2023-03-21,2023-03-11,376,paid,CC00080,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00082,IT Service OWL,Other,2023-03-12,2023-03-26,2023-03-18,370,paid,CC00082,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00083,IT Service OWL,Other,2023-03-19,2023-04-02,2023-03-25,224,paid,CC00083,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00084,Telekom Business,Utilities,2023-03-29,2023-04-19,2023-04-01,148,paid,CC00084,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00085,Telekom Business,Utilities,2023-04-05,2023-04-26,2023-04-08,149,paid,CC00085,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00086,Print & Flyer Muller,Marketing,2023-04-09,2023-04-30,2023-04-15,266,paid,CC00086,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00088,Telekom Business,Utilities,2023-04-19,2023-05-10,2023-04-22,341,paid,CC00088,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00090,Stadtwerke Bielefeld (Energie),Utilities,2023-04-24,2023-05-15,2023-04-29,325,paid,CC00090,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00091,Social Ads Agentur Bielefeld,Marketing,2023-05-04,2023-05-25,2023-05-06,249,paid,CC00091,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00092,IT Service OWL,Other,2023-05-07,2023-05-21,2023-05-13,575,paid,CC00092,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00093,Print & Flyer Muller,Marketing,2023-05-14,2023-06-04,2023-05-20,556,paid,CC00093,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00094,Gastro Einweg GmbH,Supplies,2023-05-23,2023-06-06,2023-05-27,353,paid,CC00094,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00096,Telekom Business,Utilities,2023-05-31,2023-06-21,2023-06-03,184,paid,CC00096,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00097,Social Ads Agentur Bielefeld,Marketing,2023-06-08,2023-06-29,2023-06-10,224,paid,CC00097,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00098,Buerobedarf Krause,Other,2023-06-13,2023-06-27,2023-06-17,586,paid,CC00098,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00099,Gastro Einweg GmbH,Supplies,2023-06-20,2023-07-04,2023-06-24,167,paid,CC00099,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00100,Kaffeezubehoer Handel Weber,Supplies,2023-06-28,2023-07-12,2023-07-01,266,paid,CC00100,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00102,Social Ads Agentur Bielefeld,Marketing,2023-07-06,2023-07-27,2023-07-08,263,paid,CC00102,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00103,Print & Flyer Muller,Marketing,2023-07-09,2023-07-30,2023-07-15,478,paid,CC00103,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00104,Buerobedarf Krause,Other,2023-07-18,2023-08-01,2023-07-22,368,paid,CC00104,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00106,Buerobedarf Krause,Other,2023-07-25,2023-08-08,2023-07-29,527,paid,CC00106,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00107,Kaffeezubehoer Handel Weber,Supplies,2023-08-02,2023-08-16,2023-08-05,329,paid,CC00107,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00108,Kaffeezubehoer Handel Weber,Supplies,2023-08-09,2023-08-23,2023-08-12,399,paid,CC00108,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00109,Telekom Business,Utilities,2023-08-16,2023-09-06,2023-08-19,425,paid,CC00109,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00110,Stadtwerke Bielefeld (Energie),Utilities,2023-08-21,2023-09-11,2023-08-26,201,paid,CC00110,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00111,Buerobedarf Krause,Other,2023-08-29,2023-09-12,2023-09-02,385,paid,CC00111,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00112,Social Ads Agentur Bielefeld,Marketing,2023-09-07,2023-09-28,2023-09-09,541,paid,CC00112,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00114,Telekom Business,Utilities,2023-09-13,2023-10-04,2023-09-16,402,paid,CC00114,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00115,Print & Flyer Muller,Marketing,2023-09-17,2023-10-08,2023-09-23,545,paid,CC00115,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00116,IT Service OWL,Other,2023-09-24,2023-10-08,2023-09-30,111,paid,CC00116,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00117,Buerobedarf Krause,Other,2023-10-03,2023-10-17,2023-10-07,567,paid,CC00117,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00118,Telekom Business,Utilities,2023-10-11,2023-11-01,2023-10-14,378,paid,CC00118,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00120,Buerobedarf Krause,Other,2023-10-17,2023-10-31,2023-10-21,567,paid,CC00120,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00121,Social Ads Agentur Bielefeld,Marketing,2023-10-26,2023-11-16,2023-10-28,220,paid,CC00121,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00123,Stadtwerke Bielefeld (Energie),Utilities,2023-10-30,2023-11-20,2023-11-04,565,paid,CC00123,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00124,Gastro Einweg GmbH,Supplies,2023-11-07,2023-11-21,2023-11-11,371,paid,CC00124,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00126,Social Ads Agentur Bielefeld,Marketing,2023-11-16,2023-12-07,2023-11-18,241,paid,CC00126,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00128,Kaffeezubehoer Handel Weber,Supplies,2023-11-22,2023-12-06,2023-11-25,460,paid,CC00128,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00129,Stadtwerke Bielefeld (Energie),Utilities,2023-11-27,2023-12-18,2023-12-02,556,paid,CC00129,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00130,Gastro Einweg GmbH,Supplies,2023-12-05,2023-12-19,2023-12-09,289,paid,CC00130,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00131,Stadtwerke Bielefeld (Energie),Utilities,2023-12-11,2024-01-01,2023-12-16,410,paid,CC00131,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00132,Buerobedarf Krause,Other,2023-12-19,2024-01-02,2023-12-23,242,paid,CC00132,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_credit_card_CC00133,Telekom Business,Utilities,2023-12-27,2024-01-17,2023-12-30,589,paid,CC00133,credit_card,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6000,Nordbohnen Roastery,COGS,2022-01-03,2022-01-15,2022-01-08,3458.39,paid,TXI6000,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6001,Milchhof Bielefeld,COGS,2022-01-10,2022-01-22,2022-01-15,1921.33,paid,TXI6001,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6002,Gebaeck Grosshandel OWL,COGS,2022-01-17,2022-01-28,2022-01-22,2305.59,paid,TXI6002,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6003,Nordbohnen Roastery,COGS,2022-02-03,2022-02-15,2022-02-08,3074.91,paid,TXI6003,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6004,Milchhof Bielefeld,COGS,2022-02-10,2022-02-22,2022-02-15,1708.28,paid,TXI6004,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6005,Gebaeck Grosshandel OWL,COGS,2022-02-17,2022-02-28,2022-02-22,2049.94,paid,TXI6005,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6006,Nordbohnen Roastery,COGS,2022-03-03,2022-03-15,2022-03-08,2217.79,paid,TXI6006,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6007,Milchhof Bielefeld,COGS,2022-03-10,2022-03-22,2022-03-15,1232.11,paid,TXI6007,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6008,Gebaeck Grosshandel OWL,COGS,2022-03-17,2022-03-28,2022-03-22,1478.53,paid,TXI6008,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6009,Nordbohnen Roastery,COGS,2022-04-03,2022-04-15,2022-04-08,2114.26,paid,TXI6009,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6010,Milchhof Bielefeld,COGS,2022-04-10,2022-04-22,2022-04-15,1174.59,paid,TXI6010,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6011,Gebaeck Grosshandel OWL,COGS,2022-04-17,2022-04-28,2022-04-22,1409.51,paid,TXI6011,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6012,Nordbohnen Roastery,COGS,2022-05-03,2022-05-15,2022-05-08,2177.41,paid,TXI6012,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6013,Milchhof Bielefeld,COGS,2022-05-10,2022-05-22,2022-05-15,1209.67,paid,TXI6013,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6014,Gebaeck Grosshandel OWL,COGS,2022-05-17,2022-05-28,2022-05-22,1451.61,paid,TXI6014,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6015,Nordbohnen Roastery,COGS,2022-06-03,2022-06-15,2022-06-08,2091.73,paid,TXI6015,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6016,Milchhof Bielefeld,COGS,2022-06-10,2022-06-22,2022-06-15,1162.07,paid,TXI6016,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6017,Gebaeck Grosshandel OWL,COGS,2022-06-17,2022-06-28,2022-06-22,1394.48,paid,TXI6017,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6018,Nordbohnen Roastery,COGS,2022-07-03,2022-07-15,2022-07-08,2726.99,paid,TXI6018,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6019,Milchhof Bielefeld,COGS,2022-07-10,2022-07-22,2022-07-15,1515.0,paid,TXI6019,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6020,Gebaeck Grosshandel OWL,COGS,2022-07-17,2022-07-28,2022-07-22,1817.99,paid,TXI6020,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6021,Nordbohnen Roastery,COGS,2022-08-03,2022-08-15,2022-08-08,2681.1,paid,TXI6021,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6022,Milchhof Bielefeld,COGS,2022-08-10,2022-08-22,2022-08-15,1489.5,paid,TXI6022,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6023,Gebaeck Grosshandel OWL,COGS,2022-08-17,2022-08-28,2022-08-22,1787.4,paid,TXI6023,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6024,Nordbohnen Roastery,COGS,2022-09-03,2022-09-15,2022-09-08,3449.94,paid,TXI6024,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6025,Milchhof Bielefeld,COGS,2022-09-10,2022-09-22,2022-09-15,1916.63,paid,TXI6025,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6026,Gebaeck Grosshandel OWL,COGS,2022-09-17,2022-09-28,2022-09-22,2299.96,paid,TXI6026,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6027,Nordbohnen Roastery,COGS,2022-10-03,2022-10-15,2022-10-08,3571.19,paid,TXI6027,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6028,Milchhof Bielefeld,COGS,2022-10-10,2022-10-22,2022-10-15,1984.0,paid,TXI6028,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6029,Gebaeck Grosshandel OWL,COGS,2022-10-17,2022-10-28,2022-10-22,2380.8,paid,TXI6029,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6030,Nordbohnen Roastery,COGS,2022-11-03,2022-11-15,2022-11-08,3332.56,paid,TXI6030,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6031,Milchhof Bielefeld,COGS,2022-11-10,2022-11-22,2022-11-15,1851.42,paid,TXI6031,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6032,Gebaeck Grosshandel OWL,COGS,2022-11-17,2022-11-28,2022-11-22,2221.71,paid,TXI6032,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6033,Nordbohnen Roastery,COGS,2022-12-03,2022-12-15,2022-12-08,3327.86,paid,TXI6033,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6034,Milchhof Bielefeld,COGS,2022-12-10,2022-12-22,2022-12-15,1848.81,paid,TXI6034,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6035,Gebaeck Grosshandel OWL,COGS,2022-12-17,2022-12-28,2022-12-22,2218.58,paid,TXI6035,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6036,Nordbohnen Roastery,COGS,2023-01-03,2023-01-15,2023-01-08,3550.54,paid,TXI6036,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6037,Milchhof Bielefeld,COGS,2023-01-10,2023-01-22,2023-01-15,1972.52,paid,TXI6037,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6038,Gebaeck Grosshandel OWL,COGS,2023-01-17,2023-01-28,2023-01-22,2367.02,paid,TXI6038,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6039,Nordbohnen Roastery,COGS,2023-02-03,2023-02-15,2023-02-08,2981.94,paid,TXI6039,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6040,Milchhof Bielefeld,COGS,2023-02-10,2023-02-22,2023-02-15,1656.63,paid,TXI6040,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6041,Gebaeck Grosshandel OWL,COGS,2023-02-17,2023-02-28,2023-02-22,1987.96,paid,TXI6041,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6042,Nordbohnen Roastery,COGS,2023-03-03,2023-03-15,2023-03-08,2293.74,paid,TXI6042,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6043,Milchhof Bielefeld,COGS,2023-03-10,2023-03-22,2023-03-15,1274.3,paid,TXI6043,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6044,Gebaeck Grosshandel OWL,COGS,2023-03-17,2023-03-28,2023-03-22,1529.16,paid,TXI6044,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6045,Nordbohnen Roastery,COGS,2023-04-03,2023-04-15,2023-04-08,2220.85,paid,TXI6045,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6046,Milchhof Bielefeld,COGS,2023-04-10,2023-04-22,2023-04-15,1233.8,paid,TXI6046,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6047,Gebaeck Grosshandel OWL,COGS,2023-04-17,2023-04-28,2023-04-22,1480.56,paid,TXI6047,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6048,Nordbohnen Roastery,COGS,2023-05-03,2023-05-15,2023-05-08,2167.08,paid,TXI6048,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6049,Milchhof Bielefeld,COGS,2023-05-10,2023-05-22,2023-05-15,1203.94,paid,TXI6049,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6050,Gebaeck Grosshandel OWL,COGS,2023-05-17,2023-05-28,2023-05-22,1444.72,paid,TXI6050,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6051,Nordbohnen Roastery,COGS,2023-06-03,2023-06-15,2023-06-08,2104.87,paid,TXI6051,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6052,Milchhof Bielefeld,COGS,2023-06-10,2023-06-22,2023-06-15,1169.37,paid,TXI6052,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6053,Gebaeck Grosshandel OWL,COGS,2023-06-17,2023-06-28,2023-06-22,1403.25,paid,TXI6053,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6054,Nordbohnen Roastery,COGS,2023-07-03,2023-07-15,2023-07-08,2719.24,paid,TXI6054,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6055,Milchhof Bielefeld,COGS,2023-07-10,2023-07-22,2023-07-15,1510.69,paid,TXI6055,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6056,Gebaeck Grosshandel OWL,COGS,2023-07-17,2023-07-28,2023-07-22,1812.83,paid,TXI6056,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6057,Nordbohnen Roastery,COGS,2023-08-03,2023-08-15,2023-08-08,2776.06,paid,TXI6057,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6058,Milchhof Bielefeld,COGS,2023-08-10,2023-08-22,2023-08-15,1542.25,paid,TXI6058,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6059,Gebaeck Grosshandel OWL,COGS,2023-08-17,2023-08-28,2023-08-22,1850.7,paid,TXI6059,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6060,Nordbohnen Roastery,COGS,2023-09-03,2023-09-15,2023-09-08,3119.51,paid,TXI6060,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6061,Milchhof Bielefeld,COGS,2023-09-10,2023-09-22,2023-09-15,1733.06,paid,TXI6061,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6062,Gebaeck Grosshandel OWL,COGS,2023-09-17,2023-09-28,2023-09-22,2079.68,paid,TXI6062,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6063,Nordbohnen Roastery,COGS,2023-10-03,2023-10-15,2023-10-08,3430.57,paid,TXI6063,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6064,Milchhof Bielefeld,COGS,2023-10-10,2023-10-22,2023-10-15,1905.87,paid,TXI6064,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6065,Gebaeck Grosshandel OWL,COGS,2023-10-17,2023-10-28,2023-10-22,2287.05,paid,TXI6065,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6066,Nordbohnen Roastery,COGS,2023-11-03,2023-11-15,2023-11-08,3412.5,paid,TXI6066,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6067,Milchhof Bielefeld,COGS,2023-11-10,2023-11-22,2023-11-15,1895.83,paid,TXI6067,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6068,Gebaeck Grosshandel OWL,COGS,2023-11-17,2023-11-28,2023-11-22,2275.0,paid,TXI6068,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6069,Nordbohnen Roastery,COGS,2023-12-03,2023-12-15,2023-12-08,3409.33,paid,TXI6069,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6070,Milchhof Bielefeld,COGS,2023-12-10,2023-12-22,2023-12-15,1894.07,paid,TXI6070,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_ingredient_TXI6071,Gebaeck Grosshandel OWL,COGS,2023-12-17,2023-12-28,2023-12-22,2272.88,paid,TXI6071,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_stress_TXS9000,Buero- und Ladenausstattung Krause,Operating Expense,2023-02-10,2023-03-12,2023-02-14,8500.0,paid,TXS9000,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_stress_TXS9001,Kaeltetechnik Ostwestfalen GmbH,Operating Expense,2023-06-05,2023-07-05,2023-06-12,19500.0,paid,TXS9001,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_stress_TXS9002,Buero- und Ladenausstattung Krause,Operating Expense,2023-07-01,2023-07-31,2023-07-08,4200.0,paid,TXS9002,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_stress_TXS9003,Stadtwerke Bielefeld (Energie),Operating Expense,2023-06-15,2023-07-15,2023-06-20,950.0,paid,TXS9003,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_stress_TXS9004,Stadtwerke Bielefeld (Energie),Operating Expense,2023-07-15,2023-08-14,2023-07-20,1050.0,paid,TXS9004,checking_main,derived
+code_and_coffee,Code & Coffee GmbH,SINV_stress_TXS9005,Stadtwerke Bielefeld (Energie),Operating Expense,2023-08-15,2023-09-14,2023-08-20,1100.0,paid,TXS9005,checking_main,derived
