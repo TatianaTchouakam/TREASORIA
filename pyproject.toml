@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = ["data", "assets", "evaluation"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "T20", "UP", "B"]
+# E, F  -> core pycodestyle & pyflakes errors
+# I     -> import sorting
+# T20   -> flags leftover print() calls
+# UP    -> flags outdated Python syntax (pyupgrade rules)
+# B     -> bugbear, catches common bug patterns (mutable default args, etc.)
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
