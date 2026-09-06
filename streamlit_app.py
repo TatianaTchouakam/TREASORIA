@@ -4,12 +4,19 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-import streamlit as st
-import pandas as pd
-import matplotlib
+from src.ocr_engine import (
+    pdf_to_image, pdf_to_images, image_to_raw_text, images_to_raw_text,
+    get_ocr_data, is_bank_statement, extract_statement_metadata,
+    extract_statement_transactions, build_excel_download_from_df,
+    extract_invoice_number, extract_invoice_date, extract_due_date,
+    extract_total_due, extract_status, extract_paid_on, extract_line_item,
+    compute_overall_confidence, determine_review_status,
+    build_excel_download, build_image_download, read_pdf_bytes,
+)
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+import pandas as pd
+import streamlit as st
+import altair as alt
 
 from src.engine import get_chat_engine
 from src.model_loader import (
@@ -299,113 +306,35 @@ def render_data_quality_badge() -> None:
             st.markdown("- No duplicate transaction IDs ✓")
 
 
-# ============================================================
-# OVERVIEW CHART + RISK SIGNAL
-# ============================================================
-# Both read straight from the Gold layer that's already validated
-# for the KPI cards above — this is real history, not a mockup.
-# The risk badge is a genuinely computed (if intentionally light)
-# signal: it looks at whether any of the last 3 months went cash-
-# flow negative, the same underlying fact the dynamic Runway KPI
-# already uses. It is NOT the full 6-rule Liquidity Risk engine —
-# that's still its own page — so the caption says so explicitly
-# rather than implying more coverage than exists yet.
-
 @st.cache_data
-def load_cash_position_chart_data():
+def load_overview_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """
+    Load the three Gold tables the Overview page's charts and
+    signals are built from: monthly cash flow, daily cash position,
+    and receivables aging.
+
+    WHY this exists as one function: the chart_column/signal_column
+    section and the Cash Outlook section both need the same three
+    tables, loaded and parsed the same way (dates as real datetimes,
+    not strings) -- centralising it here means both call sites stay
+    in sync if the underlying file paths or column types ever change.
+    """
+
     dataset_path = _find_dataset_dir()
 
     if dataset_path is None:
-        return None
+        raise FileNotFoundError("Treasoria dataset not found.")
 
     gold_path = dataset_path / "gold"
-    daily_file = gold_path / "gold_daily_cash_position.csv"
-    monthly_file = gold_path / "gold_monthly_cash_flow.csv"
 
-    if not daily_file.exists() or not monthly_file.exists():
-        return None
+    monthly = pd.read_csv(gold_path / "gold_monthly_cash_flow.csv")
+    daily = pd.read_csv(gold_path / "gold_daily_cash_position.csv")
+    receivables = pd.read_csv(gold_path / "gold_receivables_aging.csv")
 
-    daily = pd.read_csv(daily_file, parse_dates=["date"])
-    monthly = pd.read_csv(monthly_file)
+    monthly["month"] = pd.to_datetime(monthly["month"])
+    daily["date"] = pd.to_datetime(daily["date"])
 
-    return daily, monthly
-
-
-def render_cash_chart(daily: pd.DataFrame, monthly: pd.DataFrame):
-    last_12_monthly = monthly.tail(12).copy()
-
-    daily = daily.copy()
-    daily["month"] = daily["date"].dt.strftime("%Y-%m")
-    month_end_balance = (
-        daily.groupby("month")["consolidated_cash_balance"].last().reset_index()
-    )
-    month_end_balance = month_end_balance[
-        month_end_balance["month"].isin(last_12_monthly["month"])
-    ]
-
-    fig, ax1 = plt.subplots(figsize=(11.2, 4.3), dpi=150)
-    fig.patch.set_alpha(0)
-    ax1.set_facecolor("none")
-
-    bar_colors = [
-        "#3F7A5C" if v >= 0 else "#B23B2E"
-        for v in last_12_monthly["net_cash_flow"]
-    ]
-    ax1.bar(
-        last_12_monthly["month"],
-        last_12_monthly["net_cash_flow"],
-        color=bar_colors,
-        width=0.55,
-        alpha=0.88,
-        zorder=2,
-    )
-    ax1.axhline(0, color="#C9A24B", linewidth=1.1, zorder=1)
-    ax1.set_ylabel("Net cash flow (EUR)", fontsize=13, color="#3E4C63")
-    ax1.tick_params(axis="x", rotation=45, labelsize=11, colors="#3E4C63")
-    ax1.tick_params(axis="y", labelsize=11, colors="#3E4C63")
-    for spine in ax1.spines.values():
-        spine.set_visible(False)
-
-    ax2 = ax1.twinx()
-    ax2.plot(
-        month_end_balance["month"],
-        month_end_balance["consolidated_cash_balance"],
-        color="#0A1B33",
-        linewidth=3,
-        marker="o",
-        markersize=5,
-        zorder=3,
-    )
-    ax2.set_ylabel("Closing balance (EUR)", fontsize=13, color="#0A1B33")
-    ax2.tick_params(axis="y", labelsize=11, colors="#0A1B33")
-    for spine in ax2.spines.values():
-        spine.set_visible(False)
-
-    fig.tight_layout()
-    return fig
-
-
-def compute_light_risk_signal(monthly: pd.DataFrame) -> tuple[str, str, str]:
-    last_3 = monthly.tail(3)
-    negative_count = int((last_3["net_cash_flow"] < 0).sum())
-
-    if negative_count == 0:
-        return (
-            "Low",
-            "sage",
-            "No negative month in the last quarter.",
-        )
-    if negative_count == 1:
-        return (
-            "Medium",
-            "amber",
-            "1 of the last 3 months had negative net cash flow.",
-        )
-    return (
-        "High",
-        "coral",
-        f"{negative_count} of the last 3 months had negative net cash flow.",
-    )
+    return monthly, daily, receivables
 
 
 # ============================================================
@@ -415,7 +344,7 @@ def compute_light_risk_signal(monthly: pd.DataFrame) -> tuple[str, str, str]:
 PAGES = [
     "Overview",
     "Transactions",
-    "Invoices & OCR",
+    "Invoices",
     "Cash-Flow Forecast",
     "Liquidity Risk",
     "What-if Simulator",
@@ -426,11 +355,6 @@ PAGES = [
 # ============================================================
 # CUSTOM CSS — premium / soft-luxury direction
 # ============================================================
-# Palette: warm ivory canvas, deep ink-navy sidebar, restrained
-# champagne-gold accent, Fraunces for display type (financial
-# report feel) over Inter body copy. The signature touch is the
-# thin gold rule + left-edge gold hairline on every card, echoing
-# the ring in the Treasoria mark.
 
 st.markdown(
     """
@@ -464,13 +388,6 @@ st.markdown(
             color: var(--ink);
         }
 
-        /* Percentage-based width, not a fixed px cap: on a wide
-           monitor a fixed max-width (even a generous one) still
-           leaves a dead strip of ivory on the right, which is
-           exactly the bug in the screenshots. Sizing relative to
-           the actual available area (next to the sidebar) instead
-           of the raw viewport keeps this correct regardless of
-           screen size, without ever needing to zoom the browser. */
         .block-container {
             width: 96% !important;
             max-width: 2400px !important;
@@ -485,15 +402,6 @@ st.markdown(
             color: var(--ink);
         }
 
-        /* Title — deliberately NOT scoped under ".main": recent
-           Streamlit versions don't reliably expose a ".main" class
-           on the content container (they use data-testid instead),
-           so ".main h1" was silently matching nothing and this
-           title stayed at browser-default size no matter how large
-           we set it here. There is no h1 in the sidebar in this
-           app, so a bare "h1" selector is safe and guaranteed to
-           match regardless of Streamlit's internal container
-           naming in whatever version is deployed. */
         h1[data-testid="stHeading"], h1[data-testid="stHeading"] *,
         div[data-testid="stAppViewContainer"] h1,
         div[data-testid="stAppViewContainer"] h1 * {
@@ -504,9 +412,6 @@ st.markdown(
             letter-spacing: -0.01em;
         }
 
-        /* General body copy inside the main content area — plain
-           st.markdown / st.write text, captions, list items. Same
-           reasoning as above: not scoped to ".main". */
         div[data-testid="stAppViewContainer"] p,
         div[data-testid="stAppViewContainer"] li,
         div[data-testid="stMarkdownContainer"] p,
@@ -536,10 +441,6 @@ st.markdown(
             color: var(--ink) !important;
         }
 
-        /* Company card — always visible, plain HTML inside the
-           sidebar's own container so it reliably inherits the
-           dark-navy background + white text already set on
-           [data-testid="stSidebar"] * below. */
         .company-card {
             padding: 0.9rem 0.95rem 0.75rem;
             margin-bottom: 0.3rem;
@@ -597,7 +498,6 @@ st.markdown(
             background: linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 45%, rgba(228,205,148,0) 100%);
         }
 
-        /* ---------------- SIDEBAR ---------------- */
         [data-testid="stSidebar"] {
             background:
                 radial-gradient(circle at 15% 0%, rgba(201,162,75,0.10), transparent 42%),
@@ -689,6 +589,47 @@ st.markdown(
             padding: 0.2rem 0.9rem 0.6rem !important;
         }
 
+        /* ==================================================
+           KPI CARDS
+           ================================================== */
+
+        div[data-testid="stMetric"] {
+            min-height: 108px;
+            padding: 1.0rem 1.15rem !important;
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            background-color: var(--card);
+            box-shadow: 0 8px 22px rgba(10, 27, 51, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        div[data-testid="stMetric"]::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--gold), rgba(201, 162, 75, 0));
+        }
+
+        div[data-testid="stMetricValue"],
+        div[data-testid="stMetricValue"] * {
+            font-family: 'Fraunces', serif !important;
+            font-weight: 600 !important;
+            color: var(--ink) !important;
+            font-size: 26px !important;
+            line-height: 1.2 !important;
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: unset !important;
+        }
+
+        div[data-testid="stMetricLabel"],
+        div[data-testid="stMetricLabel"] * {
+            color: var(--slate) !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+        }
+
         [data-testid="stSidebar"]
         [data-testid="stForm"] label {
             color: #C7CEDE !important;
@@ -703,7 +644,57 @@ st.markdown(
             border-radius: 7px !important;
         }
 
-        /* ---------------- CARDS ---------------- */
+        /* ==================================================
+           SECTION TITLES
+           ================================================== */
+
+        .section-title, .section-title * {
+            font-family: 'Fraunces', serif !important;
+            font-size: 30px !important;
+            font-weight: 600 !important;
+            color: var(--ink) !important;
+            margin: 0.2rem 0 0.7rem;
+        }
+
+        /* ==================================================
+           OVERVIEW INSIGHT CARDS
+           ================================================== */
+
+        .insight-card {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--card);
+            padding: 1.25rem 1.4rem;
+            margin-bottom: 0.85rem;
+            box-shadow: 0 8px 24px rgba(10, 27, 51, 0.05);
+        }
+
+        .insight-label {
+            font-size: 14px !important;
+            font-weight: 600;
+            color: var(--slate) !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .insight-value {
+            font-family: 'Fraunces', serif !important;
+            font-size: 27px !important;
+            font-weight: 600;
+            color: var(--ink) !important;
+            margin-top: 0.25rem;
+        }
+
+        .insight-note {
+            font-size: 14px !important;
+            color: var(--slate) !important;
+            margin-top: 0.2rem;
+        }
+
+        /* ==================================================
+           MODULE CARDS
+           ================================================== */
+
         .module-card {
             min-height: 240px;
             padding: 2.2rem;
@@ -738,6 +729,10 @@ st.markdown(
             font-size: 17px !important;
         }
 
+        /* ==================================================
+           CHAT
+           ================================================== */
+
         .assistant-intro {
             padding: 1rem 1.2rem;
             margin-bottom: 1rem;
@@ -746,41 +741,6 @@ st.markdown(
             background: linear-gradient(90deg, rgba(201,162,75,0.10), rgba(10,27,51,0.03));
             color: var(--ink);
             font-size: 1.05rem;
-        }
-
-        div[data-testid="stMetric"] {
-            padding: 1.9rem 1.9rem;
-            min-height: 128px;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            background-color: var(--card);
-            box-shadow: 0 10px 28px rgba(10, 27, 51, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        div[data-testid="stMetric"]::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 3px; height: 100%;
-            background: linear-gradient(180deg, var(--gold), transparent);
-        }
-
-        div[data-testid="stMetricValue"], div[data-testid="stMetricValue"] * {
-            font-family: 'Fraunces', serif !important;
-            font-weight: 600 !important;
-            color: var(--ink) !important;
-            font-size: 48px !important;
-            white-space: normal !important;
-            overflow: visible !important;
-            text-overflow: unset !important;
-            line-height: 1.22 !important;
-        }
-
-        div[data-testid="stMetricLabel"], div[data-testid="stMetricLabel"] * {
-            color: var(--slate) !important;
-            font-size: 18px !important;
-            font-weight: 600 !important;
         }
 
         .stButton > button {
@@ -834,10 +794,6 @@ st.markdown(
             box-shadow: 0 5px 15px rgba(10, 27, 51, 0.05);
         }
 
-        /* Data quality badge trigger — soft pill button. Not
-           scoped to ".main" (see note above on h1) — this is the
-           only st.popover trigger in the app, so no sidebar
-           conflict risk. */
         [data-testid="stPopover"] > button,
         [data-testid="stPopover"] > button * {
             border-radius: 30px !important;
@@ -848,13 +804,6 @@ st.markdown(
             padding-bottom: 0.5rem !important;
         }
 
-        /* Popover CONTENT: Streamlit renders this in a floating
-           layer that is not nested inside .main or the sidebar in
-           the DOM, so color rules scoped to those containers never
-           reach it — that's what made the panel show invisible
-           (white-on-white) text before. Target it directly by
-           testid, unscoped, with an explicit background and text
-           color so it is legible no matter where it portals to. */
         div[data-testid="stPopoverBody"] {
             background-color: #FFFFFF !important;
             border: 1px solid var(--line) !important;
@@ -875,61 +824,6 @@ st.markdown(
             border-left: 3px solid var(--gold);
             background-color: var(--card);
         }
-
-        .section-title, .section-title * {
-            font-family: 'Fraunces', serif !important;
-            font-size: 30px !important;
-            font-weight: 600 !important;
-            color: var(--ink) !important;
-            margin: 0.2rem 0 0.7rem;
-        }
-
-        /* Latest Risk Signal card — three tones, same shape as the
-           Data Quality badge palette (sage/amber/coral) so the
-           whole app reads from one consistent risk vocabulary. */
-        .risk-signal-card {
-            border-radius: 14px;
-            padding: 40px 28px;
-            min-height: 128px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 10px 28px rgba(10, 27, 51, 0.05);
-        }
-
-        .risk-signal-level {
-            font-family: 'Fraunces', serif;
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .risk-signal-reason {
-            font-size: 17px;
-            line-height: 1.4;
-        }
-
-        .risk-sage {
-            background: var(--sage-bg);
-            border: 1px solid #CFE3D6;
-        }
-        .risk-sage .risk-signal-level { color: var(--sage); }
-        .risk-sage .risk-signal-reason { color: #2F5C46; }
-
-        .risk-amber {
-            background: var(--gold-bg);
-            border: 1px solid #EAD8AE;
-        }
-        .risk-amber .risk-signal-level { color: #8A6115; }
-        .risk-amber .risk-signal-reason { color: #6B4D14; }
-
-        .risk-coral {
-            background: #F7E4E0;
-            border: 1px solid #E9C1B7;
-        }
-        .risk-coral .risk-signal-level { color: #A34632; }
-        .risk-coral .risk-signal-reason { color: #7C3524; }
 
         .footer-text {
             margin-top: 2rem;
@@ -1051,26 +945,14 @@ with st.sidebar:
 
     st.divider()
 
-    # Company identity is always visible in the sidebar — no click
-    # required. This is plain HTML rendered inside the sidebar's own
-    # dark-navy container, so it always inherits the correct white
-    # text color (unlike a Streamlit popover, whose content portals
-    # outside the sidebar's DOM and does not inherit this styling —
-    # that's what caused white-on-white invisible text before).
     st.markdown(
-        f"""
-        <div class="company-card">
-            <div class="company-card-name">{ACTIVE_COMPANY['name']}</div>
-            <div class="company-card-owner">Owner: {ACTIVE_COMPANY['owner']}</div>
-            <div class="company-card-address">
-                {ACTIVE_COMPANY['address']}<br>{ACTIVE_COMPANY['city']}
-            </div>
-            <div class="company-card-sector">{ACTIVE_COMPANY['sector']}</div>
-            <div class="company-card-updated">
-                Last online: {ACTIVE_COMPANY['last_updated']}
-            </div>
-        </div>
-        """,
+        f'<div class="company-card">'
+        f'<div class="company-card-name">{ACTIVE_COMPANY["name"]}</div>'
+        f'<div class="company-card-owner">Owner: {ACTIVE_COMPANY["owner"]}</div>'
+        f'<div class="company-card-address">{ACTIVE_COMPANY["address"]}<br>{ACTIVE_COMPANY["city"]}</div>'
+        f'<div class="company-card-sector">{ACTIVE_COMPANY["sector"]}</div>'
+        f'<div class="company-card-updated">Last online: {ACTIVE_COMPANY["last_updated"]}</div>'
+        f'</div>',
         unsafe_allow_html=True,
     )
 
@@ -1084,9 +966,6 @@ with st.sidebar:
 
     st.divider()
 
-    # Always collapsed: editing is one click away, but nobody needs
-    # the input fields staring at them by default — including on
-    # first run, when the profile is still empty.
     with st.expander("✏️ Edit company profile", expanded=False):
 
         with st.form("company_profile_form"):
@@ -1149,12 +1028,10 @@ if selected_page == "Overview":
     st.title("Treasoria Overview")
 
     st.markdown(
-        f"""
-        <p class="treasoria-subtitle">
-            <span class="subtitle-hero">See Tomorrow's Cash. Make Better Decisions Today.</span><br>
-            Financial intelligence for {ACTIVE_COMPANY["name"]}
-        </p>
-        """,
+        f'<div class="treasoria-subtitle">'
+        f'<span class="subtitle-hero">See Tomorrow\'s Cash. Make Better Decisions Today.</span>'
+        f'<br>Financial intelligence for {ACTIVE_COMPANY["name"]}'
+        f'</div>',
         unsafe_allow_html=True,
     )
 
@@ -1171,12 +1048,9 @@ if selected_page == "Overview":
         def split_parenthetical(raw: str) -> tuple[str, str | None]:
             """
             Some KPI values from the Gold layer are a full sentence with
-            a parenthetical detail, e.g. "Not burning cash (positive
-            3-month average net flow)". Splitting it lets the metric
-            card show a short headline value with the detail underneath
-            as a caption, instead of cramming a whole sentence into the
-            big metric number. Falls through untouched for KPIs that
-            don't have this shape.
+            a parenthetical detail. Splitting it lets the metric card
+            show a short headline value with the detail underneath as a
+            caption.
             """
 
             if "(" in raw and raw.rstrip().endswith(")"):
@@ -1253,112 +1127,345 @@ if selected_page == "Overview":
         st.code(str(error), language="text")
 
     # --------------------------------------------------------
-    # CASH POSITION CHART + LATEST RISK SIGNAL
+    # CASH INTELLIGENCE: charts, signals, expense breakdown
     # --------------------------------------------------------
 
-    chart_data = load_cash_position_chart_data()
+    try:
+        monthly, daily, receivables = load_overview_data()
 
-    if chart_data is not None:
-        daily_df, monthly_df = chart_data
+        chart_column, signal_column = st.columns([2.25, 1], gap="large")
 
-        chart_col, risk_col = st.columns([2, 1])
+        with chart_column:
 
-        with chart_col:
+            st.markdown("### Consolidated Cash Position")
+
+            latest_date = daily["date"].max()
+            one_year_before = latest_date - pd.DateOffset(months=12)
+
+            daily_last_year = (
+                daily.loc[
+                    daily["date"] >= one_year_before,
+                    ["date", "consolidated_cash_balance"],
+                ]
+                .copy()
+                .set_index("date")
+            )
+
+            st.line_chart(daily_last_year, height=340)
+
+            st.markdown("### Monthly Net Cash Flow")
+
+            monthly_last_year = (
+                monthly.sort_values("month").tail(12)[["month", "net_cash_flow"]].copy()
+            )
+            monthly_last_year["month"] = monthly_last_year["month"].dt.strftime("%b %Y")
+            monthly_last_year = monthly_last_year.set_index("month")
+
+            st.bar_chart(monthly_last_year, height=300)
+
+            st.markdown("### Expenses by Category (Last 12 Months)")
+
+            # ASSUMPTION: fact_supplier_invoice.csv has "category"
+            # and "amount" columns. If the real column names differ,
+            # this chart falls back to a message instead of crashing
+            # the whole Overview page -- tell me the exact names and
+            # I'll adjust the lookup precisely.
+            try:
+                dataset_path_for_categories = _find_dataset_dir()
+                supplier_invoices = pd.read_csv(
+                    dataset_path_for_categories / "silver" / "fact_supplier_invoice.csv"
+                )
+
+                category_col = next(
+                    (c for c in ["category", "expense_category"] if c in supplier_invoices.columns),
+                    None,
+                )
+                amount_col_supplier = next(
+                    (c for c in ["amount", "total_amount", "net_amount"] if c in supplier_invoices.columns),
+                    None,
+                )
+
+                if category_col and amount_col_supplier:
+                    category_totals = (
+                        supplier_invoices
+                        .groupby(category_col)[amount_col_supplier]
+                        .sum()
+                        .reset_index()
+                        .rename(columns={category_col: "Category", amount_col_supplier: "Amount"})
+                    )
+
+                    pie_chart = (
+                        alt.Chart(category_totals)
+                        .mark_arc(innerRadius=60)
+                        .encode(
+                            theta=alt.Theta("Amount:Q"),
+                            color=alt.Color(
+                                "Category:N",
+                                scale=alt.Scale(
+                                    range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
+                                ),
+                            ),
+                            tooltip=["Category", "Amount"],
+                        )
+                        .properties(height=320)
+                    )
+
+                    st.altair_chart(pie_chart, use_container_width=True)
+                else:
+                    st.info(
+                        "Expense category breakdown not available "
+                        "(expected columns not found in fact_supplier_invoice.csv)."
+                    )
+
+            except Exception as category_error:
+                st.info("Expense category breakdown could not be loaded.")
+                st.caption(str(category_error))
+
+        with signal_column:
+
+            st.markdown("### Latest Financial Signals")
+
+            recent_three_month_avg = float(
+                monthly.sort_values("month").tail(3)["net_cash_flow"].mean()
+            )
+
+            negative_months = int((monthly["net_cash_flow"] < 0).sum())
+
+            # --- Revenue Growth (YoY) -------------------------
+            # ASSUMPTION: gold_monthly_cash_flow.csv has a gross
+            # cash-in column. We try a few likely names since we
+            # don't have the exact schema in front of us -- if none
+            # match, the growth card falls back to "Not available"
+            # instead of crashing the whole page.
+            inflow_column = next(
+                (
+                    candidate
+                    for candidate in [
+                        "total_inflow", "cash_in", "inflow", "gross_inflow", "revenue",
+                    ]
+                    if candidate in monthly.columns
+                ),
+                None,
+            )
+
+            revenue_growth_yoy = None
+            if inflow_column is not None:
+                monthly_sorted = monthly.sort_values("month")
+                last_12 = monthly_sorted.tail(12)[inflow_column].sum()
+                prev_12 = (
+                    monthly_sorted.iloc[-24:-12][inflow_column].sum()
+                    if len(monthly_sorted) >= 24 else None
+                )
+                if prev_12:
+                    revenue_growth_yoy = (last_12 - prev_12) / prev_12 * 100
+
+            # --- Overdue receivables, in EUR ------------------
+            amount_column = next(
+                (
+                    candidate
+                    for candidate in [
+                        "amount", "open_amount", "invoice_amount", "amount_due", "balance",
+                    ]
+                    if candidate in receivables.columns
+                ),
+                None,
+            )
+
+            overdue_mask = receivables["status"] == "open_overdue"
+            overdue_count = int(overdue_mask.sum())
+            overdue_amount = (
+                float(receivables.loc[overdue_mask, amount_column].sum())
+                if amount_column is not None
+                else None
+            )
+
+            lowest_row = monthly.sort_values("net_cash_flow").iloc[0]
+            lowest_month = pd.to_datetime(lowest_row["month"]).strftime("%b %Y")
+            lowest_value = float(lowest_row["net_cash_flow"])
+
+            cash_signal = "Positive" if recent_three_month_avg >= 0 else "Negative"
+
             st.markdown(
-                '<h2 class="section-title" style="font-size:22px !important;">'
-                "Cash Position &amp; Monthly Net Cash Flow — Last 12 Months</h2>",
+                f'<div class="insight-card">'
+                f'<div class="insight-label">3-Month Cash Trend</div>'
+                f'<div class="insight-value">{cash_signal}</div>'
+                f'<div class="insight-note">Avg. EUR {recent_three_month_avg:,.2f} / month</div>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
-            fig = render_cash_chart(daily_df, monthly_df)
-            st.pyplot(fig, width="stretch")
 
-        with risk_col:
+            if revenue_growth_yoy is not None:
+                growth_sign = "+" if revenue_growth_yoy >= 0 else ""
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Revenue Growth (YoY)</div>'
+                    f'<div class="insight-value">{growth_sign}{revenue_growth_yoy:,.1f}%</div>'
+                    f'<div class="insight-note">Last 12 months vs. previous 12 months</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Revenue Growth (YoY)</div>'
+                    f'<div class="insight-value">Not available</div>'
+                    f'<div class="insight-note">Needs 24 months of data / inflow column</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+            if overdue_amount is not None:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Overdue Customer Invoices</div>'
+                    f'<div class="insight-value">EUR {overdue_amount:,.2f}</div>'
+                    f'<div class="insight-note">{overdue_count} invoice(s) overdue</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Overdue Customer Invoices</div>'
+                    f'<div class="insight-value">{overdue_count}</div>'
+                    f'<div class="insight-note">Requires collection follow-up</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
             st.markdown(
-                '<h2 class="section-title" style="font-size:22px !important;">'
-                "Latest Risk Signal</h2>",
+                f'<div class="insight-card">'
+                f'<div class="insight-label">Negative Cash-Flow Months</div>'
+                f'<div class="insight-value">{negative_months} / {len(monthly)}</div>'
+                f'<div class="insight-note">Across the full represented period</div>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
-            level, tone, reason = compute_light_risk_signal(monthly_df)
+
             st.markdown(
-                f"""
-                <div class="risk-signal-card risk-{tone}">
-                    <div class="risk-signal-level">{level}</div>
-                    <div class="risk-signal-reason">{reason}</div>
-                </div>
-                """,
+                f'<div class="insight-card">'
+                f'<div class="insight-label">Lowest Cash-Flow Month</div>'
+                f'<div class="insight-value">{lowest_month}</div>'
+                f'<div class="insight-note">EUR {lowest_value:,.2f}</div>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
+
             st.caption(
-                "Lightweight signal from the last 3 months of real "
-                "data — the full 6-rule Liquidity Risk engine is a "
-                "separate page, still to come."
+                "These are descriptive financial signals "
+                "from validated historical data. "
+                "The forecast-based Liquidity Risk engine "
+                "will add forward-looking risk severity."
             )
+
+    except Exception as error:
+        st.info("Cash intelligence charts could not be loaded.")
+        st.caption(str(error))
+
+    # --------------------------------------------------------
+    # CASH OUTLOOK (simple estimate, not the real forecast model)
+    # --------------------------------------------------------
 
     st.markdown(
-        '<h2 class="section-title">Treasoria Modules</h2>',
+        '<h2 class="section-title">Cash Outlook — Next 3 Months</h2>',
         unsafe_allow_html=True,
     )
 
-    column_1, column_2, column_3 = st.columns(3)
+    try:
+        monthly_for_outlook, daily_for_outlook, _ = load_overview_data()
 
-    with column_1:
-        st.markdown(
-            """
-            <div class="module-card">
-                <h4>📄 Documents & OCR</h4>
-                <p>
-                    Extract and validate invoice and
-                    financial-document information.
-                </p>
-                <p class="status-planned">
-                    Integration planned
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        last_balance_row = daily_for_outlook.sort_values("date").iloc[-1]
+        last_balance = float(last_balance_row["consolidated_cash_balance"])
+        last_date = last_balance_row["date"]
+
+        trend_avg = float(
+            monthly_for_outlook.sort_values("month").tail(3)["net_cash_flow"].mean()
         )
 
-    with column_2:
-        st.markdown(
-            """
-            <div class="module-card">
-                <h4>📈 Forecast &amp; Risk Intelligence</h4>
-                <p>
-                    Financial KPIs generated from the
-                    validated Gold analytical tables.
-                </p>
-                <p class="status-ready">
-                    Connected
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        future_dates = pd.date_range(start=last_date, periods=4, freq="MS")[1:]
+        projected_values = [last_balance + trend_avg * (i + 1) for i in range(3)]
+
+        history_tail = (
+            daily_for_outlook
+            .sort_values("date")
+            .tail(90)[["date", "consolidated_cash_balance"]]
+            .rename(columns={"consolidated_cash_balance": "Balance"})
+        )
+        history_tail["Type"] = "Historical"
+
+        projection_df = pd.DataFrame(
+            {
+                "date": future_dates,
+                "Balance": projected_values,
+                "Type": "Projected (simple estimate)",
+            }
         )
 
-    with column_3:
-        st.markdown(
-            """
-            <div class="module-card">
-                <h4>✨ AI Financial Assistant</h4>
-                <p>
-                    Structured financial answers and
-                    contextual explanations powered by
-                    SQLite and RAG.
-                </p>
-                <p class="status-ready">
-                    Ready
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True,
+        outlook_df = pd.concat([history_tail, projection_df], ignore_index=True)
+
+        outlook_chart = (
+            alt.Chart(outlook_df)
+            .mark_line(point=True)
+            .encode(
+                x="date:T",
+                y="Balance:Q",
+                color=alt.Color(
+                    "Type:N",
+                    scale=alt.Scale(
+                        domain=["Historical", "Projected (simple estimate)"],
+                        range=["#0A1B33", "#C9A24B"],
+                    ),
+                ),
+                strokeDash=alt.condition(
+                    alt.datum.Type == "Projected (simple estimate)",
+                    alt.value([5, 5]),
+                    alt.value([0]),
+                ),
+            )
+            .properties(height=280)
         )
 
-    # The step-by-step Decision-Intelligence Workflow used to render
-    # here. It's a good architecture explainer for the presentation
-    # and documentation, but it added length to Overview without any
-    # new financial information — moved out so the page stays a
-    # short, product-focused financial read: KPIs, cash trend, risk,
-    # data quality, module access. Nothing else.
+        st.altair_chart(outlook_chart, use_container_width=True)
+
+        st.caption(
+            "Simple trend-based estimate (last balance + recent 3-month "
+            "average net flow) — the full forecasting model, with "
+            "confidence intervals and model comparison, arrives in Week 2."
+        )
+
+        try:
+            receivables_for_action = pd.read_csv(
+                _find_dataset_dir() / "gold" / "gold_receivables_aging.csv"
+            )
+            amount_col_action = next(
+                (c for c in ["amount", "open_amount", "invoice_amount", "amount_due", "balance"]
+                 if c in receivables_for_action.columns),
+                None,
+            )
+            overdue_mask_action = receivables_for_action["status"] == "open_overdue"
+            overdue_total_action = (
+                float(receivables_for_action.loc[overdue_mask_action, amount_col_action].sum())
+                if amount_col_action
+                else None
+            )
+
+            if overdue_total_action:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">💡 Suggested Action</div>'
+                    f'<div class="insight-note">'
+                    f'EUR {overdue_total_action:,.2f} in overdue receivables — '
+                    f'following up could meaningfully improve your projected cash position above.'
+                    f'</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+        except Exception:
+            pass
+
+    except Exception as outlook_error:
+        st.info("Cash outlook could not be loaded.")
+        st.caption(str(outlook_error))
 
 
 # ============================================================
@@ -1389,24 +1496,123 @@ elif selected_page == "Transactions":
 # INVOICES & OCR PAGE
 # ============================================================
 
-elif selected_page == "Invoices & OCR":
+elif selected_page == "Invoices":
 
-    st.title("📄 Invoices & OCR")
+    st.title("📄 Invoices")
+
     st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
 
     st.info(
-        "This module will extract fields from invoices and "
-        "financial documents before sending validated data to "
-        "the ETL pipeline."
+        "Upload an invoice PDF. Treasoria extracts the key fields "
+        "with Tesseract OCR, scores its own confidence per field, "
+        "and lets you download the results."
     )
 
-    st.file_uploader(
+    uploaded_file = st.file_uploader(
         "Upload a financial document",
-        type=["pdf", "png", "jpg", "jpeg"],
-        disabled=True,
+        type=["pdf"],
     )
+    if uploaded_file is not None:
+        temp_dir = Path("data/_ocr_uploads")
+        temp_dir.mkdir(parents=True, exist_ok=True)
+        temp_path = temp_dir / uploaded_file.name
 
-    st.caption("Document upload is disabled until the OCR pipeline is connected.")
+        with open(temp_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
+        with st.spinner("Running OCR..."):
+            image = pdf_to_image(str(temp_path))
+            raw_text = image_to_raw_text(image)
+
+        if is_bank_statement(raw_text):
+
+            with st.spinner("Reading full statement (all pages)..."):
+                images = pdf_to_images(str(temp_path))
+                raw_text = images_to_raw_text(images)
+
+            metadata = extract_statement_metadata(raw_text)
+            transactions_df = extract_statement_transactions(raw_text)
+
+            st.subheader("Statement detected")
+            st.write(
+                f"**Account type:** {metadata['account_type']} | "
+                f"**Period:** {metadata['period']}"
+            )
+            if metadata["iban"]:
+                st.write(f"**IBAN:** {metadata['iban']}")
+            if metadata["card_last4"]:
+                st.write(f"**Card ending:** {metadata['card_last4']}")
+
+            st.write(f"**{len(transactions_df)} transaction(s) found**")
+            st.dataframe(transactions_df, width="stretch")
+
+            st.subheader("Download results")
+            excel_bytes = build_excel_download_from_df(transactions_df)
+            pdf_bytes = read_pdf_bytes(str(temp_path))
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.download_button(
+                    label="📊 Download Transactions (Excel)",
+                    data=excel_bytes,
+                    file_name=f"statement_{metadata['period']}_transactions.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                )
+            with col2:
+                st.download_button(
+                    label="📄 Download Original PDF",
+                    data=pdf_bytes,
+                    file_name=f"statement_{metadata['period']}_original.pdf",
+                    mime="application/pdf",
+                )
+
+        else:
+            ocr_data = get_ocr_data(image)
+            line_item = extract_line_item(raw_text)
+            fields = {
+                "Invoice number": extract_invoice_number(raw_text),
+                "Invoice date": extract_invoice_date(raw_text),
+                "Due date": extract_due_date(raw_text),
+                "Total due": extract_total_due(raw_text),
+                "Status": extract_status(raw_text),
+                "Paid on": extract_paid_on(raw_text),
+                "Counterparty": line_item["counterparty"],
+                "Category": line_item["category"],
+                "Net amount": line_item["net_amount"],
+                "VAT amount": line_item["vat_amount"],
+            }
+
+            overall_confidence = compute_overall_confidence(fields, ocr_data)
+            status = determine_review_status(overall_confidence)
+            st.subheader("Extracted fields")
+            st.write(f"**Overall status:** {status} ({overall_confidence}%)")
+            st.table(fields)
+            st.subheader("Download results")
+            excel_bytes = build_excel_download(fields)
+            image_bytes = build_image_download(image)
+            pdf_bytes = read_pdf_bytes(str(temp_path))
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.download_button(
+                    label="📊 Download Excel",
+                    data=excel_bytes,
+                    file_name=f"{fields['Invoice number']}_extracted.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                )
+            with col2:
+                st.download_button(
+                    label="📄 Download PDF",
+                    data=pdf_bytes,
+                    file_name=f"{fields['Invoice number']}_original.pdf",
+                    mime="application/pdf",
+                )
+            with col3:
+                st.download_button(
+                    label="🖼️ Download Image",
+                    data=image_bytes,
+                    file_name=f"{fields['Invoice number']}_scan.png",
+                    mime="image/png",
+                )
 
 
 # ============================================================
@@ -1562,21 +1768,14 @@ elif selected_page == "AI Financial Assistant":
 
                 with st.spinner("Analysing your financial question..."):
 
-                    # ====================================================
-                    # HYBRID SQL + RAG ROUTING
-                    # ====================================================
-
                     sql_response = answer_sql_question(user_question)
 
                     if sql_response is not None:
-                        # Exact structured result returned from SQLite.
                         response = sql_response
                         response_text = str(response)
                         sources = []
 
                     else:
-                        # No structured SQL intent matched. Fall back to
-                        # the RAG engine.
                         response = st.session_state.chat_engine.chat(user_question)
                         response_text = str(response)
                         sources = []
