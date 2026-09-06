@@ -4,8 +4,17 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from src.ocr_engine import (
+    pdf_to_image, image_to_raw_text, get_ocr_data,
+    extract_invoice_number, extract_invoice_date, extract_due_date,
+    extract_total_due, extract_status, extract_paid_on, extract_line_item,
+    compute_overall_confidence, determine_review_status,
+    build_excel_download, build_image_download, read_pdf_bytes,
+)
+
 import pandas as pd
 import streamlit as st
+import altair as alt
 
 from src.engine import get_chat_engine
 from src.model_loader import (
@@ -593,7 +602,7 @@ def render_data_quality_badge() -> None:
 PAGES = [
     "Overview",
     "Transactions",
-    "Invoices & OCR",
+    "Invoices",
     "Cash-Flow Forecast",
     "Liquidity Risk",
     "What-if Simulator",
@@ -1246,25 +1255,25 @@ st.markdown(
         div[data-testid="stMetric"] {
 
             min-height:
-                150px;
+                108px;
 
             padding:
-                1.55rem
-                1.7rem !important;
+                1.0rem
+                1.15rem !important;
 
             border:
                 1px solid
                 var(--line);
 
             border-radius:
-                15px;
+                13px;
 
             background-color:
                 var(--card);
 
             box-shadow:
 
-                0 10px 30px
+                0 8px 22px
                 rgba(
                     10,
                     27,
@@ -1329,10 +1338,10 @@ st.markdown(
                 var(--ink) !important;
 
             font-size:
-                34px !important;
+                26px !important;
 
             line-height:
-                1.22 !important;
+                1.2 !important;
 
             white-space:
                 normal !important;
@@ -1352,7 +1361,7 @@ st.markdown(
                 var(--slate) !important;
 
             font-size:
-                16px !important;
+                14px !important;
 
             font-weight:
                 600 !important;
@@ -1568,121 +1577,6 @@ st.markdown(
 
             font-size:
                 16px !important;
-        }
-
-
-        /* ==================================================
-           WORKFLOW
-           ================================================== */
-
-        .workflow-card {
-
-            border:
-                1px solid
-                var(--line);
-
-            border-radius:
-                15px;
-
-            background:
-                var(--card);
-
-            box-shadow:
-
-                0 10px 28px
-                rgba(
-                    10,
-                    27,
-                    51,
-                    0.05
-                );
-
-            padding:
-                0.4rem
-                1.9rem;
-
-            margin-bottom:
-                1rem;
-        }
-
-
-        .workflow-row {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                1.2rem;
-
-            padding:
-                1.18rem
-                0;
-
-            border-bottom:
-
-                1px solid
-                #F1ECDE;
-        }
-
-
-        .workflow-row:last-child {
-
-            border-bottom:
-                none;
-        }
-
-
-        .workflow-num {
-
-            font-family:
-                'IBM Plex Mono',
-                monospace !important;
-
-            font-size:
-                16px !important;
-
-            font-weight:
-                600;
-
-            color:
-                var(--gold);
-
-            background:
-                var(--gold-bg);
-
-            width:
-                2.7rem;
-
-            height:
-                2.7rem;
-
-            border-radius:
-                50%;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            flex-shrink:
-                0;
-        }
-
-
-        .workflow-text {
-
-            font-size:
-                18px !important;
-
-            color:
-                var(--ink-soft) !important;
         }
 
 
@@ -2114,35 +2008,13 @@ with st.sidebar:
 
 
     st.markdown(
-        f"""
-        <div class="company-card">
-
-            <div class="company-card-name">
-                {ACTIVE_COMPANY['name']}
-            </div>
-
-            <div class="company-card-owner">
-                Owner:
-                {ACTIVE_COMPANY['owner']}
-            </div>
-
-            <div class="company-card-address">
-                {ACTIVE_COMPANY['address']}
-                <br>
-                {ACTIVE_COMPANY['city']}
-            </div>
-
-            <div class="company-card-sector">
-                {ACTIVE_COMPANY['sector']}
-            </div>
-
-            <div class="company-card-updated">
-                Last online:
-                {ACTIVE_COMPANY['last_updated']}
-            </div>
-
-        </div>
-        """,
+        f'<div class="company-card">'
+        f'<div class="company-card-name">{ACTIVE_COMPANY["name"]}</div>'
+        f'<div class="company-card-owner">Owner: {ACTIVE_COMPANY["owner"]}</div>'
+        f'<div class="company-card-address">{ACTIVE_COMPANY["address"]}<br>{ACTIVE_COMPANY["city"]}</div>'
+        f'<div class="company-card-sector">{ACTIVE_COMPANY["sector"]}</div>'
+        f'<div class="company-card-updated">Last online: {ACTIVE_COMPANY["last_updated"]}</div>'
+        f'</div>',
         unsafe_allow_html=True,
     )
 
@@ -2270,21 +2142,10 @@ if selected_page == "Overview":
 
 
     st.markdown(
-        f"""
-        <div class="treasoria-subtitle">
-
-            <span class="subtitle-hero">
-                See Tomorrow's Cash.
-                Make Better Decisions Today.
-            </span>
-
-            <br>
-
-            Financial intelligence for
-            {ACTIVE_COMPANY["name"]}
-
-        </div>
-        """,
+        f'<div class="treasoria-subtitle">'
+        f'<span class="subtitle-hero">See Tomorrow\'s Cash. Make Better Decisions Today.</span>'
+        f'<br>Financial intelligence for {ACTIVE_COMPANY["name"]}'
+        f'</div>',
         unsafe_allow_html=True,
     )
 
@@ -2602,6 +2463,67 @@ if selected_page == "Overview":
             )
 
 
+            st.markdown(
+                "### Expenses by Category (Last 12 Months)"
+            )
+
+            # ASSUMPTION: fact_supplier_invoice.csv has "category"
+            # and "amount" columns. If the real column names differ,
+            # this chart falls back to a message instead of crashing
+            # the whole Overview page -- tell me the exact names and
+            # I'll adjust the lookup precisely.
+            try:
+                dataset_path_for_categories = _find_dataset_dir()
+                supplier_invoices = pd.read_csv(
+                    dataset_path_for_categories / "silver" / "fact_supplier_invoice.csv"
+                )
+
+                category_col = next(
+                    (c for c in ["category", "expense_category"] if c in supplier_invoices.columns),
+                    None,
+                )
+                amount_col_supplier = next(
+                    (c for c in ["amount", "total_amount", "net_amount"] if c in supplier_invoices.columns),
+                    None,
+                )
+
+                if category_col and amount_col_supplier:
+                    category_totals = (
+                        supplier_invoices
+                        .groupby(category_col)[amount_col_supplier]
+                        .sum()
+                        .reset_index()
+                        .rename(columns={category_col: "Category", amount_col_supplier: "Amount"})
+                    )
+
+                    pie_chart = (
+                        alt.Chart(category_totals)
+                        .mark_arc(innerRadius=60)
+                        .encode(
+                            theta=alt.Theta("Amount:Q"),
+                            color=alt.Color(
+                                "Category:N",
+                                scale=alt.Scale(
+                                    range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
+                                ),
+                            ),
+                            tooltip=["Category", "Amount"],
+                        )
+                        .properties(height=320)
+                    )
+
+                    st.altair_chart(pie_chart, use_container_width=True)
+                else:
+                    st.info(
+                        "Expense category breakdown not available "
+                        "(expected columns not found in fact_supplier_invoice.csv)."
+                    )
+
+            except Exception as category_error:
+                st.info("Expense category breakdown could not be loaded.")
+                st.caption(str(category_error))
+
+
         with signal_column:
 
             st.markdown(
@@ -2632,14 +2554,62 @@ if selected_page == "Overview":
             )
 
 
-            overdue_count = int(
+            # --- Revenue Growth (YoY) -------------------------
+            # ASSUMPTION: gold_monthly_cash_flow.csv has a gross
+            # cash-in column. We try a few likely names since we
+            # don't have the exact schema in front of us -- if none
+            # match, the growth card falls back to "Not available"
+            # instead of crashing the whole page. Tell me the real
+            # column name if this doesn't display and I'll fix the
+            # lookup precisely.
+            inflow_column = next(
                 (
-                    receivables[
-                        "status"
+                    candidate
+                    for candidate in [
+                        "total_inflow",
+                        "cash_in",
+                        "inflow",
+                        "gross_inflow",
+                        "revenue",
                     ]
-                    == "open_overdue"
-                )
-                .sum()
+                    if candidate in monthly.columns
+                ),
+                None,
+            )
+
+            revenue_growth_yoy = None
+            if inflow_column is not None:
+                monthly_sorted = monthly.sort_values("month")
+                last_12 = monthly_sorted.tail(12)[inflow_column].sum()
+                prev_12 = monthly_sorted.iloc[-24:-12][inflow_column].sum() if len(monthly_sorted) >= 24 else None
+                if prev_12:
+                    revenue_growth_yoy = (last_12 - prev_12) / prev_12 * 100
+
+
+            # --- Overdue receivables, in EUR ------------------
+            # ASSUMPTION: gold_receivables_aging.csv has an amount
+            # column. Same fallback logic as above.
+            amount_column = next(
+                (
+                    candidate
+                    for candidate in [
+                        "amount",
+                        "open_amount",
+                        "invoice_amount",
+                        "amount_due",
+                        "balance",
+                    ]
+                    if candidate in receivables.columns
+                ),
+                None,
+            )
+
+            overdue_mask = receivables["status"] == "open_overdue"
+            overdue_count = int(overdue_mask.sum())
+            overdue_amount = (
+                float(receivables.loc[overdue_mask, amount_column].sum())
+                if amount_column is not None
+                else None
             )
 
 
@@ -2680,92 +2650,68 @@ if selected_page == "Overview":
 
 
             st.markdown(
-                f"""
-                <div class="insight-card">
-
-                    <div class="insight-label">
-                        3-Month Cash Trend
-                    </div>
-
-                    <div class="insight-value">
-                        {cash_signal}
-                    </div>
-
-                    <div class="insight-note">
-                        Avg.
-                        EUR
-                        {recent_three_month_avg:,.2f}
-                        / month
-                    </div>
-
-                </div>
-                """,
+                f'<div class="insight-card">'
+                f'<div class="insight-label">3-Month Cash Trend</div>'
+                f'<div class="insight-value">{cash_signal}</div>'
+                f'<div class="insight-note">Avg. EUR {recent_three_month_avg:,.2f} / month</div>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
 
+            if revenue_growth_yoy is not None:
+                growth_sign = "+" if revenue_growth_yoy >= 0 else ""
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Revenue Growth (YoY)</div>'
+                    f'<div class="insight-value">{growth_sign}{revenue_growth_yoy:,.1f}%</div>'
+                    f'<div class="insight-note">Last 12 months vs. previous 12 months</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Revenue Growth (YoY)</div>'
+                    f'<div class="insight-value">Not available</div>'
+                    f'<div class="insight-note">Needs 24 months of data / inflow column</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+            if overdue_amount is not None:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Overdue Customer Invoices</div>'
+                    f'<div class="insight-value">EUR {overdue_amount:,.2f}</div>'
+                    f'<div class="insight-note">{overdue_count} invoice(s) overdue</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">Overdue Customer Invoices</div>'
+                    f'<div class="insight-value">{overdue_count}</div>'
+                    f'<div class="insight-note">Requires collection follow-up</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
 
             st.markdown(
-                f"""
-                <div class="insight-card">
-
-                    <div class="insight-label">
-                        Overdue Customer Invoices
-                    </div>
-
-                    <div class="insight-value">
-                        {overdue_count}
-                    </div>
-
-                    <div class="insight-note">
-                        Requires collection follow-up
-                    </div>
-
-                </div>
-                """,
+                f'<div class="insight-card">'
+                f'<div class="insight-label">Negative Cash-Flow Months</div>'
+                f'<div class="insight-value">{negative_months} / {len(monthly)}</div>'
+                f'<div class="insight-note">Across the full represented period</div>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
 
-
             st.markdown(
-                f"""
-                <div class="insight-card">
-
-                    <div class="insight-label">
-                        Negative Cash-Flow Months
-                    </div>
-
-                    <div class="insight-value">
-                        {negative_months} / {len(monthly)}
-                    </div>
-
-                    <div class="insight-note">
-                        Across the full represented period
-                    </div>
-
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-
-            st.markdown(
-                f"""
-                <div class="insight-card">
-
-                    <div class="insight-label">
-                        Lowest Cash-Flow Month
-                    </div>
-
-                    <div class="insight-value">
-                        {lowest_month}
-                    </div>
-
-                    <div class="insight-note">
-                        EUR {lowest_value:,.2f}
-                    </div>
-
-                </div>
-                """,
+                f'<div class="insight-card">'
+                f'<div class="insight-label">Lowest Cash-Flow Month</div>'
+                f'<div class="insight-value">{lowest_month}</div>'
+                f'<div class="insight-note">EUR {lowest_value:,.2f}</div>'
+                f'</div>',
                 unsafe_allow_html=True,
             )
 
@@ -2791,168 +2737,125 @@ if selected_page == "Overview":
 
 
     # ========================================================
-    # MODULES
+    # CASH OUTLOOK (simple estimate, not the real forecast model)
     # ========================================================
 
     st.markdown(
         """
         <h2 class="section-title">
-            Treasoria Modules
+            Cash Outlook — Next 3 Months
         </h2>
         """,
         unsafe_allow_html=True,
     )
 
+    try:
+        monthly_for_outlook, daily_for_outlook, _ = load_overview_data()
 
-    column_1, (
-        column_2
-    ), column_3 = (
-        st.columns(
-            3,
-            gap="large",
-        )
-    )
+        last_balance_row = daily_for_outlook.sort_values("date").iloc[-1]
+        last_balance = float(last_balance_row["consolidated_cash_balance"])
+        last_date = last_balance_row["date"]
 
-
-    with column_1:
-
-        st.markdown(
-            """
-            <div class="module-card">
-
-                <h4>
-                    📄 Documents & OCR
-                </h4>
-
-                <p>
-                    Extract, validate and reconcile
-                    invoice and financial-document
-                    information.
-                </p>
-
-                <p class="status-planned">
-                    Integration planned
-                </p>
-
-            </div>
-            """,
-            unsafe_allow_html=True,
+        trend_avg = float(
+            monthly_for_outlook
+            .sort_values("month")
+            .tail(3)["net_cash_flow"]
+            .mean()
         )
 
+        future_dates = pd.date_range(
+            start=last_date, periods=4, freq="MS"
+        )[1:]
+        projected_values = [
+            last_balance + trend_avg * (i + 1)
+            for i in range(3)
+        ]
 
-    with column_2:
+        history_tail = (
+            daily_for_outlook
+            .sort_values("date")
+            .tail(90)[["date", "consolidated_cash_balance"]]
+            .rename(columns={"consolidated_cash_balance": "Balance"})
+        )
+        history_tail["Type"] = "Historical"
 
-        st.markdown(
-            """
-            <div class="module-card">
-
-                <h4>
-                    📈 Forecast & Risk Intelligence
-                </h4>
-
-                <p>
-                    Forecast future cash positions,
-                    quantify uncertainty and detect
-                    potential liquidity-risk signals.
-                </p>
-
-                <p class="status-ready">
-                    Financial data connected
-                </p>
-
-            </div>
-            """,
-            unsafe_allow_html=True,
+        projection_df = pd.DataFrame(
+            {
+                "date": future_dates,
+                "Balance": projected_values,
+                "Type": "Projected (simple estimate)",
+            }
         )
 
+        outlook_df = pd.concat([history_tail, projection_df], ignore_index=True)
 
-    with column_3:
-
-        st.markdown(
-            """
-            <div class="module-card">
-
-                <h4>
-                    ✨ AI Financial Assistant
-                </h4>
-
-                <p>
-                    Exact structured financial answers
-                    through SQLite and contextual
-                    explanations through RAG.
-                </p>
-
-                <p class="status-ready">
-                    Ready
-                </p>
-
-            </div>
-            """,
-            unsafe_allow_html=True,
+        outlook_chart = (
+            alt.Chart(outlook_df)
+            .mark_line(point=True)
+            .encode(
+                x="date:T",
+                y="Balance:Q",
+                color=alt.Color(
+                    "Type:N",
+                    scale=alt.Scale(
+                        domain=["Historical", "Projected (simple estimate)"],
+                        range=["#0A1B33", "#C9A24B"],
+                    ),
+                ),
+                strokeDash=alt.condition(
+                    alt.datum.Type == "Projected (simple estimate)",
+                    alt.value([5, 5]),
+                    alt.value([0]),
+                ),
+            )
+            .properties(height=280)
         )
 
+        st.altair_chart(outlook_chart, use_container_width=True)
 
-    # ========================================================
-    # WORKFLOW
-    # ========================================================
-
-    st.markdown(
-        """
-        <h2 class="section-title">
-            Decision-Intelligence Workflow
-        </h2>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-    workflow_steps = [
-
-        "Extract financial information using OCR.",
-
-        "Validate, clean and transform "
-        "the extracted data.",
-
-        "Store trusted financial information.",
-
-        "Calculate financial KPIs.",
-
-        "Forecast future cash positions.",
-
-        "Identify potential liquidity risks.",
-
-        "Simulate alternative business scenarios.",
-
-        "Explain results through the "
-        "financial assistant.",
-    ]
-
-
-    workflow_html = "".join(
-
-        (
-            '<div class="workflow-row">'
-            f'<div class="workflow-num">{i:02d}</div>'
-            f'<div class="workflow-text">{step}</div>'
-            '</div>'
+        st.caption(
+            "Simple trend-based estimate (last balance + recent 3-month "
+            "average net flow) — the full forecasting model, with "
+            "confidence intervals and model comparison, arrives in Week 2."
         )
 
-        for i, step
-        in enumerate(
-            workflow_steps,
-            start=1,
-        )
-    )
+        # --- Suggested action, built from real numbers already on
+        # this page (overdue amount + cash trend). NOT the future
+        # Liquidity Risk engine (6 rules, severity, dates) -- that
+        # is a separate module still to come.
+        try:
+            receivables_for_action = pd.read_csv(
+                _find_dataset_dir() / "gold" / "gold_receivables_aging.csv"
+            )
+            amount_col_action = next(
+                (c for c in ["amount", "open_amount", "invoice_amount", "amount_due", "balance"]
+                 if c in receivables_for_action.columns),
+                None,
+            )
+            overdue_mask_action = receivables_for_action["status"] == "open_overdue"
+            overdue_total_action = (
+                float(receivables_for_action.loc[overdue_mask_action, amount_col_action].sum())
+                if amount_col_action
+                else None
+            )
 
+            if overdue_total_action:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">💡 Suggested Action</div>'
+                    f'<div class="insight-note">'
+                    f'EUR {overdue_total_action:,.2f} in overdue receivables — '
+                    f'following up could meaningfully improve your projected cash position above.'
+                    f'</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+        except Exception:
+            pass
 
-    st.markdown(
-        (
-            '<div class="workflow-card">'
-            f'{workflow_html}'
-            '</div>'
-        ),
-        unsafe_allow_html=True,
-    )
+    except Exception as outlook_error:
+        st.info("Cash outlook could not be loaded.")
+        st.caption(str(outlook_error))
 
 
 # ============================================================
@@ -2984,10 +2887,10 @@ elif selected_page == "Transactions":
 # INVOICES & OCR
 # ============================================================
 
-elif selected_page == "Invoices & OCR":
+elif selected_page == "Invoices":
 
     st.title(
-        "📄 Invoices & OCR"
+        "📄 Invoices"
     )
 
     st.markdown(
@@ -2996,28 +2899,84 @@ elif selected_page == "Invoices & OCR":
     )
 
     st.info(
-        "This module will extract fields "
-        "from invoices and financial documents "
-        "before sending validated data "
-        "to the ETL pipeline."
+        "Upload an invoice PDF. Treasoria extracts the key fields "
+        "with Tesseract OCR, scores its own confidence per field, "
+        "and lets you download the results."
     )
 
-    st.file_uploader(
+    uploaded_file = st.file_uploader(
         "Upload a financial document",
-        type=[
-            "pdf",
-            "png",
-            "jpg",
-            "jpeg",
-        ],
-        disabled=True,
+        type=["pdf"],
     )
+    if uploaded_file is not None:
+        # Save the upload to a temporary path on disk: our OCR
+        # functions (pdf_to_image, read_pdf_bytes) expect a real
+        # file path, not Streamlit's in-memory upload object.
+        temp_dir = Path("data/_ocr_uploads")
+        temp_dir.mkdir(parents=True, exist_ok=True)
+        temp_path = temp_dir / uploaded_file.name
 
-    st.caption(
-        "Document upload is disabled until "
-        "the OCR pipeline is connected."
-    )
 
+        with open(temp_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
+        with st.spinner("Running OCR..."):
+            image = pdf_to_image(str(temp_path))
+            raw_text = image_to_raw_text(image)
+            ocr_data = get_ocr_data(image)
+            line_item = extract_line_item(raw_text)
+
+            fields = {
+                "Invoice number": extract_invoice_number(raw_text),
+                "Invoice date": extract_invoice_date(raw_text),
+                "Due date": extract_due_date(raw_text),
+                "Total due": extract_total_due(raw_text),
+                "Status": extract_status(raw_text),
+                "Paid on": extract_paid_on(raw_text),
+                "Counterparty": line_item["counterparty"],
+                "Category": line_item["category"],
+                "Net amount": line_item["net_amount"],
+                "VAT amount": line_item["vat_amount"],
+            }
+
+        overall_confidence = compute_overall_confidence(fields, ocr_data)
+        status = determine_review_status(overall_confidence)
+
+        st.subheader("Extracted fields")
+        st.write(f"**Overall status:** {status} ({overall_confidence}%)")
+        st.table(fields)
+
+        st.subheader("Download results")
+
+        excel_bytes = build_excel_download(fields)
+        image_bytes = build_image_download(image)
+        pdf_bytes = read_pdf_bytes(str(temp_path))
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.download_button(
+                label="📊 Download Excel",
+                data=excel_bytes,
+                file_name=f"{fields['Invoice number']}_extracted.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+
+        with col2:
+            st.download_button(
+                label="📄 Download PDF",
+                data=pdf_bytes,
+                file_name=f"{fields['Invoice number']}_original.pdf",
+                mime="application/pdf",
+            )
+
+        with col3:
+            st.download_button(
+                label="🖼️ Download Image",
+                data=image_bytes,
+                file_name=f"{fields['Invoice number']}_scan.png",
+                mime="image/png",
+            )
 
 # ============================================================
 # FORECAST
@@ -3178,16 +3137,10 @@ elif selected_page == (
 
 
     st.markdown(
-        """
-        <div class="assistant-intro">
-
-            Ask Treasoria about cash balances,
-            cash flow, invoices, receivables,
-            payment behaviour, accounting controls
-            or financial events.
-
-        </div>
-        """,
+        '<div class="assistant-intro">'
+        'Ask Treasoria about cash balances, cash flow, invoices, receivables, '
+        'payment behaviour, accounting controls or financial events.'
+        '</div>',
         unsafe_allow_html=True,
     )
 
@@ -3430,16 +3383,6 @@ elif selected_page == (
 # ============================================================
 
 st.markdown(
-    """
-    <p class="footer-text">
-
-        TREASORIA ·
-        PREDICT ·
-        EXPLAIN ·
-        SIMULATE ·
-        DECIDE
-
-    </p>
-    """,
+    '<p class="footer-text">TREASORIA · PREDICT · EXPLAIN · SIMULATE · DECIDE</p>',
     unsafe_allow_html=True,
 )

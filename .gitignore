@@ -11,3 +11,4 @@ data/Treasoria_Datasets*/docs/bank_statements_pdf/
 data/Treasoria_Datasets*/docs/customer_invoices_pdf/
 data/Treasoria_Datasets*/docs/invoices_pdf/
 .streamlit/secrets.toml
+data/_ocr_uploads/
