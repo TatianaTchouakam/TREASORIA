@@ -35,6 +35,17 @@ evaluation all come later, once this foundation is solid.
 #    canonicalising the value at this stage would hide the very OCR
 #    error CER/WER is meant to measure. Canonicalisation, if needed,
 #    belongs in a later Data Quality step, not here.
+#
+# 4. Statement documents spanning multiple pages
+#    Invoices are always a single page, so pdf_to_image() only reads
+#    page 1 -- fast and sufficient for them. Bank/card statements
+#    can span 2+ pages once a month has enough transactions:
+#    confirmed on checking_main_2023-07.pdf, where reading only
+#    page 1 silently dropped 13 transactions (stopped at July 22
+#    instead of July 31).
+#    Fix: pdf_to_images() / images_to_raw_text() read and OCR every
+#    page for statement documents, joining the text before running
+#    extract_statement_transactions() on it.
 # ------------------------------------------------------------------
 
 
@@ -58,6 +69,20 @@ def pdf_to_image(pdf_path: str) -> Image.Image:
     pages = convert_from_path(pdf_path, dpi=200)
     return pages[0]  # our invoices are always a single page
 
+def load_image(image_path: str) -> Image.Image:
+    """
+    Load an already-image file (PNG/JPG) directly, for uploads that
+    are a photo of an invoice rather than a PDF.
+
+    WHY this is separate from pdf_to_image(): a PDF needs to be
+    RENDERED into an image first (pdf_to_image does that). A file
+    that's already a PNG/JPG is already an image -- there's nothing
+    to render, we just open it. Keeping the two functions separate
+    means the rest of the pipeline (image_to_raw_text, get_ocr_data,
+    etc.) doesn't need to know or care which path the image came
+    from -- both functions hand it the same kind of Image object.
+    """
+    return Image.open(image_path)
 
 def image_to_raw_text(image: Image.Image) -> str:
     """

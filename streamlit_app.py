@@ -3,9 +3,10 @@ import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
-
+from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers
+from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers, process_excel_import
 from src.ocr_engine import (
-    pdf_to_image, pdf_to_images, image_to_raw_text, images_to_raw_text,
+    pdf_to_image, load_image, pdf_to_images, image_to_raw_text, images_to_raw_text,
     get_ocr_data, is_bank_statement, extract_statement_metadata,
     extract_statement_transactions, build_excel_download_from_df,
     extract_invoice_number, extract_invoice_date, extract_due_date,
@@ -1510,7 +1511,7 @@ elif selected_page == "Invoices":
 
     uploaded_file = st.file_uploader(
         "Upload a financial document",
-        type=["pdf"],
+        type=["pdf", "png", "jpg", "jpeg", "xlsx"],
     )
     if uploaded_file is not None:
         temp_dir = Path("data/_ocr_uploads")
@@ -1520,124 +1521,150 @@ elif selected_page == "Invoices":
         with open(temp_path, "wb") as f:
             f.write(uploaded_file.getbuffer())
 
-        with st.spinner("Running OCR..."):
-            image = pdf_to_image(str(temp_path))
-            raw_text = image_to_raw_text(image)
+        is_excel_upload = temp_path.suffix.lower() == ".xlsx"
 
-        if is_bank_statement(raw_text):
-
-            with st.spinner("Reading full statement (all pages)..."):
-                images = pdf_to_images(str(temp_path))
-                raw_text = images_to_raw_text(images)
-
-            metadata = extract_statement_metadata(raw_text)
-            transactions_df = extract_statement_transactions(raw_text)
-
-            st.subheader("Statement detected")
-            st.write(
-                f"**Account type:** {metadata['account_type']} | "
-                f"**Period:** {metadata['period']}"
+        if is_excel_upload:
+            st.subheader("Bulk invoice import")
+            st.caption(
+                "Excel files are already structured data — no OCR "
+                "needed. Each row is validated with the same Data "
+                "Quality checks as a scanned invoice."
             )
-            if metadata["iban"]:
-                st.write(f"**IBAN:** {metadata['iban']}")
-            if metadata["card_last4"]:
-                st.write(f"**Card ending:** {metadata['card_last4']}")
 
-            st.write(f"**{len(transactions_df)} transaction(s) found**")
-            st.dataframe(transactions_df, width="stretch")
+            dataset_dir = _find_dataset_dir()
+            existing_ids = (
+                load_existing_invoice_numbers(dataset_dir)
+                if dataset_dir is not None
+                else None
+            )
 
-            st.subheader("Download results")
-            excel_bytes = build_excel_download_from_df(transactions_df)
-            pdf_bytes = read_pdf_bytes(str(temp_path))
+            with st.spinner("Validating imported invoices..."):
+                results_df = process_excel_import(str(temp_path), existing_ids)
 
-            col1, col2 = st.columns(2)
-            with col1:
-                st.download_button(
-                    label="📊 Download Transactions (Excel)",
-                    data=excel_bytes,
-                    file_name=f"statement_{metadata['period']}_transactions.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                )
-            with col2:
-                st.download_button(
-                    label="📄 Download Original PDF",
-                    data=pdf_bytes,
-                    file_name=f"statement_{metadata['period']}_original.pdf",
-                    mime="application/pdf",
-                )
+            passed_count = int((results_df["Status"] == "PASSED").sum())
+            st.write(
+                f"**{passed_count} / {len(results_df)} invoice(s) "
+                "passed all checks**"
+            )
+            st.dataframe(results_df, width="stretch")
 
         else:
-            ocr_data = get_ocr_data(image)
-            line_item = extract_line_item(raw_text)
-            fields = {
-                "Invoice number": extract_invoice_number(raw_text),
-                "Invoice date": extract_invoice_date(raw_text),
-                "Due date": extract_due_date(raw_text),
-                "Total due": extract_total_due(raw_text),
-                "Status": extract_status(raw_text),
-                "Paid on": extract_paid_on(raw_text),
-                "Counterparty": line_item["counterparty"],
-                "Category": line_item["category"],
-                "Net amount": line_item["net_amount"],
-                "VAT amount": line_item["vat_amount"],
-            }
 
-            overall_confidence = compute_overall_confidence(fields, ocr_data)
-            status = determine_review_status(overall_confidence)
-            st.subheader("Extracted fields")
-            st.write(f"**Overall status:** {status} ({overall_confidence}%)")
-            st.table(fields)
-            st.subheader("Download results")
-            excel_bytes = build_excel_download(fields)
-            image_bytes = build_image_download(image)
-            pdf_bytes = read_pdf_bytes(str(temp_path))
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.download_button(
-                    label="📊 Download Excel",
-                    data=excel_bytes,
-                    file_name=f"{fields['Invoice number']}_extracted.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            is_image_upload = temp_path.suffix.lower() in [".png", ".jpg", ".jpeg"]
+
+            with st.spinner("Running OCR..."):
+                if is_image_upload:
+                    image = load_image(str(temp_path))
+                else:
+                    image = pdf_to_image(str(temp_path))
+                raw_text = image_to_raw_text(image)
+
+            if is_bank_statement(raw_text) and not is_image_upload:
+
+                with st.spinner("Reading full statement (all pages)..."):
+                    images = pdf_to_images(str(temp_path))
+                    raw_text = images_to_raw_text(images)
+
+                metadata = extract_statement_metadata(raw_text)
+                transactions_df = extract_statement_transactions(raw_text)
+
+                st.subheader("Statement detected")
+                st.write(
+                    f"**Account type:** {metadata['account_type']} | "
+                    f"**Period:** {metadata['period']}"
                 )
-            with col2:
-                st.download_button(
-                    label="📄 Download PDF",
-                    data=pdf_bytes,
-                    file_name=f"{fields['Invoice number']}_original.pdf",
-                    mime="application/pdf",
+                if metadata["iban"]:
+                    st.write(f"**IBAN:** {metadata['iban']}")
+                if metadata["card_last4"]:
+                    st.write(f"**Card ending:** {metadata['card_last4']}")
+
+                st.write(f"**{len(transactions_df)} transaction(s) found**")
+                st.dataframe(transactions_df, width="stretch")
+
+                st.subheader("Download results")
+                excel_bytes = build_excel_download_from_df(transactions_df)
+                pdf_bytes = read_pdf_bytes(str(temp_path))
+
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.download_button(
+                        label="📊 Download Transactions (Excel)",
+                        data=excel_bytes,
+                        file_name=f"statement_{metadata['period']}_transactions.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    )
+                with col2:
+                    st.download_button(
+                        label="📄 Download Original PDF",
+                        data=pdf_bytes,
+                        file_name=f"statement_{metadata['period']}_original.pdf",
+                        mime="application/pdf",
+                    )
+
+            else:
+                ocr_data = get_ocr_data(image)
+                line_item = extract_line_item(raw_text)
+                fields = {
+                    "Invoice number": extract_invoice_number(raw_text),
+                    "Invoice date": extract_invoice_date(raw_text),
+                    "Due date": extract_due_date(raw_text),
+                    "Total due": extract_total_due(raw_text),
+                    "Status": extract_status(raw_text),
+                    "Paid on": extract_paid_on(raw_text),
+                    "Counterparty": line_item["counterparty"],
+                    "Category": line_item["category"],
+                    "Net amount": line_item["net_amount"],
+                    "VAT amount": line_item["vat_amount"],
+                }
+
+                overall_confidence = compute_overall_confidence(fields, ocr_data)
+                status = determine_review_status(overall_confidence)
+                st.subheader("Extracted fields")
+                st.write(f"**Overall status:** {status} ({overall_confidence}%)")
+                st.table(fields)
+
+                st.subheader("Data Quality")
+                dataset_dir = _find_dataset_dir()
+                existing_ids = (
+                    load_existing_invoice_numbers(dataset_dir)
+                    if dataset_dir is not None
+                    else None
                 )
-            with col3:
-                st.download_button(
-                    label="🖼️ Download Image",
-                    data=image_bytes,
-                    file_name=f"{fields['Invoice number']}_scan.png",
-                    mime="image/png",
-                )
+                dq_result = run_data_quality_checks(fields, line_item, existing_ids)
 
+                if dq_result["passed"]:
+                    st.success("✓ PASSED — Ready for integration into the trusted data layer.")
+                else:
+                    st.warning("⚠ Issues found:")
+                    for issue in dq_result["issues"]:
+                        st.write(f"- {issue}")
 
-# ============================================================
-# FORECAST PAGE
-# ============================================================
-
-elif selected_page == "Cash-Flow Forecast":
-
-    render_placeholder_page(
-        icon="📈",
-        title="Cash-Flow Forecast",
-        description=(
-            "Historical cash flow, forecasts, confidence intervals "
-            "and model comparison will appear here once the "
-            "forecasting module is connected."
-        ),
-        bullet_points=[
-            "30/60/90-day forecast",
-            "confidence intervals",
-            "actual vs. forecast comparison",
-            "model comparison",
-            "MAE / RMSE / MAPE",
-        ],
-    )
-
+                st.subheader("Download results")
+                excel_bytes = build_excel_download(fields)
+                image_bytes = build_image_download(image)
+                pdf_bytes = read_pdf_bytes(str(temp_path))
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.download_button(
+                        label="📊 Download Excel",
+                        data=excel_bytes,
+                        file_name=f"{fields['Invoice number']}_extracted.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    )
+                with col2:
+                    st.download_button(
+                        label="📄 Download PDF",
+                        data=pdf_bytes,
+                        file_name=f"{fields['Invoice number']}_original.pdf",
+                        mime="application/pdf",
+                    )
+                with col3:
+                    st.download_button(
+                        label="🖼️ Download Image",
+                        data=image_bytes,
+                        file_name=f"{fields['Invoice number']}_scan.png",
+                        mime="image/png",
+                    )
 
 # ============================================================
 # LIQUIDITY RISK PAGE
