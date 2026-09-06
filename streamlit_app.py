@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from src.kpi_validation import run_all_kpi_validations
+from src.kpi_validation import run_all_kpi_validations, build_overview_export
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers, process_excel_import
 from src.ocr_engine import (
@@ -1108,6 +1109,26 @@ if selected_page == "Overview":
 
     render_data_quality_badge()
     render_kpi_validation_badge()
+
+    col_refresh, col_export = st.columns([1, 1])
+    with col_refresh:
+        if st.button("🔄 Refresh data"):
+            st.cache_data.clear()
+            st.rerun()
+    with col_export:
+        try:
+            dataset_dir_for_export = _find_dataset_dir()
+            if dataset_dir_for_export is not None:
+                export_df = build_overview_export(dataset_dir_for_export)
+                export_bytes = build_excel_download_from_df(export_df)
+                st.download_button(
+                    label="📊 Download all figures (Excel)",
+                    data=export_bytes,
+                    file_name="treasoria_overview_export.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                )
+        except Exception:
+            pass
 
     try:
         kpi_summary = load_kpi_summary()

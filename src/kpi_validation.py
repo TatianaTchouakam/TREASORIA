@@ -242,3 +242,45 @@ def run_all_kpi_validations(dataset_dir) -> list[dict]:
     ]
 
     return results
+
+def build_overview_export(dataset_dir) -> pd.DataFrame:
+    """
+    Build one summary table combining every stored figure with its
+    verification status, for a single "download everything" export
+    from the Overview page.
+
+    WHY "Not checked" instead of silently omitting the other 11
+    figures: gold_kpi_summary.csv has 17 rows, but only 6 are
+    currently recomputed from source (see module docstring). Rather
+    than only exporting the 6 we've verified -- which would make
+    the export look more complete than our validation actually is
+    -- every stored figure is included, honestly labelled as
+    checked or not.
+    """
+
+    kpi_summary = pd.read_csv(dataset_dir / "gold" / "gold_kpi_summary.csv")
+    validation_results = run_all_kpi_validations(dataset_dir)
+
+    label_to_kpi_name = {
+        "Closing cash balance": "Consolidated Cash Balance (end of period)",
+        "Average Monthly Net Cash Flow": "Average Monthly Net Cash Flow",
+        "Open Receivables": "Open Receivables",
+        "Credit Card Debt": "Credit Card Debt (end of period)",
+        "Cash-Collected Revenue (24 months)": "Cash-Collected Revenue (24 months)",
+        "Runway": "Runway",
+    }
+
+    kpi_name_to_match = {
+        label_to_kpi_name[r["label"]]: r["match"]
+        for r in validation_results
+        if r["label"] in label_to_kpi_name
+    }
+
+    def verified_label(kpi_name: str) -> str:
+        if kpi_name not in kpi_name_to_match:
+            return "Not checked"
+        return "\u2713 Yes" if kpi_name_to_match[kpi_name] else "\u2717 No"
+
+    kpi_summary["Verified"] = kpi_summary["kpi"].map(verified_label)
+
+    return kpi_summary[["kpi", "value", "Verified"]]
