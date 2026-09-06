@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from src.kpi_validation import run_all_kpi_validations
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers, process_excel_import
 from src.ocr_engine import (
@@ -306,6 +307,71 @@ def render_data_quality_badge() -> None:
             st.markdown("- All supplier invoices linked to a source transaction ✓")
             st.markdown("- No duplicate transaction IDs ✓")
 
+@st.cache_data
+def load_kpi_validation_results() -> list[dict] | None:
+    """
+    Recompute every displayed KPI from source and compare against
+    the stored value. Returns None (not a crash) if the dataset
+    can't be found or a validation error occurs -- the badge shows
+    "unavailable" instead of breaking the whole Overview page.
+    """
+
+    dataset_dir = _find_dataset_dir()
+
+    if dataset_dir is None:
+        return None
+
+    try:
+        return run_all_kpi_validations(dataset_dir)
+    except Exception:
+        return None
+
+
+def render_kpi_validation_badge() -> None:
+    """
+    Display a compact trust signal for the KPI cards, in the same
+    style as render_data_quality_badge() -- a green badge if every
+    figure's recomputed value matches what's shown, orange with
+    detail if any don't.
+    """
+
+    results = load_kpi_validation_results()
+
+    if results is None:
+        st.caption("○ Figures check unavailable — dataset not found")
+        return
+
+    mismatches = [r for r in results if r["match"] is False]
+
+    if mismatches:
+        label = (
+            "🟠 Data check issue · "
+            f"{len(mismatches)} figure(s) don't match"
+        )
+
+        with st.popover(label):
+            st.markdown("**Figures that don't match their recomputed value:**")
+            for r in mismatches:
+                if "recomputed_trend" in r:
+                    st.markdown(
+                        f"- **{r['label']}**: stored says {r['stored']!r}, "
+                        f"recomputed trend is {r['recomputed_trend']}"
+                    )
+                else:
+                    st.markdown(
+                        f"- **{r['label']}**: stored {r['stored']}, "
+                        f"recomputed {r['recomputed']}"
+                    )
+
+    else:
+        with st.popover(f"🟢 {len(results)} key figures verified"):
+            st.markdown(
+                "Every figure shown above was recomputed directly "
+                "from the underlying data and matches:"
+            )
+            for r in results:
+                st.markdown(f"- **{r['label']}** ✓")
+
 
 @st.cache_data
 def load_overview_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -336,6 +402,8 @@ def load_overview_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     daily["date"] = pd.to_datetime(daily["date"])
 
     return monthly, daily, receivables
+
+
 
 
 # ============================================================
@@ -1039,6 +1107,7 @@ if selected_page == "Overview":
     st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
 
     render_data_quality_badge()
+    render_kpi_validation_badge()
 
     try:
         kpi_summary = load_kpi_summary()
