@@ -18,7 +18,7 @@
 
 ## 1. AI Financial Assistant
 
-### What this module does
+### Purpose
 A conversational assistant built to answer financial questions about Treasoria, combining two approaches depending on the question type — using **LlamaIndex** *(framework orchestrating document retrieval and response generation — RAG)*, **Groq LLM** *(the language model that generates the response)*, **sentence-transformers** *(converts text into numeric vectors for semantic search)*, and **SQLite** *(structured database, for exact numeric answers)*.
 
 ### Tools used and their role
@@ -37,7 +37,7 @@ Each question is routed: if it matches a precise numeric query (e.g. "what is my
 
 ## 2. Invoices & OCR
 
-### What this module does
+### Purpose
 Turns an invoice or bank statement (PDF, image, or Excel file) into structured, usable data, with a confidence score on every extracted field, combining **pdf2image** *(renders a PDF page as an image)*, **Tesseract** *(reads the text in the image)*, **regex** *(isolates specific fields)*, and **jiwer** *(measures the error rate)*.
 
 ### Tools used and their role
@@ -87,7 +87,7 @@ Turns an invoice or bank statement (PDF, image, or Excel file) into structured, 
 
 ## 3. Data Quality
 
-### What this module does
+### Purpose
 Checks that an extracted invoice (or a batch of invoices imported from Excel) is consistent and usable before marking it "ready to integrate" — relying on **pandas** *(loads and compares data)* and **datetime** *(compares dates against each other)*.
 
 ### Tools used and their role
@@ -116,7 +116,7 @@ No major bugs — the main work was defining the exact **scope** of the checks (
 
 ## 4. KPI Validation
 
-### What this module does
+### Purpose
 Recomputes 6 figures shown on the dashboard **independently**, from raw data, to verify they match what's stored — instead of blindly trusting a pre-calculated file. Relies entirely on **pandas** *(loads source tables and performs the recalculations)*.
 
 ### Tools used and their role
@@ -147,7 +147,7 @@ No discrepancy detected — the 6 recomputed figures matched exactly what was st
 
 ## 5. Dashboard Finalisation
 
-### What this module does
+### Purpose
 Adds two practical features to the dashboard: refreshing data without restarting the app, and downloading the full set of figures (not just the 6 shown on screen) — via **pandas** *(assembles the export table)* and the **Streamlit cache** *(stores results in memory; the Refresh button clears it to force a recalculation)*.
 
 ### Tools used and their role
@@ -168,7 +168,7 @@ Adds two practical features to the dashboard: refreshing data without restarting
 
 ## 6. Transactions
 
-### What this module does
+### Purpose
 Combines 3 accounts (main checking, secondary checking, credit card) into one filterable ledger, with export and category breakdown — via **pandas** *(loads, combines, filters, and aggregates)* and **altair** *(draws the breakdown chart)*.
 
 ### Tools used and their role
