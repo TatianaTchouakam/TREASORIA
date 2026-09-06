@@ -3,7 +3,9 @@ import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from src.upload_log import log_upload, load_recent_uploads
 from src.kpi_validation import run_all_kpi_validations
+from src.transactions import load_all_transactions, category_breakdown, build_csv_export
 from src.kpi_validation import run_all_kpi_validations, build_overview_export
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers, process_excel_import
@@ -1565,28 +1567,112 @@ if selected_page == "Overview":
 
 elif selected_page == "Transactions":
 
-    render_placeholder_page(
-        icon="📋",
-        title="Transactions",
-        description=(
-            "This page will show the full filterable transaction "
-            "ledger once the Silver layer is connected."
-        ),
-        bullet_points=[
-            "date, amount, category, counterparty, flow type",
-            "bank account and transaction source",
-            "reconciliation status",
-            "internal vs. external flag",
-            "category breakdown",
-            "CSV export of the active filter",
-        ],
-    )
+    st.title("📋 Transactions")
+    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
+
+    try:
+        dataset_dir = _find_dataset_dir()
+
+        if dataset_dir is None:
+            st.error("The Treasoria dataset could not be found.")
+        else:
+            all_transactions = load_all_transactions(dataset_dir)
+
+            st.subheader("Filters")
+
+            filter_col1, filter_col2, filter_col3, filter_col4 = st.columns(4)
+
+            with filter_col1:
+                min_date = all_transactions["date"].min().date()
+                max_date = all_transactions["date"].max().date()
+                date_range = st.date_input(
+                    "Date range",
+                    value=(min_date, max_date),
+                    min_value=min_date,
+                    max_value=max_date,
+                )
+
+            with filter_col2:
+                account_options = ["All"] + sorted(all_transactions["account"].unique().tolist())
+                selected_account = st.selectbox("Account", account_options)
+
+            with filter_col3:
+                category_options = ["All"] + sorted(all_transactions["category"].unique().tolist())
+                selected_category = st.selectbox("Category", category_options)
+
+            with filter_col4:
+                flow_options = ["All", "Money in", "Money out"]
+                selected_flow = st.selectbox("Money in / out", flow_options)
+
+            # Apply filters
+            filtered = all_transactions.copy()
+
+            if len(date_range) == 2:
+                start_date, end_date = date_range
+                filtered = filtered[
+                    (filtered["date"].dt.date >= start_date)
+                    & (filtered["date"].dt.date <= end_date)
+                ]
+
+            if selected_account != "All":
+                filtered = filtered[filtered["account"] == selected_account]
+
+            if selected_category != "All":
+                filtered = filtered[filtered["category"] == selected_category]
+
+            if selected_flow != "All":
+                filtered = filtered[filtered["Money in / Money out"] == selected_flow]
+
+            st.subheader(f"Transactions ({len(filtered)} of {len(all_transactions)})")
+
+            display_columns = [
+                "date", "counterparty", "category", "amount",
+                "Money in / Money out", "account",
+                "Confirmed / Needs review",
+                "Internal transfer / Real transaction",
+            ]
+            st.dataframe(filtered[display_columns], width="stretch")
+
+            csv_bytes = build_csv_export(filtered[display_columns])
+            st.download_button(
+                label="⬇️ Download filtered transactions (CSV)",
+                data=csv_bytes,
+                file_name="treasoria_transactions_filtered.csv",
+                mime="text/csv",
+            )
+
+            st.subheader("Category breakdown")
+            breakdown = category_breakdown(filtered)
+            st.dataframe(breakdown, width="stretch")
+
+            if not breakdown.empty:
+                chart = (
+                    alt.Chart(breakdown)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X("Total Amount:Q"),
+                        y=alt.Y("category:N", sort="-x"),
+                        color=alt.Color(
+                            "category:N",
+                            legend=None,
+                            scale=alt.Scale(
+                                range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
+                            ),
+                        ),
+                        tooltip=["category", "Transactions", "Total Amount"],
+                    )
+                    .properties(height=400)
+                )
+                st.altair_chart(chart, use_container_width=True)
+
+    except Exception as error:
+        st.error("The transaction ledger could not be loaded.")
+        st.caption(str(error))
 
 
 # ============================================================
 # INVOICES & OCR PAGE
 # ============================================================
-
 elif selected_page == "Invoices":
 
     st.title("📄 Invoices")
@@ -1594,10 +1680,27 @@ elif selected_page == "Invoices":
     st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
 
     st.info(
-        "Upload an invoice PDF. Treasoria extracts the key fields "
-        "with Tesseract OCR, scores its own confidence per field, "
-        "and lets you download the results."
+        "Upload an invoice, receipt, or bank statement — Treasoria "
+        "reads it, checks it, and gets it ready for your books in "
+        "seconds."
     )
+    try:
+        dataset_dir_intro = _find_dataset_dir()
+        if dataset_dir_intro is not None:
+            existing_count = len(load_existing_invoice_numbers(dataset_dir_intro))
+            st.caption(f"📁 {existing_count} invoices already recorded in your trusted dataset.")
+    except Exception:
+        pass
+
+    with st.expander("How it works"):
+        st.markdown(
+            "1. **Upload** a PDF, image, or Excel file\n"
+            "2. **Fields extracted** automatically\n"
+            "3. **Checked** for missing or inconsistent data\n"
+            "4. **Download** your results, ready to file"
+        )
+
+    upload_log_path = Path("data/_upload_log.csv")
 
     uploaded_file = st.file_uploader(
         "Upload a financial document",
@@ -1638,6 +1741,13 @@ elif selected_page == "Invoices":
             )
             st.dataframe(results_df, width="stretch")
 
+            log_upload(
+                upload_log_path,
+                uploaded_file.name,
+                "Spreadsheet import",
+                f"{passed_count}/{len(results_df)} passed",
+            )
+
         else:
 
             is_image_upload = temp_path.suffix.lower() in [".png", ".jpg", ".jpeg"]
@@ -1670,6 +1780,13 @@ elif selected_page == "Invoices":
 
                 st.write(f"**{len(transactions_df)} transaction(s) found**")
                 st.dataframe(transactions_df, width="stretch")
+
+                log_upload(
+                    upload_log_path,
+                    uploaded_file.name,
+                    "Bank statement",
+                    f"{len(transactions_df)} transactions found",
+                )
 
                 st.subheader("Download results")
                 excel_bytes = build_excel_download_from_df(transactions_df)
@@ -1724,10 +1841,19 @@ elif selected_page == "Invoices":
 
                 if dq_result["passed"]:
                     st.success("✓ PASSED — Ready for integration into the trusted data layer.")
+                    dq_summary = "PASSED"
                 else:
                     st.warning("⚠ Issues found:")
                     for issue in dq_result["issues"]:
                         st.write(f"- {issue}")
+                    dq_summary = f"{len(dq_result['issues'])} issue(s) found"
+
+                log_upload(
+                    upload_log_path,
+                    uploaded_file.name,
+                    "Invoice",
+                    f"{status} ({overall_confidence}%) — {dq_summary}",
+                )
 
                 st.subheader("Download results")
                 excel_bytes = build_excel_download(fields)
@@ -1755,6 +1881,12 @@ elif selected_page == "Invoices":
                         file_name=f"{fields['Invoice number']}_scan.png",
                         mime="image/png",
                     )
+
+    recent_uploads = load_recent_uploads(upload_log_path)
+    if not recent_uploads.empty:
+        st.subheader("Recently processed")
+        st.dataframe(recent_uploads, width="stretch")
+
 
 # ============================================================
 # LIQUIDITY RISK PAGE
