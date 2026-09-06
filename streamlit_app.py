@@ -5,7 +5,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from src.ocr_engine import (
-    pdf_to_image, image_to_raw_text, get_ocr_data,
+    pdf_to_image, pdf_to_images, image_to_raw_text, images_to_raw_text,
+    get_ocr_data, is_bank_statement, extract_statement_metadata,
+    extract_statement_transactions, build_excel_download_from_df,
     extract_invoice_number, extract_invoice_date, extract_due_date,
     extract_total_due, extract_status, extract_paid_on, extract_line_item,
     compute_overall_confidence, determine_review_status,
@@ -2923,9 +2925,58 @@ elif selected_page == "Invoices":
         with st.spinner("Running OCR..."):
             image = pdf_to_image(str(temp_path))
             raw_text = image_to_raw_text(image)
+
+        # Detect the document type BEFORE deciding how to process
+        # it further. A single-page read is enough to tell invoice
+        # from statement -- we only re-read all pages if it turns
+        # out to actually be a statement.
+        if is_bank_statement(raw_text):
+
+            with st.spinner("Reading full statement (all pages)..."):
+                images = pdf_to_images(str(temp_path))
+                raw_text = images_to_raw_text(images)
+
+            metadata = extract_statement_metadata(raw_text)
+            transactions_df = extract_statement_transactions(raw_text)
+
+            st.subheader("Statement detected")
+            st.write(
+                f"**Account type:** {metadata['account_type']} | "
+                f"**Period:** {metadata['period']}"
+            )
+            if metadata["iban"]:
+                st.write(f"**IBAN:** {metadata['iban']}")
+            if metadata["card_last4"]:
+                st.write(f"**Card ending:** {metadata['card_last4']}")
+
+            st.write(f"**{len(transactions_df)} transaction(s) found**")
+            st.dataframe(transactions_df, width="stretch")
+
+            st.subheader("Download results")
+            excel_bytes = build_excel_download_from_df(transactions_df)
+            pdf_bytes = read_pdf_bytes(str(temp_path))
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.download_button(
+                    label="📊 Download Transactions (Excel)",
+                    data=excel_bytes,
+                    file_name=f"statement_{metadata['period']}_transactions.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                )
+            with col2:
+                st.download_button(
+                    label="📄 Download Original PDF",
+                    data=pdf_bytes,
+                    file_name=f"statement_{metadata['period']}_original.pdf",
+                    mime="application/pdf",
+                )
+
+        else:
+            # Not a statement -- proceed exactly as before: this is
+            # an invoice, single page is enough.
             ocr_data = get_ocr_data(image)
             line_item = extract_line_item(raw_text)
-
             fields = {
                 "Invoice number": extract_invoice_number(raw_text),
                 "Invoice date": extract_invoice_date(raw_text),
@@ -2939,450 +2990,34 @@ elif selected_page == "Invoices":
                 "VAT amount": line_item["vat_amount"],
             }
 
-        overall_confidence = compute_overall_confidence(fields, ocr_data)
-        status = determine_review_status(overall_confidence)
-
-        st.subheader("Extracted fields")
-        st.write(f"**Overall status:** {status} ({overall_confidence}%)")
-        st.table(fields)
-
-        st.subheader("Download results")
-
-        excel_bytes = build_excel_download(fields)
-        image_bytes = build_image_download(image)
-        pdf_bytes = read_pdf_bytes(str(temp_path))
-
-        col1, col2, col3 = st.columns(3)
-
-        with col1:
-            st.download_button(
-                label="📊 Download Excel",
-                data=excel_bytes,
-                file_name=f"{fields['Invoice number']}_extracted.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            )
-
-        with col2:
-            st.download_button(
-                label="📄 Download PDF",
-                data=pdf_bytes,
-                file_name=f"{fields['Invoice number']}_original.pdf",
-                mime="application/pdf",
-            )
-
-        with col3:
-            st.download_button(
-                label="🖼️ Download Image",
-                data=image_bytes,
-                file_name=f"{fields['Invoice number']}_scan.png",
-                mime="image/png",
-            )
-
-# ============================================================
-# FORECAST
-# ============================================================
-
-elif selected_page == "Cash-Flow Forecast":
-
-    render_placeholder_page(
-        icon="📈",
-        title="Cash-Flow Forecast",
-        description=(
-            "Historical cash flow, forecasts, "
-            "confidence intervals and model "
-            "comparison will appear here once "
-            "the forecasting module is connected."
-        ),
-        bullet_points=[
-            "30 / 60 / 90-day forecast",
-            "confidence intervals",
-            "actual vs forecast comparison",
-            "model comparison",
-            "MAE / RMSE / MAPE",
-        ],
-    )
-
-
-# ============================================================
-# LIQUIDITY RISK
-# ============================================================
-
-elif selected_page == "Liquidity Risk":
-
-    render_placeholder_page(
-        icon="⚠️",
-        title="Liquidity Risk",
-        description=(
-            "Risk periods, overdue invoices "
-            "and suggested actions will appear "
-            "here once the risk engine "
-            "is connected."
-        ),
-        bullet_points=[
-            "projected negative cash",
-            "large upcoming payments",
-            "overdue client collections",
-            "low cash balance alerts",
-            "short runway alerts",
-            "exceptional outflows",
-            "negative cash-flow trend",
-            "high forecast uncertainty",
-            "customer concentration risk",
-        ],
-    )
-
-
-# ============================================================
-# WHAT-IF SIMULATOR
-# ============================================================
-
-elif selected_page == "What-if Simulator":
-
-    render_placeholder_page(
-        icon="🧮",
-        title="What-if Simulator",
-        description=(
-            "Users will be able to simulate "
-            "delayed payments, expense increases, "
-            "new hires and other scenarios once "
-            "this module is connected."
-        ),
-        bullet_points=[
-            "reference scenario",
-            "modified scenario",
-            "projected final balance",
-            "minimum projected balance",
-            "low-point date",
-            "days below critical threshold",
-            "save scenarios",
-            "compare scenarios",
-            "export scenarios",
-        ],
-    )
-
-
-# ============================================================
-# AI FINANCIAL ASSISTANT
-# ============================================================
-
-elif selected_page == (
-    "AI Financial Assistant"
-):
-
-    if (
-        "messages"
-        not in st.session_state
-    ):
-
-        st.session_state.messages = []
-
-
-    if (
-        "chat_engine"
-        not in st.session_state
-    ):
-
-        with st.spinner(
-            "Initialising the "
-            "Treasoria assistant..."
-        ):
-
-            st.session_state.chat_engine = (
-                initialise_chat_engine()
-            )
-
-
-    title_column, (
-        button_column
-    ) = st.columns(
-        [
-            4,
-            1,
-        ],
-        vertical_alignment="center",
-    )
-
-
-    with title_column:
-
-        st.title(
-            "✨ AI Financial Assistant"
-        )
-
-        st.caption(
-            "Precise financial answers "
-            "from structured data and "
-            "validated Treasoria documentation."
-        )
-
-
-    with button_column:
-
-        if st.button(
-            "＋ New Chat",
-            width="stretch",
-        ):
-
-            st.session_state.messages = []
-
-            with st.spinner(
-                "Starting a new conversation..."
-            ):
-
-                st.session_state.chat_engine = (
-                    initialise_chat_engine()
+            overall_confidence = compute_overall_confidence(fields, ocr_data)
+            status = determine_review_status(overall_confidence)
+            st.subheader("Extracted fields")
+            st.write(f"**Overall status:** {status} ({overall_confidence}%)")
+            st.table(fields)
+            st.subheader("Download results")
+            excel_bytes = build_excel_download(fields)
+            image_bytes = build_image_download(image)
+            pdf_bytes = read_pdf_bytes(str(temp_path))
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.download_button(
+                    label="📊 Download Excel",
+                    data=excel_bytes,
+                    file_name=f"{fields['Invoice number']}_extracted.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 )
-
-            st.rerun()
-
-
-    st.markdown(
-        '<div class="assistant-intro">'
-        'Ask Treasoria about cash balances, cash flow, invoices, receivables, '
-        'payment behaviour, accounting controls or financial events.'
-        '</div>',
-        unsafe_allow_html=True,
-    )
-
-
-    st.caption(
-        "Treassoria combines structured "
-        "financial data with validated "
-        "documentation to provide precise "
-        "financial answers and contextual "
-        "explanations."
-    )
-
-
-    for (
-        message_index,
-        message,
-    ) in enumerate(
-        st.session_state.messages
-    ):
-
-        with st.chat_message(
-            message["role"]
-        ):
-
-            st.markdown(
-                message["content"]
-            )
-
-            if (
-                message["role"]
-                == "assistant"
-            ):
-
-                render_feedback(
-                    message_index
+            with col2:
+                st.download_button(
+                    label="📄 Download PDF",
+                    data=pdf_bytes,
+                    file_name=f"{fields['Invoice number']}_original.pdf",
+                    mime="application/pdf",
                 )
-
-
-    user_question = (
-        st.chat_input(
-            "Ask a financial question "
-            "about Treasoria..."
-        )
-    )
-
-
-    if user_question:
-
-        st.session_state.messages.append(
-            {
-                "role":
-                    "user",
-
-                "content":
-                    user_question,
-            }
-        )
-
-
-        with st.chat_message(
-            "user"
-        ):
-
-            st.markdown(
-                user_question
-            )
-
-
-        with st.chat_message(
-            "assistant"
-        ):
-
-            try:
-
-                response_start = (
-                    time.perf_counter()
-                )
-
-
-                with st.spinner(
-                    "Analysing your "
-                    "financial question..."
-                ):
-
-                    # ========================================
-                    # HYBRID SQL + RAG
-                    # ========================================
-
-                    sql_response = (
-                        answer_sql_question(
-                            user_question
-                        )
-                    )
-
-
-                    if (
-                        sql_response
-                        is not None
-                    ):
-
-                        response = (
-                            sql_response
-                        )
-
-                        response_text = (
-                            str(
-                                response
-                            )
-                        )
-
-                        sources = []
-
-
-                    else:
-
-                        response = (
-                            st.session_state
-                            .chat_engine
-                            .chat(
-                                user_question
-                            )
-                        )
-
-                        response_text = (
-                            str(
-                                response
-                            )
-                        )
-
-                        sources = []
-
-
-                        for (
-                            source_node
-                        ) in getattr(
-                            response,
-                            "source_nodes",
-                            [],
-                        ):
-
-                            metadata = (
-                                source_node
-                                .node
-                                .metadata
-                                or {}
-                            )
-
-
-                            source_name = (
-
-                                metadata.get(
-                                    "file_name"
-                                )
-
-                                or metadata.get(
-                                    "filename"
-                                )
-
-                                or metadata.get(
-                                    "file_path"
-                                )
-
-                                or (
-                                    "Treasoria "
-                                    "document"
-                                )
-                            )
-
-
-                            sources.append(
-                                {
-                                    "name":
-                                        str(
-                                            source_name
-                                        ),
-
-                                    "text":
-                                        source_node
-                                        .node
-                                        .get_content(),
-
-                                    "score":
-                                        source_node
-                                        .score,
-                                }
-                            )
-
-
-                response_time = (
-                    time.perf_counter()
-                    - response_start
-                )
-
-
-                st.markdown(
-                    response_text
-                )
-
-
-                st.session_state.messages.append(
-                    {
-                        "role":
-                            "assistant",
-
-                        "content":
-                            response_text,
-
-                        "response_time":
-                            response_time,
-
-                        "sources":
-                            sources,
-                    }
-                )
-
-
-                render_feedback(
-                    len(
-                        st.session_state.messages
-                    )
-                    - 1
-                )
-
-
-            except Exception as error:
-
-                st.error(
-                    "Treasoria could not "
-                    "generate a response. "
-                    "Please try again."
-                )
-
-                st.exception(
-                    error
-                )
-
-
-# ============================================================
-# FOOTER
-# ============================================================
-
-st.markdown(
-    '<p class="footer-text">TREASORIA · PREDICT · EXPLAIN · SIMULATE · DECIDE</p>',
-    unsafe_allow_html=True,
-)
+            with col3:
+                st.download_button(
+                    label="🖼️ Download Image",
+                    data=image_bytes,
+                    file_name=f"{fields['Invoice number']}_scan.png",
+                    mime="image/png",
+                )        
