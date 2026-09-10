@@ -1,0 +1,249 @@
+{
+  "pipeline_version": "1.0.0",
+  "generated_at_utc": "2026-09-10T12:25:10.424750+00:00",
+  "source_files_sha256": {
+    "gold_monthly_cash_flow.csv": "d9cdb155d518feb712b92f6b2141cb80c92858c8c03c61003b29f72b561bf94c",
+    "gold_daily_cash_position.csv": "ddb79e7e68e1e0ce8e46a9492f008eb2131eb5624fbe85baea57eaf9235d6cf2"
+  },
+  "code_files_sha256": {
+    "model_evaluation.py": "2962a36435e1e90fd42992749130f13e4e4300d7a6684cc8daae4293f3b9c882",
+    "models.py": "20db5ce4de338a34010bfed6ec66fd0e199452797e9d112ca37556fbf307eb9f",
+    "forecast_pipeline.py": "c0d1f235148660e3b9baedecb5058cc715f0869fd8e9c2656a7d6c9f9acbbed8",
+    "__init__.py": "4631c9cee04d1172632ad5d156019241c0f15450b89f85c90096f77fadc45454",
+    "test_forecast.py": "42f03764ca7845486d9ac951297cd03c576413efbfe9fd1e0f02eb4531403f28",
+    "integration.py": "ac49c62771bdfe11cae625814ad24b0fd86dbb514a02a2ae26a9b3fb1e02509c",
+    "data_utils.py": "3f0870cfe5a14e2ac48fb3afbf9411fcf01afe670baf9b4971e93553b02d4971",
+    "prophet_learning_template.py": "f5ef24aaaf637dbde3f91b814d17de48f202e4688f39d3068f82f0efc0fd7555"
+  },
+  "package_versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "prophet": "1.4.0",
+    "statsmodels": "0.15.0"
+  },
+  "frequency": "MS",
+  "horizon": 3,
+  "as_of_date": "2023-12-31",
+  "source_period_start": "2022-01-01",
+  "history_n": 24,
+  "opening_balance_for_first_day": 17000.0,
+  "starting_cash_balance": 234549.89,
+  "selected_model": "seasonal_naive_12m",
+  "selected_parameters": {
+    "name": "seasonal_naive_12m",
+    "family": "seasonal_naive",
+    "window": 3,
+    "season": 12,
+    "growth": "flat",
+    "yearly": 0,
+    "anomaly": false,
+    "order": [
+      1,
+      0,
+      0
+    ],
+    "seasonal_order": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "all_candidate_parameters": [
+    {
+      "name": "naive",
+      "family": "naive",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mean",
+      "family": "mean",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "moving_average_3m",
+      "family": "moving_average",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "seasonal_naive_12m",
+      "family": "seasonal_naive",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ARIMA_100",
+      "family": "sarima",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "SARIMA_100_100_12",
+      "family": "sarima",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        0,
+        12
+      ]
+    },
+    {
+      "name": "Prophet_flat",
+      "family": "prophet",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 0,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Prophet_flat_yearly1",
+      "family": "prophet",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 1,
+      "anomaly": false,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Prophet_flat_yearly1_pulse",
+      "family": "prophet",
+      "window": 3,
+      "season": 12,
+      "growth": "flat",
+      "yearly": 1,
+      "anomaly": true,
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "selection_rule": "Lowest validation MAE; complex models must beat the best baseline by at least 5%.",
+  "development_n": 21,
+  "test_n": 3,
+  "test_start": "2023-10-01",
+  "test_end": "2023-12-01",
+  "uncertainty": "80% empirical absolute-error envelope from 3 validation paths; not calibrated; not a simultaneous interval.",
+  "limitations": [
+    "Synthetic demonstration data ending in 2023; this is not a current 2026 forecast.",
+    "Only two years of calendar history, even for the daily data.",
+    "The final quarter had already been inspected in earlier notebooks; holdout scores are retrospective.",
+    "Daily and monthly forecasts are separate experiments. Do not add them or expect future sums to agree.",
+    "Monthly outputs cannot identify days below a cash threshold.",
+    "Net flow alone does not identify sales, gross costs, customer concentration or invoice delays.",
+    "Three validation paths are too few for reliable probability calibration or rare-shock prediction."
+  ]
+}

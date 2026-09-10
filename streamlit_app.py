@@ -5,6 +5,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from src.upload_log import log_upload, load_recent_uploads
 from src.kpi_validation import run_all_kpi_validations
+from src.forecast_display import load_forecast, load_leaderboard, get_forecast_summary
 from src.transactions import load_all_transactions, category_breakdown, build_csv_export
 from src.kpi_validation import run_all_kpi_validations, build_overview_export
 from src.data_quality import run_data_quality_checks, load_existing_invoice_numbers
@@ -1094,7 +1095,6 @@ with st.sidebar:
 # ============================================================
 # OVERVIEW PAGE
 # ============================================================
-
 if selected_page == "Overview":
 
     st.title("Treasoria Overview")
@@ -1154,9 +1154,10 @@ if selected_page == "Overview":
                     return main, sub
             return raw, None
 
-        kpi_column_1, kpi_column_2, kpi_column_3 = st.columns(3)
+        st.markdown("**Cash Position**")
+        cash_col_1, cash_col_2, cash_col_3 = st.columns(3)
 
-        with kpi_column_1:
+        with cash_col_1:
             st.metric(
                 label="Closing cash balance",
                 value=get_kpi("Consolidated Cash Balance (end of period)"),
@@ -1166,7 +1167,7 @@ if selected_page == "Overview":
                 ),
             )
 
-        with kpi_column_2:
+        with cash_col_2:
             st.metric(
                 label="Average monthly net cash flow",
                 value=get_kpi("Average Monthly Net Cash Flow"),
@@ -1176,7 +1177,21 @@ if selected_page == "Overview":
                 ),
             )
 
-        with kpi_column_3:
+        with cash_col_3:
+            runway_main, runway_sub = split_parenthetical(get_kpi("Runway"))
+            st.metric(
+                label="Cash runway",
+                value=runway_main,
+                help="Estimated operating runway based on the current cash-flow profile.",
+            )
+            if runway_sub:
+                st.caption(runway_sub)
+
+        st.write("")
+        st.markdown("**Financial Position**")
+        fin_col_1, fin_col_2, fin_col_3 = st.columns(3)
+
+        with fin_col_1:
             st.metric(
                 label="Total cash in",
                 value=get_kpi("Cash-Collected Revenue (24 months)"),
@@ -1187,31 +1202,19 @@ if selected_page == "Overview":
                 ),
             )
 
-        kpi_column_4, kpi_column_5, kpi_column_6 = st.columns(3)
-
-        with kpi_column_4:
+        with fin_col_2:
             st.metric(
                 label="Open customer receivables",
                 value=get_kpi("Open Receivables"),
                 help="Customer invoices that remain unpaid.",
             )
 
-        with kpi_column_5:
+        with fin_col_3:
             st.metric(
                 label="Closing credit-card debt",
                 value=get_kpi("Credit Card Debt (end of period)"),
                 help="Outstanding credit-card liability at the end of the period.",
             )
-
-        with kpi_column_6:
-            runway_main, runway_sub = split_parenthetical(get_kpi("Runway"))
-            st.metric(
-                label="Cash runway",
-                value=runway_main,
-                help="Estimated operating runway based on the current cash-flow profile.",
-            )
-            if runway_sub:
-                st.caption(runway_sub)
 
         st.caption("Financial results calculated by the Treasoria Gold data pipeline.")
 
@@ -1258,11 +1261,6 @@ if selected_page == "Overview":
 
             st.markdown("### Expenses by Category (Last 12 Months)")
 
-            # ASSUMPTION: fact_supplier_invoice.csv has "category"
-            # and "amount" columns. If the real column names differ,
-            # this chart falls back to a message instead of crashing
-            # the whole Overview page -- tell me the exact names and
-            # I'll adjust the lookup precisely.
             try:
                 dataset_path_for_categories = _find_dataset_dir()
                 supplier_invoices = pd.read_csv(
@@ -1322,14 +1320,15 @@ if selected_page == "Overview":
                 monthly.sort_values("month").tail(3)["net_cash_flow"].mean()
             )
 
-            negative_months = int((monthly["net_cash_flow"] < 0).sum())
+            last_12_months = monthly.sort_values("month").tail(12)
+            negative_months_recent = last_12_months[last_12_months["net_cash_flow"] < 0]
+            negative_count = len(negative_months_recent)
+            negative_month_names = (
+                ", ".join(negative_months_recent["month"].dt.strftime("%b %Y"))
+                if negative_count > 0
+                else "None"
+            )
 
-            # --- Revenue Growth (YoY) -------------------------
-            # ASSUMPTION: gold_monthly_cash_flow.csv has a gross
-            # cash-in column. We try a few likely names since we
-            # don't have the exact schema in front of us -- if none
-            # match, the growth card falls back to "Not available"
-            # instead of crashing the whole page.
             inflow_column = next(
                 (
                     candidate
@@ -1352,7 +1351,6 @@ if selected_page == "Overview":
                 if prev_12:
                     revenue_growth_yoy = (last_12 - prev_12) / prev_12 * 100
 
-            # --- Overdue receivables, in EUR ------------------
             amount_column = next(
                 (
                     candidate
@@ -1429,8 +1427,8 @@ if selected_page == "Overview":
             st.markdown(
                 f'<div class="insight-card">'
                 f'<div class="insight-label">Negative Cash-Flow Months</div>'
-                f'<div class="insight-value">{negative_months} / {len(monthly)}</div>'
-                f'<div class="insight-note">Across the full represented period</div>'
+                f'<div class="insight-value">{negative_count} in the last 12 months</div>'
+                f'<div class="insight-note">{negative_month_names}</div>'
                 f'</div>',
                 unsafe_allow_html=True,
             )
@@ -1444,123 +1442,11 @@ if selected_page == "Overview":
                 unsafe_allow_html=True,
             )
 
-            st.caption(
-                "These are descriptive financial signals "
-                "from validated historical data. "
-                "The forecast-based Liquidity Risk engine "
-                "will add forward-looking risk severity."
-            )
-
     except Exception as error:
         st.info("Cash intelligence charts could not be loaded.")
         st.caption(str(error))
-
-    # --------------------------------------------------------
-    # CASH OUTLOOK (simple estimate, not the real forecast model)
-    # --------------------------------------------------------
-
-    st.markdown(
-        '<h2 class="section-title">Cash Outlook — Next 3 Months</h2>',
-        unsafe_allow_html=True,
-    )
-
-    try:
-        monthly_for_outlook, daily_for_outlook, _ = load_overview_data()
-
-        last_balance_row = daily_for_outlook.sort_values("date").iloc[-1]
-        last_balance = float(last_balance_row["consolidated_cash_balance"])
-        last_date = last_balance_row["date"]
-
-        trend_avg = float(
-            monthly_for_outlook.sort_values("month").tail(3)["net_cash_flow"].mean()
-        )
-
-        future_dates = pd.date_range(start=last_date, periods=4, freq="MS")[1:]
-        projected_values = [last_balance + trend_avg * (i + 1) for i in range(3)]
-
-        history_tail = (
-            daily_for_outlook
-            .sort_values("date")
-            .tail(90)[["date", "consolidated_cash_balance"]]
-            .rename(columns={"consolidated_cash_balance": "Balance"})
-        )
-        history_tail["Type"] = "Historical"
-
-        projection_df = pd.DataFrame(
-            {
-                "date": future_dates,
-                "Balance": projected_values,
-                "Type": "Projected (simple estimate)",
-            }
-        )
-
-        outlook_df = pd.concat([history_tail, projection_df], ignore_index=True)
-
-        outlook_chart = (
-            alt.Chart(outlook_df)
-            .mark_line(point=True)
-            .encode(
-                x="date:T",
-                y="Balance:Q",
-                color=alt.Color(
-                    "Type:N",
-                    scale=alt.Scale(
-                        domain=["Historical", "Projected (simple estimate)"],
-                        range=["#0A1B33", "#C9A24B"],
-                    ),
-                ),
-                strokeDash=alt.condition(
-                    alt.datum.Type == "Projected (simple estimate)",
-                    alt.value([5, 5]),
-                    alt.value([0]),
-                ),
-            )
-            .properties(height=280)
-        )
-
-        st.altair_chart(outlook_chart, use_container_width=True)
-
-        st.caption(
-            "Simple trend-based estimate (last balance + recent 3-month "
-            "average net flow) — the full forecasting model, with "
-            "confidence intervals and model comparison, arrives in Week 2."
-        )
-
-        try:
-            receivables_for_action = pd.read_csv(
-                _find_dataset_dir() / "gold" / "gold_receivables_aging.csv"
-            )
-            amount_col_action = next(
-                (c for c in ["amount", "open_amount", "invoice_amount", "amount_due", "balance"]
-                 if c in receivables_for_action.columns),
-                None,
-            )
-            overdue_mask_action = receivables_for_action["status"] == "open_overdue"
-            overdue_total_action = (
-                float(receivables_for_action.loc[overdue_mask_action, amount_col_action].sum())
-                if amount_col_action
-                else None
-            )
-
-            if overdue_total_action:
-                st.markdown(
-                    f'<div class="insight-card">'
-                    f'<div class="insight-label">💡 Suggested Action</div>'
-                    f'<div class="insight-note">'
-                    f'EUR {overdue_total_action:,.2f} in overdue receivables — '
-                    f'following up could meaningfully improve your projected cash position above.'
-                    f'</div>'
-                    f'</div>',
-                    unsafe_allow_html=True,
-                )
-        except Exception:
-            pass
-
-    except Exception as outlook_error:
-        st.info("Cash outlook could not be loaded.")
-        st.caption(str(outlook_error))
-
-
+        
+        
 # ============================================================
 # TRANSACTIONS PAGE
 # ============================================================
@@ -1887,6 +1773,135 @@ elif selected_page == "Invoices":
         st.subheader("Recently processed")
         st.dataframe(recent_uploads, width="stretch")
 
+
+# ============================================================
+# FORECAST PAGE
+# ============================================================
+elif selected_page == "Cash-Flow Forecast":
+
+    st.title("📈 Cash-Flow Forecast")
+    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
+
+    try:
+        forecast = load_forecast(Path("."), "daily")
+        summary = get_forecast_summary(forecast)
+
+        starting_balance = summary["starting_balance"]
+        final_balance = summary["final_projected_balance"]
+
+        min_row = forecast.loc[forecast["projected_cash_balance"].idxmin()]
+        min_balance = float(min_row["projected_cash_balance"])
+        min_date = min_row["date"].strftime("%B %d, %Y")
+
+        change_pct = (min_balance - starting_balance) / starting_balance
+
+        if min_balance < 0:
+            status_icon, status_label, status_message = (
+                "🔴", "Risk",
+                "Balance is expected to go negative during this period.",
+            )
+        elif change_pct < -0.15:
+            status_icon, status_label, status_message = (
+                "🟠", "Attention",
+                "Cash is expected to decrease notably before recovering.",
+            )
+        else:
+            status_icon, status_label, status_message = (
+                "🟢", "Stable",
+                "Cash is expected to stay comfortable over the period.",
+            )
+
+        # --- Top cards ---
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Current balance", f"EUR {starting_balance:,.2f}")
+        with col2:
+            change = final_balance - starting_balance
+            st.metric(
+                "Projected in 90 days",
+                f"EUR {final_balance:,.2f}",
+                delta=f"{change:+,.2f} EUR",
+            )
+        with col3:
+            st.metric("Minimum expected", f"EUR {min_balance:,.2f}")
+            st.caption(f"on {min_date}")
+
+        # --- Historical -> Forecast chart ---
+        try:
+            historical_monthly, historical_daily, _ = load_overview_data()
+            history_tail = (
+                historical_daily.sort_values("date")
+                .tail(90)[["date", "consolidated_cash_balance"]]
+                .rename(columns={"consolidated_cash_balance": "Balance"})
+            )
+            history_tail["Segment"] = "Actual"
+        except Exception:
+            history_tail = pd.DataFrame(columns=["date", "Balance", "Segment"])
+
+        forecast_line = forecast[["date", "projected_cash_balance"]].rename(
+            columns={"projected_cash_balance": "Balance"}
+        )
+        forecast_line["Segment"] = "Forecast"
+
+        combined = pd.concat([history_tail, forecast_line], ignore_index=True)
+
+        line_chart = (
+            alt.Chart(combined)
+            .mark_line(strokeWidth=3)
+            .encode(
+                x=alt.X("date:T", title=None, axis=alt.Axis(format="%b %d", tickCount=8)),
+                y=alt.Y("Balance:Q", title="Balance (EUR)", scale=alt.Scale(zero=False)),
+                color=alt.Color(
+                    "Segment:N",
+                    legend=alt.Legend(title=None, orient="top"),
+                    scale=alt.Scale(
+                        domain=["Actual", "Forecast"],
+                        range=["#0A1B33", "#C9A24B"],
+                    ),
+                ),
+                strokeDash=alt.condition(
+                    alt.datum.Segment == "Forecast", alt.value([0]), alt.value([0])
+                ),
+            )
+        )
+
+        band = (
+            alt.Chart(forecast[["date", "cash_balance_lower", "cash_balance_upper"]])
+            .mark_area(opacity=0.15, color="#C9A24B")
+            .encode(
+                x="date:T",
+                y=alt.Y("cash_balance_lower:Q", scale=alt.Scale(zero=False)),
+                y2="cash_balance_upper:Q",
+            )
+        )
+
+        st.altair_chart((band + line_chart).properties(height=340), use_container_width=True)
+        st.caption("Forecast period: next 90 days. Shaded area = estimated range of variation.")
+
+        # --- Summary + status, side by side ---
+        summary_col, status_col = st.columns([1.4, 1])
+
+        with summary_col:
+            st.markdown("### Forecast Summary")
+            st.write(f"**Forecasted cash balance:** EUR {final_balance:,.2f}")
+            st.write(f"**Minimum expected cash:** EUR {min_balance:,.2f} (on {min_date})")
+            avg_daily_flow = float(forecast["forecasted_net_cash_flow"].mean())
+            st.write(f"**Average daily net flow:** EUR {avg_daily_flow:+,.2f}")
+
+        with status_col:
+            st.markdown("### Status")
+            st.markdown(f"## {status_icon} {status_label}")
+            st.write(status_message)
+
+
+    except FileNotFoundError:
+        st.warning(
+            "Forecast data not found. Make sure "
+            "results/forecast/daily/forecast_output.csv exists."
+        )
+    except Exception as error:
+        st.error("The forecast could not be loaded.")
+        st.caption(str(error))
 
 # ============================================================
 # LIQUIDITY RISK PAGE

@@ -13,12 +13,13 @@
 | KPI Validation | pandas | 6 figures recomputed and verified against their source | No discrepancy detected |
 | Dashboard Finalisation | pandas, Streamlit cache | Full export + manual refresh | — |
 | Transactions | pandas, altair | Filterable ledger, 1,306 transactions, CSV export | 1 classification bug |
+| Cash-Flow Forecast | statsmodels/Prophet/XGBoost (Aysenur's pipeline), pandas, altair | Daily 90-day forecast connected to the dashboard, with business-friendly summary and directional status | — |
 
 ---
 
 ## 1. AI Financial Assistant
 
-### Purpose
+### What this module does
 A conversational assistant built to answer financial questions about Treasoria, combining two approaches depending on the question type — using **LlamaIndex** *(framework orchestrating document retrieval and response generation — RAG)*, **Groq LLM** *(the language model that generates the response)*, **sentence-transformers** *(converts text into numeric vectors for semantic search)*, and **SQLite** *(structured database, for exact numeric answers)*.
 
 ### Tools used and their role
@@ -37,7 +38,7 @@ Each question is routed: if it matches a precise numeric query (e.g. "what is my
 
 ## 2. Invoices & OCR
 
-### Purpose
+### What this module does
 Turns an invoice or bank statement (PDF, image, or Excel file) into structured, usable data, with a confidence score on every extracted field, combining **pdf2image** *(renders a PDF page as an image)*, **Tesseract** *(reads the text in the image)*, **regex** *(isolates specific fields)*, and **jiwer** *(measures the error rate)*.
 
 ### Tools used and their role
@@ -87,7 +88,7 @@ Turns an invoice or bank statement (PDF, image, or Excel file) into structured, 
 
 ## 3. Data Quality
 
-### Purpose
+### What this module does
 Checks that an extracted invoice (or a batch of invoices imported from Excel) is consistent and usable before marking it "ready to integrate" — relying on **pandas** *(loads and compares data)* and **datetime** *(compares dates against each other)*.
 
 ### Tools used and their role
@@ -116,7 +117,7 @@ No major bugs — the main work was defining the exact **scope** of the checks (
 
 ## 4. KPI Validation
 
-### Purpose
+### What this module does
 Recomputes 6 figures shown on the dashboard **independently**, from raw data, to verify they match what's stored — instead of blindly trusting a pre-calculated file. Relies entirely on **pandas** *(loads source tables and performs the recalculations)*.
 
 ### Tools used and their role
@@ -147,7 +148,7 @@ No discrepancy detected — the 6 recomputed figures matched exactly what was st
 
 ## 5. Dashboard Finalisation
 
-### Purpose
+### What this module does
 Adds two practical features to the dashboard: refreshing data without restarting the app, and downloading the full set of figures (not just the 6 shown on screen) — via **pandas** *(assembles the export table)* and the **Streamlit cache** *(stores results in memory; the Refresh button clears it to force a recalculation)*.
 
 ### Tools used and their role
@@ -168,7 +169,7 @@ Adds two practical features to the dashboard: refreshing data without restarting
 
 ## 6. Transactions
 
-### Purpose
+### What this module does
 Combines 3 accounts (main checking, secondary checking, credit card) into one filterable ledger, with export and category breakdown — via **pandas** *(loads, combines, filters, and aggregates)* and **altair** *(draws the breakdown chart)*.
 
 ### Tools used and their role
@@ -192,3 +193,55 @@ Combines 3 accounts (main checking, secondary checking, credit card) into one fi
 **Incomplete internal-transfer detection** — exact category matching ("Transfer", "Payroll") missed real variants like "Transfer Out". Result: only one side of each transfer was being detected (94 out of ~188 expected).
 → *Confirmed by comparing counts*: Secondary Checking had exactly 94 internal transfers recorded, but only 94 were detected in total across all 3 accounts — proof that half were missing.
 → *Fixed* by matching on keyword presence anywhere in the category, instead of requiring an exact match. Result after the fix: 141 internal transfers detected.
+
+---
+
+## 7. Cash-Flow Forecast
+
+### Purpose
+Projects the company's cash balance over the next 90 days, based on a forecasting pipeline built by Aysenur — comparing multiple time-series models, selecting the best-performing one through cross-validation, and connecting the result to a business-friendly Streamlit page. Integration uses **pandas** *(loads and reshapes the forecast output)* and **altair** *(draws the Actual → Forecast chart with uncertainty band)*.
+
+### Forecasting pipeline (built by Aysenur)
+
+| Tool | Exact role |
+|---|---|
+| **statsmodels (SARIMA)**, **Prophet**, **XGBoost** (deferred) | Candidate time-series models compared against simple baselines (naive, seasonal naive, moving average) |
+| **Expanding-window cross-validation** | Evaluates each candidate on multiple chronological train/validation splits, rather than a single split |
+| **pandas** | Data preparation, reconciliation between daily and monthly cash-flow series |
+
+Two tracks were built and evaluated independently: **monthly** (24 historical observations, 3-month forecast) and **daily** (730 historical observations, 90-day forecast). Six candidate models were compared per track; the selected models were:
+
+| Track | Selected model | Validation MAE | Retrospective test MAE |
+|---|---|---:|---:|
+| Monthly | seasonal_naive_12m | 5,040.74 EUR/month | 2,104.78 EUR/month |
+| Daily | Prophet_flat_calendar | 531.23 EUR/day | 513.96 EUR/day |
+
+Only the **daily track** was connected to the app for this iteration (see "Decision" below).
+
+### Streamlit integration (this session)
+
+| Function | Role |
+|---|---|
+| `load_forecast` | Loads the evaluated forecast output for one track (daily or monthly) |
+| `load_leaderboard` | Loads the full model comparison table for a track |
+| `get_forecast_summary` | Extracts the handful of headline figures (model, reference date, starting/final balance) a page needs |
+
+The Cash-Flow Forecast page shows: current balance, projected balance in 90 days, and the minimum expected balance with its date — followed by a combined Actual → Forecast chart with a shaded uncertainty band. A simple directional status (Stable / Attention / Risk) is shown, based purely on the shape of the forecast trend — **no fixed EUR risk threshold is used**, since the pipeline's own handoff notes explicitly state that policy thresholds are a business decision still to be made, not something to invent.
+
+### Decision: daily track only, for now
+
+The monthly track was not connected in this session. Two reasons:
+1. The forecasting pipeline's own integration example indexes into day-level rows (`iloc[34]`), which only makes sense against the daily output.
+2. Several upcoming Liquidity Risk signals (e.g. days below a threshold) and What-if scenarios (e.g. a payment delayed by a specific number of days) need day-level granularity; the monthly track (3 data points) cannot support them meaningfully.
+
+Whether to also connect the monthly track will be revisited once Liquidity Risk and What-if are further along.
+
+### What is explicitly not yet built
+Per the forecasting pipeline's own handoff notes, the following remain open decisions for the next modules (Liquidity Risk, What-if Simulator), not gaps in the forecast itself:
+- Policy thresholds (EUR risk limits, alert categories, runway definition)
+- Gross sales/expense scenario drivers (the forecast covers net cash flow only)
+- Invoice-level payment delay scheduling
+- Detection of unusual outflows or customer concentration (needs separate gross-flow/customer tables)
+
+### Issues found
+None in the integration itself. One design correction was made along the way: the Overview page's "Negative Cash-Flow Months" card previously counted negative months across the full 24-month history and displayed only a fraction (e.g. "1 / 24"). This was changed to a rolling 12-month window with the actual month names shown directly, since a 2-year-old negative month is not actionable for a same-day decision and a bare fraction does not say *when* it occurred.
