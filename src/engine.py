@@ -4,6 +4,33 @@ from pathlib import Path
 # Import Python's high-precision timer
 import time
 
+# Import Path to create operating-system-independent paths
+from pathlib import Path
+
+# Import Python's high-precision timer
+import time
+
+# Force NLTK to download its data into a directory we control and
+# know is writable, before LlamaIndex's internal GlobalsHelper
+# tries to auto-download it on import (it does this immediately,
+# the moment llama_index.core is imported). Without this, it tries
+# to write to its own default location, which Streamlit Cloud's
+# filesystem doesn't allow, crashing the whole app at import time.
+import os
+
+_nltk_data_dir = Path(__file__).resolve().parent.parent / ".nltk_data"
+_nltk_data_dir.mkdir(parents=True, exist_ok=True)
+os.environ["NLTK_DATA"] = str(_nltk_data_dir)
+
+# Import the main LlamaIndex components used to load documents,
+# build an index, manage its storage and reload it later
+from llama_index.core import (
+    StorageContext,
+    SimpleDirectoryReader,
+    VectorStoreIndex,
+    load_index_from_storage,
+)
+
 # Import the main LlamaIndex components used to load documents,
 # build an index, manage its storage and reload it later
 from llama_index.core import (
