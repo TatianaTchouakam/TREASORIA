@@ -1,0 +1,2 @@
+model,selected_on_validation,MAE,RMSE,sMAPE,bias_actual_minus_pred,flow_band_coverage,balance_band_coverage,balance_path_MAE,end_balance_error_actual_minus_pred,test_n,test_start,test_end
+seasonal_naive_12m,True,2104.78,3007.2156494449596,14.313389477825957,2104.78,1.0,1.0,4390.1866666666665,6314.34,3,2023-10-01,2023-12-01

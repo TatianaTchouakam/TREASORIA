@@ -1,0 +1,4 @@
+horizon_step,flow_radius,balance_radius,calibration_paths,nominal_level
+1,7812.24,7812.24,3,0.8
+2,8225.89,9039.13,3,0.8
+3,19538.45,17442.21,3,0.8

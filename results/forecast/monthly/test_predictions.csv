@@ -1,0 +1,4 @@
+model,date,y_true,y_pred,flow_lower,flow_upper,cumulative_actual_flow,cumulative_predicted_flow,balance_error_radius
+seasonal_naive_12m,2023-10-01,15016.55,14151.51,6339.27,21963.75,15016.55,14151.51,7812.24
+seasonal_naive_12m,2023-11-01,17417.04,12290.9,4065.01,20516.79,32433.59,26442.41,9039.13
+seasonal_naive_12m,2023-12-01,13095.67,12772.51,-6765.9400000000005,32310.96,45529.26,39214.92,17442.21
