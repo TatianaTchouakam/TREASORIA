@@ -219,7 +219,6 @@ already provides the baseline contract and tested EUR-delta connection.
 > contract is documented. Next we can choose the display frequency and define
 > the gross receipt/cost assumptions and invoice timing for percentage/delay scenarios.
 
-This text is a draft for you to send; no message has been sent automatically.
 
 ## References
 
