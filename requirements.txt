@@ -7,3 +7,9 @@ llama-index-embeddings-huggingface
 sentence-transformers
 matplotlib
 ruff
+pytesseract
+pdf2image
+Pillow
+jiwer
+openpyxl
+altair
