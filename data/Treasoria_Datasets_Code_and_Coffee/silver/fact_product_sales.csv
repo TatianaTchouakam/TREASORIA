@@ -1,0 +1,21 @@
+company_id,product_name,category,estimated_revenue_share,estimated_revenue,data_origin
+code_and_coffee,Cappuccino,Beverage,0.1105,64415.47,synthetic
+code_and_coffee,Latte,Beverage,0.1,58280.7,synthetic
+code_and_coffee,Tiramisu,Dessert,0.0789,46011.08,synthetic
+code_and_coffee,Espresso,Beverage,0.0684,39876.27,synthetic
+code_and_coffee,Flat White,Beverage,0.0579,33741.46,synthetic
+code_and_coffee,Cheesecake,Dessert,0.0579,33741.46,synthetic
+code_and_coffee,Croissant,Pastry,0.0579,33741.46,synthetic
+code_and_coffee,Cold Brew,Beverage,0.0474,27606.65,synthetic
+code_and_coffee,Avocado Toast,Food,0.0474,27606.65,synthetic
+code_and_coffee,Chocolate Lava Cake,Dessert,0.0474,27606.65,synthetic
+code_and_coffee,Matcha Latte,Beverage,0.0368,21471.84,synthetic
+code_and_coffee,Filter Coffee,Beverage,0.0368,21471.84,synthetic
+code_and_coffee,Club Sandwich,Food,0.0368,21471.84,synthetic
+code_and_coffee,Almond Croissant,Pastry,0.0368,21471.84,synthetic
+code_and_coffee,Cinnamon Roll,Pastry,0.0368,21471.84,synthetic
+code_and_coffee,Caprese Panini,Food,0.0316,18404.43,synthetic
+code_and_coffee,Seasonal Salad Bowl,Food,0.0316,18404.43,synthetic
+code_and_coffee,Loose-Leaf Tea,Beverage,0.0263,15337.03,synthetic
+code_and_coffee,Hot Chocolate,Beverage,0.0263,15337.03,synthetic
+code_and_coffee,Macarons (box of 4),Pastry,0.0263,15337.03,synthetic

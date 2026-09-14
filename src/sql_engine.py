@@ -332,6 +332,65 @@ def get_lowest_cash_flow_month() -> pd.Series:
 
     return result.iloc[0]
 
+def get_top_expense_category() -> pd.Series:
+    """
+    Return the expense category with the highest total spending,
+    based on supplier invoices.
+    """
+
+    query = """
+        SELECT category, SUM(amount) AS total
+        FROM fact_supplier_invoice
+        GROUP BY category
+        ORDER BY total DESC
+        LIMIT 1
+    """
+
+    result = execute_query(query)
+
+    return result.iloc[0]
+
+
+def get_top_revenue_category() -> pd.Series:
+    """
+    Return the category bringing in the most money, based on
+    incoming (Credit) transactions in the main checking account.
+    """
+
+    query = """
+        SELECT category, SUM(amount) AS total
+        FROM fact_checking_main
+        WHERE type = 'Credit'
+        GROUP BY category
+        ORDER BY total DESC
+        LIMIT 1
+    """
+
+    result = execute_query(query)
+
+    return result.iloc[0]
+
+def get_top_selling_product() -> pd.Series:
+    """
+    Return the best-selling product by estimated revenue.
+
+    NOTE: this table (fact_product_sales) is synthetic -- a
+    plausible revenue breakdown estimated from the real, known
+    total Sales Revenue figure, not actual per-product transaction
+    history. See data_origin column.
+    """
+
+    query = """
+        SELECT product_name, category, estimated_revenue
+        FROM fact_product_sales
+        ORDER BY estimated_revenue DESC
+        LIMIT 1
+    """
+
+    result = execute_query(query)
+
+    return result.iloc[0]
+
 
 # ============================================================
 # KPI LOOKUP
@@ -436,7 +495,38 @@ def detect_sql_intent(
     ):
         return "lowest_cash_flow_month"
 
-    return None
+    if (
+        "cost" in q
+        and ("most" in q or "highest" in q)
+        and (
+            "category" in q
+            or "product" in q
+            or "expense" in q
+        )
+    ):
+        return "top_expense_category"
+
+    if (
+        ("bring" in q or "earn" in q or "make" in q)
+        and ("most" in q or "highest" in q)
+        and (
+            "money" in q
+            or "revenue" in q
+            or "category" in q
+            or "product" in q
+        )
+    ):
+        return "top_revenue_category"
+    
+    if (
+        "product" in q
+        and ("best" in q or "top" in q or "most" in q)
+        and ("sell" in q or "selling" in q or "popular" in q)
+    ):
+        return "top_selling_product"
+
+    return None   
+    
 
 
 # ============================================================
@@ -562,8 +652,32 @@ def answer_sql_question(
             f"was {row['month']}, with net cash flow "
             f"of EUR {row['net_cash_flow']:,.2f}."
         )
+    if intent == "top_expense_category":
+        row = get_top_expense_category()
+
+        return (
+            f"Your biggest expense category is {row['category']}, "
+            f"at EUR {row['total']:,.2f} total."
+        )
+
+    if intent == "top_revenue_category":
+        row = get_top_revenue_category()
+
+        return (
+            f"Your top revenue category is {row['category']}, "
+            f"bringing in EUR {row['total']:,.2f} total."
+        )
+    if intent == "top_selling_product":
+        row = get_top_selling_product()
+
+        return (
+            f"Your best-selling product is {row['product_name']} "
+            f"({row['category']}), with an estimated "
+            f"EUR {row['estimated_revenue']:,.2f} in revenue."
+        )
 
     return None
+   
 
 
 # ============================================================
