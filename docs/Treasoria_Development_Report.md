@@ -14,6 +14,7 @@
 | Dashboard Finalisation | pandas, Streamlit cache | Full export + manual refresh | — |
 | Transactions | pandas, altair | Filterable ledger, 1,306 transactions, CSV export | 1 classification bug |
 | Cash-Flow Forecast | statsmodels/Prophet/XGBoost (Aysenur's pipeline), pandas, altair | Daily 90-day forecast connected to the dashboard, with business-friendly summary and directional status | — |
+| Liquidity Risk | pandas | 6 risk signals connected to the forecast, transaction history, and customer invoices | — |
 
 ---
 
@@ -33,6 +34,9 @@ A conversational assistant built to answer financial questions about Treasoria, 
 
 ### How it works
 Each question is routed: if it matches a precise numeric query (e.g. "what is my current balance?"), the answer comes directly from a SQL query against the structured database — exact, not generated. Otherwise, the question goes through the RAG pipeline (document retrieval + LLM-generated response), for more open-ended or explanatory questions.
+
+### Extended this session
+Three new structured questions were added, to support the connection between the assistant and the upcoming Liquidity Risk / What-if modules: top expense category, top revenue category, and best-selling product. The last one reads from a new synthetic product-level table (see Section 8, Liquidity Risk, for the full data provenance note — the same table is described there since it was built alongside that work).
 
 ---
 
@@ -234,14 +238,49 @@ The monthly track was not connected in this session. Two reasons:
 1. The forecasting pipeline's own integration example indexes into day-level rows (`iloc[34]`), which only makes sense against the daily output.
 2. Several upcoming Liquidity Risk signals (e.g. days below a threshold) and What-if scenarios (e.g. a payment delayed by a specific number of days) need day-level granularity; the monthly track (3 data points) cannot support them meaningfully.
 
-Whether to also connect the monthly track will be revisited once Liquidity Risk and What-if are further along.
+This was confirmed correct once Liquidity Risk was built (Section 8): several signals depend directly on the daily forecast.
 
 ### What is explicitly not yet built
-Per the forecasting pipeline's own handoff notes, the following remain open decisions for the next modules (Liquidity Risk, What-if Simulator), not gaps in the forecast itself:
-- Policy thresholds (EUR risk limits, alert categories, runway definition)
-- Gross sales/expense scenario drivers (the forecast covers net cash flow only)
-- Invoice-level payment delay scheduling
-- Detection of unusual outflows or customer concentration (needs separate gross-flow/customer tables)
+Per the forecasting pipeline's own handoff notes, the following remained open decisions for the next module (Liquidity Risk), not gaps in the forecast itself: policy thresholds, gross sales/expense scenario drivers, invoice-level payment delay scheduling, and detection of unusual outflows or customer concentration. All four are now addressed in Section 8.
 
 ### Issues found
 None in the integration itself. One design correction was made along the way: the Overview page's "Negative Cash-Flow Months" card previously counted negative months across the full 24-month history and displayed only a fraction (e.g. "1 / 24"). This was changed to a rolling 12-month window with the actual month names shown directly, since a 2-year-old negative month is not actionable for a same-day decision and a bare fraction does not say *when* it occurred.
+
+---
+
+## 8. Liquidity Risk
+
+### Purpose
+Turns the forecast and known financial data into 6 concrete, defined risk signals a business owner can act on — built entirely with **pandas** *(loads source tables, performs the statistical and comparison logic behind each signal)*.
+
+### The 6 signals
+
+| Signal | Source data | What it checks |
+|---|---|---|
+| Low Balance | Daily forecast | Lowest projected balance vs. 3 / 1.5 months of real average monthly spending |
+| Cash Running Out Soon | Daily forecast | Number of days in the 90-day forecast below the critical threshold, and the first date it happens |
+| Unexpected Big Expense | Transaction history (`fact_checking_main.csv`) | Statistical anomaly detection (z-score) against each category's own historical average |
+| Negative Trend | Monthly cash flow (Gold) | Recent 3-month average net cash flow vs. the 3 months before that |
+| High Uncertainty | Daily forecast | Width of the forecast's own uncertainty band, relative to the current balance |
+| Relying on One Customer | Customer invoices (`fact_customer_invoice.csv`) | Top customer's share of total business invoice revenue |
+
+Each signal reports: severity (Stable / Attention / Risk), amount, date (where applicable), a plain-language justification, and a suggested action. An overall status is calculated as the most serious individual signal found.
+
+### No invented thresholds
+Per the forecast pipeline's own handoff notes ("There is no invented universal risk limit"), every threshold used is either a standard, citable practice or derived from the company's own real figures — never an arbitrary guess:
+- **Low Balance / Cash Running Out Soon**: months of runway (3 / 1.5 months) is a standard small-business treasury guideline, applied to this company's own real average monthly outflow (not a bare EUR figure, which means nothing without knowing the real spending rate).
+- **Unexpected Big Expense**: a z-score (how many standard deviations above a category's own average) is a standard statistical anomaly-detection method. Verified against this dataset's two documented real events — the EUR 19,500 cooler replacement (z=8.69) and EUR 8,500 storm damage (z=3.62) — both surface correctly.
+- **High Uncertainty**: reuses the forecast's own uncertainty band directly, rather than inventing a separate uncertainty measure.
+- **Relying on One Customer**: a percentage-of-revenue concentration check, a standard business-risk practice.
+
+### Plain-language rewrite
+All user-facing text (signal titles, justifications, suggested actions) was reviewed and rewritten for a non-technical reader after an initial pass still contained finance/stats jargon. Removed terms included "z-score", "runway", "outflow", "concentration", "B2B", and "critical threshold" — each replaced with an everyday equivalent (e.g. "Short Runway" → "Cash Running Out Soon"; "Customer Concentration" → "Relying on One Customer"). One awkward repeated-word phrasing ("This Operating Expense expense...") was also corrected to a category-name-agnostic sentence structure, since the original wording would have repeated on other category names too (e.g. "Credit Card Payment payment").
+
+### New synthetic data: product-level sales
+To support a "which product brings in the most money" question (for the AI Assistant, Section 1) and a Top-Selling Products chart on Overview, a new table was created: `fact_product_sales.csv` — 20 café products with revenue estimated by splitting the real, known total Sales Revenue (EUR 582,807.00) across them by plausible weight. The breakdown sums back exactly to that real total. Labelled `data_origin=synthetic` in the same column already used for this dataset's other synthetic records (e.g. B2B customer invoices), consistent with the existing provenance convention documented in the dataset's own README. The table was picked up automatically by the existing Gold/database rebuild script, with no script changes needed.
+
+### Overview page: chart bug fix
+While reviewing the dashboard, a real bug was found in the Monthly Net Cash Flow chart: months were displayed in alphabetical order (Apr, Aug, Dec, Feb...) instead of chronological order — caused by Streamlit's built-in `bar_chart` defaulting to alphabetical sort on text-typed axis labels. Fixed by replacing it with an explicit Altair chart with the correct chronological sort order passed directly.
+
+### Issues found and fixed
+No bugs in the risk logic itself. Two rounds of language review were needed before the signals were fully free of technical jargon (see "Plain-language rewrite" above) — the first pass looked correct in isolation but still read as written for an analyst, not a business owner.
