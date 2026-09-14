@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from src.upload_log import log_upload, load_recent_uploads
+from src.liquidity_risk import run_all_liquidity_checks
 from src.kpi_validation import run_all_kpi_validations
 from src.forecast_display import load_forecast, load_leaderboard, get_forecast_summary
 from src.transactions import load_all_transactions, category_breakdown, build_csv_export
@@ -1858,28 +1859,78 @@ elif selected_page == "Cash-Flow Forecast":
 # ============================================================
 # LIQUIDITY RISK PAGE
 # ============================================================
-
 elif selected_page == "Liquidity Risk":
 
-    render_placeholder_page(
-        icon="⚠️",
-        title="Liquidity Risk",
-        description=(
-            "Risk periods, overdue invoices and suggested actions "
-            "will appear here once the risk engine is connected."
-        ),
-        bullet_points=[
-            "projected negative cash",
-            "large upcoming payments",
-            "overdue client collections",
-            "low cash balance alerts",
-            "short runway alerts",
-            "exceptional outflows",
-            "negative cash-flow trend",
-            "high forecast uncertainty",
-            "customer concentration risk",
-        ],
-    )
+    st.title("⚠️ Liquidity Risk")
+    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
+
+    try:
+        forecast = load_forecast(Path("."), "daily")
+        monthly_for_risk, _, _ = load_overview_data()
+
+        dataset_dir_for_risk = _find_dataset_dir()
+        transactions_for_risk = pd.read_csv(
+            dataset_dir_for_risk / "silver" / "fact_checking_main.csv",
+            parse_dates=["date"],
+        )
+        customer_invoices_for_risk = pd.read_csv(
+            dataset_dir_for_risk / "silver" / "fact_customer_invoice.csv"
+        )
+
+        result = run_all_liquidity_checks(
+            forecast_df=forecast,
+            monthly_df=monthly_for_risk,
+            transactions_df=transactions_for_risk,
+            customer_invoices_df=customer_invoices_for_risk,
+            average_monthly_outflow=17008.75,
+        )
+
+        st.markdown(f"## {result['overall_icon']} Overall: {result['overall_severity']}")
+        st.caption(
+            "Based on 6 signals. The overall status reflects the "
+            "most serious signal found."
+        )
+
+        st.write("")
+
+        severity_color = {
+            "Stable": "🟢",
+            "Attention": "🟠",
+            "Risk": "🔴",
+        }
+
+        signal_col1, signal_col2 = st.columns(2)
+
+        for index, signal in enumerate(result["signals"]):
+            target_col = signal_col1 if index % 2 == 0 else signal_col2
+            icon = severity_color[signal["severity"]]
+
+            date_line = (
+                f'<div class="insight-note">📅 {signal["date"]}</div>'
+                if signal["date"]
+                else ""
+            )
+
+            with target_col:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">{signal["signal"]}</div>'
+                    f'<div class="insight-value">{icon} {signal["severity"]}</div>'
+                    f'<div class="insight-note">{signal["justification"]}</div>'
+                    f'{date_line}'
+                    f'<div class="insight-note"><b>Suggested action:</b> {signal["suggested_action"]}</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+    except FileNotFoundError:
+        st.warning(
+            "Forecast data not found. Make sure "
+            "results/forecast/daily/forecast_output.csv exists."
+        )
+    except Exception as error:
+        st.error("Liquidity risk could not be calculated.")
+        st.caption(str(error))
 
 
 # ============================================================
