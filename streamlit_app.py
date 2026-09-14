@@ -416,12 +416,12 @@ def load_overview_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
 PAGES = [
     "Overview",
+    "AI Financial Assistant",
     "Transactions",
     "Invoices",
     "Cash-Flow Forecast",
     "Liquidity Risk",
     "What-if Simulator",
-    "AI Financial Assistant",
 ]
 
 
