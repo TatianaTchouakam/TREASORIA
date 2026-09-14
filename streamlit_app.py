@@ -1510,6 +1510,115 @@ if selected_page == "Overview":
         st.caption(str(error))
 
 # ============================================================
+# TRANSACTIONS PAGE
+# ============================================================
+
+elif selected_page == "Transactions":
+
+    st.title("📋 Transactions")
+    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
+
+    try:
+        dataset_dir = _find_dataset_dir()
+
+        if dataset_dir is None:
+            st.error("The Treasoria dataset could not be found.")
+        else:
+            all_transactions = load_all_transactions(dataset_dir)
+
+            st.subheader("Filters")
+
+            filter_col1, filter_col2, filter_col3, filter_col4 = st.columns(4)
+
+            with filter_col1:
+                min_date = all_transactions["date"].min().date()
+                max_date = all_transactions["date"].max().date()
+                date_range = st.date_input(
+                    "Date range",
+                    value=(min_date, max_date),
+                    min_value=min_date,
+                    max_value=max_date,
+                )
+
+            with filter_col2:
+                account_options = ["All"] + sorted(all_transactions["account"].unique().tolist())
+                selected_account = st.selectbox("Account", account_options)
+
+            with filter_col3:
+                category_options = ["All"] + sorted(all_transactions["category"].unique().tolist())
+                selected_category = st.selectbox("Category", category_options)
+
+            with filter_col4:
+                flow_options = ["All", "Money in", "Money out"]
+                selected_flow = st.selectbox("Money in / out", flow_options)
+
+            filtered = all_transactions.copy()
+
+            if len(date_range) == 2:
+                start_date, end_date = date_range
+                filtered = filtered[
+                    (filtered["date"].dt.date >= start_date)
+                    & (filtered["date"].dt.date <= end_date)
+                ]
+
+            if selected_account != "All":
+                filtered = filtered[filtered["account"] == selected_account]
+
+            if selected_category != "All":
+                filtered = filtered[filtered["category"] == selected_category]
+
+            if selected_flow != "All":
+                filtered = filtered[filtered["Money in / Money out"] == selected_flow]
+
+            st.subheader(f"Transactions ({len(filtered)} of {len(all_transactions)})")
+
+            display_columns = [
+                "date", "counterparty", "category", "amount",
+                "Money in / Money out", "account",
+                "Confirmed / Needs review",
+                "Internal transfer / Real transaction",
+            ]
+            st.dataframe(filtered[display_columns], width="stretch")
+
+            csv_bytes = build_csv_export(filtered[display_columns])
+            st.download_button(
+                label="⬇️ Download filtered transactions (CSV)",
+                data=csv_bytes,
+                file_name="treasoria_transactions_filtered.csv",
+                mime="text/csv",
+            )
+
+            st.subheader("Category breakdown")
+            breakdown = category_breakdown(filtered)
+            st.dataframe(breakdown, width="stretch")
+
+            if not breakdown.empty:
+                chart = (
+                    alt.Chart(breakdown)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X("Total Amount:Q"),
+                        y=alt.Y("category:N", sort="-x"),
+                        color=alt.Color(
+                            "category:N",
+                            legend=None,
+                            scale=alt.Scale(
+                                range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
+                            ),
+                        ),
+                        tooltip=["category", "Transactions", "Total Amount"],
+                    )
+                    .properties(height=400)
+                )
+                st.altair_chart(chart, use_container_width=True)
+
+    except Exception as error:
+        st.error("The transaction ledger could not be loaded.")
+        st.caption(str(error))
+
+
+
+# ============================================================
 # INVOICES & OCR PAGE
 # ============================================================
 elif selected_page == "Invoices":
