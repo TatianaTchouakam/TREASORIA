@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from src.upload_log import log_upload, load_recent_uploads
+from src.liquidity_risk import run_all_liquidity_checks
 from src.kpi_validation import run_all_kpi_validations
 from src.forecast_display import load_forecast, load_leaderboard, get_forecast_summary
 from src.transactions import load_all_transactions, category_breakdown, build_csv_export
@@ -416,12 +417,12 @@ def load_overview_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
 
 PAGES = [
     "Overview",
+    "AI Financial Assistant",
     "Transactions",
     "Invoices",
     "Cash-Flow Forecast",
     "Liquidity Risk",
     "What-if Simulator",
-    "AI Financial Assistant",
 ]
 
 
@@ -1254,63 +1255,73 @@ if selected_page == "Overview":
             monthly_last_year = (
                 monthly.sort_values("month").tail(12)[["month", "net_cash_flow"]].copy()
             )
-            monthly_last_year["month"] = monthly_last_year["month"].dt.strftime("%b %Y")
-            monthly_last_year = monthly_last_year.set_index("month")
+            monthly_last_year["month_label"] = monthly_last_year["month"].dt.strftime("%b %Y")
 
-            st.bar_chart(monthly_last_year, height=300)
+            # WHY not st.bar_chart: it renders text-labeled months in
+            # alphabetical order (Apr before Aug before Dec...), not
+            # chronological -- a real bug a viewer would immediately
+            # notice. This explicit Altair chart forces the true
+            # chronological order via `sort`, built from the already
+            # date-sorted DataFrame above.
+            month_order = monthly_last_year["month_label"].tolist()
 
-            st.markdown("### Expenses by Category (Last 12 Months)")
+            net_flow_chart = (
+                alt.Chart(monthly_last_year)
+                .mark_bar()
+                .encode(
+                    x=alt.X("month_label:N", sort=month_order, title=None),
+                    y=alt.Y("net_cash_flow:Q", title="Net Cash Flow (EUR)"),
+                    color=alt.condition(
+                        alt.datum.net_cash_flow >= 0,
+                        alt.value("#3F7A5C"),
+                        alt.value("#B23B2E"),
+                    ),
+                    tooltip=["month_label", "net_cash_flow"],
+                )
+                .properties(height=300)
+            )
+
+            st.altair_chart(net_flow_chart, use_container_width=True)
+
+            st.markdown("### Top-Selling Products")
 
             try:
-                dataset_path_for_categories = _find_dataset_dir()
-                supplier_invoices = pd.read_csv(
-                    dataset_path_for_categories / "silver" / "fact_supplier_invoice.csv"
+                dataset_path_for_products = _find_dataset_dir()
+                product_sales = pd.read_csv(
+                    dataset_path_for_products / "silver" / "fact_product_sales.csv"
                 )
 
-                category_col = next(
-                    (c for c in ["category", "expense_category"] if c in supplier_invoices.columns),
-                    None,
-                )
-                amount_col_supplier = next(
-                    (c for c in ["amount", "total_amount", "net_amount"] if c in supplier_invoices.columns),
-                    None,
+                top_products = (
+                    product_sales
+                    .sort_values("estimated_revenue", ascending=False)
                 )
 
-                if category_col and amount_col_supplier:
-                    category_totals = (
-                        supplier_invoices
-                        .groupby(category_col)[amount_col_supplier]
-                        .sum()
-                        .reset_index()
-                        .rename(columns={category_col: "Category", amount_col_supplier: "Amount"})
-                    )
-
-                    pie_chart = (
-                        alt.Chart(category_totals)
-                        .mark_arc(innerRadius=60)
-                        .encode(
-                            theta=alt.Theta("Amount:Q"),
-                            color=alt.Color(
-                                "Category:N",
-                                scale=alt.Scale(
-                                    range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
-                                ),
+                product_chart = (
+                    alt.Chart(top_products)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X("estimated_revenue:Q", title="Revenue (EUR)"),
+                        y=alt.Y("product_name:N", sort="-x", title=None),
+                        color=alt.Color(
+                            "category:N",
+                            legend=alt.Legend(title=None, orient="top"),
+                            scale=alt.Scale(
+                                range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A"]
                             ),
-                            tooltip=["Category", "Amount"],
-                        )
-                        .properties(height=320)
+                        ),
+                        tooltip=["product_name", "category", "estimated_revenue"],
                     )
+                    .properties(height=520)
+                )
 
-                    st.altair_chart(pie_chart, use_container_width=True)
-                else:
-                    st.info(
-                        "Expense category breakdown not available "
-                        "(expected columns not found in fact_supplier_invoice.csv)."
-                    )
+                st.altair_chart(product_chart, use_container_width=True)
+                st.caption(
+                    "Estimated breakdown — illustrative, based on total "
+                    "recorded sales revenue."
+                )
 
-            except Exception as category_error:
-                st.info("Expense category breakdown could not be loaded.")
-                st.caption(str(category_error))
+            except Exception:
+                pass
 
         with signal_column:
 
@@ -1427,8 +1438,7 @@ if selected_page == "Overview":
             st.markdown(
                 f'<div class="insight-card">'
                 f'<div class="insight-label">Negative Cash-Flow Months</div>'
-                f'<div class="insight-value">{negative_count} in the last 12 months</div>'
-                f'<div class="insight-note">{negative_month_names}</div>'
+                f'<div class="insight-value">{negative_month_names}</div>'
                 f'</div>',
                 unsafe_allow_html=True,
             )
@@ -1442,119 +1452,62 @@ if selected_page == "Overview":
                 unsafe_allow_html=True,
             )
 
+            st.markdown("### Expenses by Category (Last 12 Months)")
+
+            try:
+                dataset_path_for_categories = _find_dataset_dir()
+                supplier_invoices = pd.read_csv(
+                    dataset_path_for_categories / "silver" / "fact_supplier_invoice.csv"
+                )
+
+                category_col = next(
+                    (c for c in ["category", "expense_category"] if c in supplier_invoices.columns),
+                    None,
+                )
+                amount_col_supplier = next(
+                    (c for c in ["amount", "total_amount", "net_amount"] if c in supplier_invoices.columns),
+                    None,
+                )
+
+                if category_col and amount_col_supplier:
+                    category_totals = (
+                        supplier_invoices
+                        .groupby(category_col)[amount_col_supplier]
+                        .sum()
+                        .reset_index()
+                        .rename(columns={category_col: "Category", amount_col_supplier: "Amount"})
+                    )
+
+                    pie_chart = (
+                        alt.Chart(category_totals)
+                        .mark_arc(innerRadius=50)
+                        .encode(
+                            theta=alt.Theta("Amount:Q"),
+                            color=alt.Color(
+                                "Category:N",
+                                scale=alt.Scale(
+                                    range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
+                                ),
+                            ),
+                            tooltip=["Category", "Amount"],
+                        )
+                        .properties(height=260)
+                    )
+
+                    st.altair_chart(pie_chart, use_container_width=True)
+                else:
+                    st.info(
+                        "Expense category breakdown not available "
+                        "(expected columns not found in fact_supplier_invoice.csv)."
+                    )
+
+            except Exception as category_error:
+                st.info("Expense category breakdown could not be loaded.")
+                st.caption(str(category_error))
+
     except Exception as error:
         st.info("Cash intelligence charts could not be loaded.")
         st.caption(str(error))
-        
-        
-# ============================================================
-# TRANSACTIONS PAGE
-# ============================================================
-
-elif selected_page == "Transactions":
-
-    st.title("📋 Transactions")
-    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
-
-    try:
-        dataset_dir = _find_dataset_dir()
-
-        if dataset_dir is None:
-            st.error("The Treasoria dataset could not be found.")
-        else:
-            all_transactions = load_all_transactions(dataset_dir)
-
-            st.subheader("Filters")
-
-            filter_col1, filter_col2, filter_col3, filter_col4 = st.columns(4)
-
-            with filter_col1:
-                min_date = all_transactions["date"].min().date()
-                max_date = all_transactions["date"].max().date()
-                date_range = st.date_input(
-                    "Date range",
-                    value=(min_date, max_date),
-                    min_value=min_date,
-                    max_value=max_date,
-                )
-
-            with filter_col2:
-                account_options = ["All"] + sorted(all_transactions["account"].unique().tolist())
-                selected_account = st.selectbox("Account", account_options)
-
-            with filter_col3:
-                category_options = ["All"] + sorted(all_transactions["category"].unique().tolist())
-                selected_category = st.selectbox("Category", category_options)
-
-            with filter_col4:
-                flow_options = ["All", "Money in", "Money out"]
-                selected_flow = st.selectbox("Money in / out", flow_options)
-
-            # Apply filters
-            filtered = all_transactions.copy()
-
-            if len(date_range) == 2:
-                start_date, end_date = date_range
-                filtered = filtered[
-                    (filtered["date"].dt.date >= start_date)
-                    & (filtered["date"].dt.date <= end_date)
-                ]
-
-            if selected_account != "All":
-                filtered = filtered[filtered["account"] == selected_account]
-
-            if selected_category != "All":
-                filtered = filtered[filtered["category"] == selected_category]
-
-            if selected_flow != "All":
-                filtered = filtered[filtered["Money in / Money out"] == selected_flow]
-
-            st.subheader(f"Transactions ({len(filtered)} of {len(all_transactions)})")
-
-            display_columns = [
-                "date", "counterparty", "category", "amount",
-                "Money in / Money out", "account",
-                "Confirmed / Needs review",
-                "Internal transfer / Real transaction",
-            ]
-            st.dataframe(filtered[display_columns], width="stretch")
-
-            csv_bytes = build_csv_export(filtered[display_columns])
-            st.download_button(
-                label="⬇️ Download filtered transactions (CSV)",
-                data=csv_bytes,
-                file_name="treasoria_transactions_filtered.csv",
-                mime="text/csv",
-            )
-
-            st.subheader("Category breakdown")
-            breakdown = category_breakdown(filtered)
-            st.dataframe(breakdown, width="stretch")
-
-            if not breakdown.empty:
-                chart = (
-                    alt.Chart(breakdown)
-                    .mark_bar()
-                    .encode(
-                        x=alt.X("Total Amount:Q"),
-                        y=alt.Y("category:N", sort="-x"),
-                        color=alt.Color(
-                            "category:N",
-                            legend=None,
-                            scale=alt.Scale(
-                                range=["#C9A24B", "#0A1B33", "#3F7A5C", "#B8763A", "#5B6472", "#8A6E4B"]
-                            ),
-                        ),
-                        tooltip=["category", "Transactions", "Total Amount"],
-                    )
-                    .properties(height=400)
-                )
-                st.altair_chart(chart, use_container_width=True)
-
-    except Exception as error:
-        st.error("The transaction ledger could not be loaded.")
-        st.caption(str(error))
-
 
 # ============================================================
 # INVOICES & OCR PAGE
@@ -1906,28 +1859,78 @@ elif selected_page == "Cash-Flow Forecast":
 # ============================================================
 # LIQUIDITY RISK PAGE
 # ============================================================
-
 elif selected_page == "Liquidity Risk":
 
-    render_placeholder_page(
-        icon="⚠️",
-        title="Liquidity Risk",
-        description=(
-            "Risk periods, overdue invoices and suggested actions "
-            "will appear here once the risk engine is connected."
-        ),
-        bullet_points=[
-            "projected negative cash",
-            "large upcoming payments",
-            "overdue client collections",
-            "low cash balance alerts",
-            "short runway alerts",
-            "exceptional outflows",
-            "negative cash-flow trend",
-            "high forecast uncertainty",
-            "customer concentration risk",
-        ],
-    )
+    st.title("⚠️ Liquidity Risk")
+    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
+
+    try:
+        forecast = load_forecast(Path("."), "daily")
+        monthly_for_risk, _, _ = load_overview_data()
+
+        dataset_dir_for_risk = _find_dataset_dir()
+        transactions_for_risk = pd.read_csv(
+            dataset_dir_for_risk / "silver" / "fact_checking_main.csv",
+            parse_dates=["date"],
+        )
+        customer_invoices_for_risk = pd.read_csv(
+            dataset_dir_for_risk / "silver" / "fact_customer_invoice.csv"
+        )
+
+        result = run_all_liquidity_checks(
+            forecast_df=forecast,
+            monthly_df=monthly_for_risk,
+            transactions_df=transactions_for_risk,
+            customer_invoices_df=customer_invoices_for_risk,
+            average_monthly_outflow=17008.75,
+        )
+
+        st.markdown(f"## {result['overall_icon']} Overall: {result['overall_severity']}")
+        st.caption(
+            "Based on 6 signals. The overall status reflects the "
+            "most serious signal found."
+        )
+
+        st.write("")
+
+        severity_color = {
+            "Stable": "🟢",
+            "Attention": "🟠",
+            "Risk": "🔴",
+        }
+
+        signal_col1, signal_col2 = st.columns(2)
+
+        for index, signal in enumerate(result["signals"]):
+            target_col = signal_col1 if index % 2 == 0 else signal_col2
+            icon = severity_color[signal["severity"]]
+
+            date_line = (
+                f'<div class="insight-note">📅 {signal["date"]}</div>'
+                if signal["date"]
+                else ""
+            )
+
+            with target_col:
+                st.markdown(
+                    f'<div class="insight-card">'
+                    f'<div class="insight-label">{signal["signal"]}</div>'
+                    f'<div class="insight-value">{icon} {signal["severity"]}</div>'
+                    f'<div class="insight-note">{signal["justification"]}</div>'
+                    f'{date_line}'
+                    f'<div class="insight-note"><b>Suggested action:</b> {signal["suggested_action"]}</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+    except FileNotFoundError:
+        st.warning(
+            "Forecast data not found. Make sure "
+            "results/forecast/daily/forecast_output.csv exists."
+        )
+    except Exception as error:
+        st.error("Liquidity risk could not be calculated.")
+        st.caption(str(error))
 
 
 # ============================================================
