@@ -4,6 +4,17 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from src.upload_log import log_upload, load_recent_uploads
+from src.what_if import (
+    scenario_customer_payment_delay, scenario_expense_increase, scenario_sales_decrease,
+    scenario_new_hire, scenario_equipment_purchase, scenario_loan_repayment,
+    scenario_product_change, build_summary_sentence
+)
+from src.liquidity_risk import evaluate_low_balance
+from src.what_if import (
+    scenario_customer_payment_delay, scenario_expense_increase, scenario_sales_decrease,
+    scenario_new_hire, scenario_equipment_purchase, scenario_loan_repayment, build_summary_sentence
+)
+from src.forecast.integration import apply_cash_flow_adjustments, summarize_cash_risk
 from src.liquidity_risk import run_all_liquidity_checks
 from src.kpi_validation import run_all_kpi_validations
 from src.forecast_display import load_forecast, load_leaderboard, get_forecast_summary
@@ -2045,30 +2056,271 @@ elif selected_page == "Liquidity Risk":
 # ============================================================
 # WHAT-IF SIMULATOR PAGE
 # ============================================================
-
 elif selected_page == "What-if Simulator":
 
-    render_placeholder_page(
-        icon="🧮",
-        title="What-if Simulator",
-        description=(
-            "Users will be able to simulate delayed payments, "
-            "expense increases, new hires and other scenarios once "
-            "this module is connected."
-        ),
-        bullet_points=[
-            "reference scenario",
-            "modified scenario",
-            "projected final balance",
-            "minimum projected balance",
-            "low-point date",
-            "days below critical threshold",
-            "save scenarios",
-            "compare scenarios",
-            "export scenarios",
-        ],
+    st.title("🧮 What-if Simulator")
+    st.markdown('<div class="gold-line"></div>', unsafe_allow_html=True)
+
+    st.info(
+        "Test how a business decision could affect your cash — "
+        "before you make it. Pick one or more changes below."
     )
 
+    try:
+        baseline_forecast = load_forecast(Path("."), "daily")
+        forecast_dates = baseline_forecast["date"].reset_index(drop=True)
+
+        def date_to_index(selected_date):
+            diffs = (forecast_dates - pd.Timestamp(selected_date)).abs()
+            return int(diffs.idxmin())
+
+        average_monthly_outflow = 17008.75
+        risk_threshold = average_monthly_outflow * 1.5
+
+        st.subheader("Choose what to test")
+
+        wcol1, wcol2 = st.columns(2)
+        with wcol1:
+            use_payment_delay = st.checkbox("A customer pays late")
+            use_expense_increase = st.checkbox("An expense goes up")
+            use_sales_decrease = st.checkbox("Sales go down")
+            use_product_change = st.checkbox("A product changes")
+        with wcol2:
+            use_new_hire = st.checkbox("You hire someone new")
+            use_equipment = st.checkbox("You buy equipment")
+            use_loan = st.checkbox("You take on a loan repayment")
+
+        all_deltas = []
+        scenario_description_parts = []
+
+        if use_payment_delay:
+            st.markdown("**A customer pays late**")
+            pd_col1, pd_col2, pd_col3 = st.columns(3)
+            with pd_col1:
+                pd_amount = st.number_input("How much money (EUR)", min_value=0.0, value=5000.0, key="pd_amount")
+            with pd_col2:
+                pd_date = st.date_input("When was it expected", value=forecast_dates.iloc[10].date(), key="pd_date")
+            with pd_col3:
+                pd_delay = st.number_input("How many days late", min_value=1, value=30, key="pd_delay")
+            all_deltas.append(
+                scenario_customer_payment_delay(baseline_forecast, pd_amount, int(pd_delay), date_to_index(pd_date))
+            )
+            scenario_description_parts.append(f"a customer paying EUR {pd_amount:,.0f} {int(pd_delay)} days late")
+
+        if use_expense_increase:
+            st.markdown("**An expense goes up**")
+            ei_col1, ei_col2 = st.columns(2)
+            with ei_col1:
+                ei_amount = st.number_input("How much more per month (EUR)", min_value=0.0, value=500.0, key="ei_amount")
+            with ei_col2:
+                ei_date = st.date_input("Starting when", value=forecast_dates.iloc[0].date(), key="ei_date")
+            all_deltas.append(scenario_expense_increase(baseline_forecast, ei_amount, date_to_index(ei_date)))
+            scenario_description_parts.append(f"an expense increasing by EUR {ei_amount:,.0f}/month")
+
+        if use_sales_decrease:
+            st.markdown("**Sales go down**")
+            sd_col1, sd_col2 = st.columns(2)
+            with sd_col1:
+                sd_amount = st.number_input("How much less per month (EUR)", min_value=0.0, value=500.0, key="sd_amount")
+            with sd_col2:
+                sd_date = st.date_input("Starting when", value=forecast_dates.iloc[0].date(), key="sd_date")
+            all_deltas.append(scenario_sales_decrease(baseline_forecast, sd_amount, date_to_index(sd_date)))
+            scenario_description_parts.append(f"sales decreasing by EUR {sd_amount:,.0f}/month")
+
+        if use_product_change:
+            st.markdown("**A product changes**")
+            try:
+                dataset_dir_for_products = _find_dataset_dir()
+                product_sales_df = pd.read_csv(dataset_dir_for_products / "silver" / "fact_product_sales.csv")
+
+                pc_col1, pc_col2 = st.columns(2)
+                with pc_col1:
+                    pc_product = st.selectbox("Choose a product", product_sales_df["product_name"].tolist(), key="pc_product")
+                with pc_col2:
+                    pc_change_type = st.selectbox("What changes?", ["Sales volume", "Selling price"], key="pc_change_type")
+
+                pc_col3, pc_col4, pc_col5 = st.columns(3)
+                with pc_col3:
+                    pc_pct = st.number_input("Change (%)", value=-20.0, key="pc_pct")
+                with pc_col4:
+                    pc_date = st.date_input("Starting when", value=forecast_dates.iloc[0].date(), key="pc_date")
+                with pc_col5:
+                    pc_months = st.number_input("For how many months", min_value=1, value=3, key="pc_months")
+
+                product_total_revenue = float(
+                    product_sales_df.loc[product_sales_df["product_name"] == pc_product, "estimated_revenue"].iloc[0]
+                )
+                product_monthly_revenue = product_total_revenue / 24.0
+
+                all_deltas.append(
+                    scenario_product_change(
+                        baseline_forecast, product_monthly_revenue, pc_pct, date_to_index(pc_date), int(pc_months)
+                    )
+                )
+                scenario_description_parts.append(f"{pc_product} {pc_change_type.lower()} changing by {pc_pct:+.0f}%")
+            except Exception:
+                st.caption("Product data not available.")
+
+        if use_new_hire:
+            st.markdown("**You hire someone new**")
+            nh_col1, nh_col2 = st.columns(2)
+            with nh_col1:
+                nh_salary = st.number_input("Monthly salary (EUR)", min_value=0.0, value=3000.0, key="nh_salary")
+            with nh_col2:
+                nh_date = st.date_input("Starting when", value=forecast_dates.iloc[0].date(), key="nh_date")
+            all_deltas.append(scenario_new_hire(baseline_forecast, nh_salary, date_to_index(nh_date)))
+            scenario_description_parts.append(f"hiring someone at EUR {nh_salary:,.0f}/month")
+
+        if use_equipment:
+            st.markdown("**You buy equipment**")
+            eq_col1, eq_col2 = st.columns(2)
+            with eq_col1:
+                eq_cost = st.number_input("How much does it cost (EUR)", min_value=0.0, value=5000.0, key="eq_cost")
+            with eq_col2:
+                eq_date = st.date_input("When are you buying it", value=forecast_dates.iloc[0].date(), key="eq_date")
+            all_deltas.append(scenario_equipment_purchase(baseline_forecast, eq_cost, date_to_index(eq_date)))
+            scenario_description_parts.append(f"buying equipment for EUR {eq_cost:,.0f}")
+
+        if use_loan:
+            st.markdown("**You take on a loan repayment**")
+            ln_col1, ln_col2, ln_col3 = st.columns(3)
+            with ln_col1:
+                ln_payment = st.number_input("Monthly payment (EUR)", min_value=0.0, value=800.0, key="ln_payment")
+            with ln_col2:
+                ln_date = st.date_input("Starting when", value=forecast_dates.iloc[0].date(), key="ln_date")
+            with ln_col3:
+                ln_months = st.number_input("For how many months", min_value=1, value=12, key="ln_months")
+            all_deltas.append(
+                scenario_loan_repayment(baseline_forecast, ln_payment, date_to_index(ln_date), int(ln_months))
+            )
+            scenario_description_parts.append(f"a loan repayment of EUR {ln_payment:,.0f}/month for {int(ln_months)} months")
+
+        if st.button("Run simulation", type="primary"):
+            if not all_deltas:
+                st.warning("Pick at least one change to test above.")
+            else:
+                combined_deltas = pd.concat(all_deltas, ignore_index=True)
+                scenario_forecast = apply_cash_flow_adjustments(
+                    baseline_forecast, combined_deltas, "what_if_combined"
+                )
+
+                baseline_summary = summarize_cash_risk(baseline_forecast, threshold=risk_threshold)
+                scenario_summary = summarize_cash_risk(scenario_forecast, threshold=risk_threshold)
+
+                scenario_risk = evaluate_low_balance(scenario_forecast, average_monthly_outflow)
+
+                # WHY store all of this: st.button() is only True on the
+                # exact rerun triggered by its own click. Clicking "Ask
+                # Treasoria AI" below triggers a new rerun where this
+                # button is False again -- without saving everything to
+                # session_state, the result and chart would vanish the
+                # moment the AI button is clicked.
+                st.session_state["what_if_last_scenario"] = {
+                    "description": "; ".join(scenario_description_parts),
+                    "baseline_summary": baseline_summary,
+                    "scenario_summary": scenario_summary,
+                    "risk": scenario_risk,
+                    "baseline_chart_df": baseline_forecast[["date", "projected_cash_balance"]].rename(
+                        columns={"projected_cash_balance": "Balance"}
+                    ),
+                    "scenario_chart_df": scenario_forecast[["date", "projected_cash_balance"]].rename(
+                        columns={"projected_cash_balance": "Balance"}
+                    ),
+                }
+
+        if "what_if_last_scenario" in st.session_state:
+            last = st.session_state["what_if_last_scenario"]
+            baseline_summary = last["baseline_summary"]
+            scenario_summary = last["scenario_summary"]
+            scenario_risk = last["risk"]
+
+            st.markdown("### Result")
+            st.write(build_summary_sentence(baseline_summary, scenario_summary))
+
+            mcol1, mcol2, mcol3, mcol4, mcol5 = st.columns(5)
+            with mcol1:
+                st.metric(
+                    "Ending balance",
+                    f"EUR {scenario_summary['final_balance']:,.2f}",
+                    delta=f"{scenario_summary['final_balance'] - baseline_summary['final_balance']:+,.2f}",
+                )
+            with mcol2:
+                st.metric(
+                    "Lowest balance",
+                    f"EUR {scenario_summary['minimum_projected_balance']:,.2f}",
+                    delta=f"{scenario_summary['minimum_projected_balance'] - baseline_summary['minimum_projected_balance']:+,.2f}",
+                )
+            with mcol3:
+                st.metric("Lowest point date", scenario_summary["low_point_period_end"])
+            with mcol4:
+                st.metric(
+                    "Days below safe level",
+                    scenario_summary["days_below_threshold"],
+                    delta=f"{scenario_summary['days_below_threshold'] - baseline_summary['days_below_threshold']:+d}",
+                    delta_color="inverse",
+                )
+            with mcol5:
+                severity_icon = {"Stable": "🟢", "Attention": "🟠", "Risk": "🔴"}[scenario_risk["severity"]]
+                st.metric("Liquidity status", f"{severity_icon} {scenario_risk['severity']}")
+
+            st.markdown("### Compare: before vs. after")
+
+            baseline_chart_df = last["baseline_chart_df"].copy()
+            baseline_chart_df["Type"] = "Before (baseline)"
+
+            scenario_chart_df = last["scenario_chart_df"].copy()
+            scenario_chart_df["Type"] = "After (with your changes)"
+
+            combined_chart_df = pd.concat([baseline_chart_df, scenario_chart_df], ignore_index=True)
+
+            comparison_chart = (
+                alt.Chart(combined_chart_df)
+                .mark_line(strokeWidth=3)
+                .encode(
+                    x=alt.X("date:T", title=None, axis=alt.Axis(format="%b %d", tickCount=8)),
+                    y=alt.Y("Balance:Q", title="Balance (EUR)", scale=alt.Scale(zero=False)),
+                    color=alt.Color(
+                        "Type:N",
+                        legend=alt.Legend(title=None, orient="top"),
+                        scale=alt.Scale(
+                            domain=["Before (baseline)", "After (with your changes)"],
+                            range=["#0A1B33", "#C9A24B"],
+                        ),
+                    ),
+                )
+                .properties(height=320)
+            )
+            st.altair_chart(comparison_chart, use_container_width=True)
+
+            st.markdown("### ✨ Understand this scenario")
+            if st.button("Ask Treasoria AI: Explain this scenario"):
+                question = (
+                    f"I tested a scenario involving {last['description']}. "
+                    f"The lowest cash balance is EUR {scenario_summary['minimum_projected_balance']:,.2f} "
+                    f"around {scenario_summary['low_point_period_end']}, "
+                    f"with {scenario_summary['days_below_threshold']} day(s) below the safe cash level. "
+                    f"The liquidity status is {scenario_risk['severity']}. "
+                    "Explain in plain language how this affects my cash and liquidity risk, and whether I should be concerned."
+                )
+
+                with st.spinner("Asking Treasoria..."):
+                    if "chat_engine" not in st.session_state:
+                        st.session_state.chat_engine = initialise_chat_engine()
+                    ai_response = st.session_state.chat_engine.chat(question)
+
+                st.markdown(
+                    f'<div class="assistant-intro">{str(ai_response)}</div>',
+                    unsafe_allow_html=True,
+                )
+
+    except FileNotFoundError:
+        st.warning(
+            "Forecast data not found. Make sure "
+            "results/forecast/daily/forecast_output.csv exists."
+        )
+    except Exception as error:
+        st.error("The simulation could not be run.")
+        st.caption(str(error))
 
 # ============================================================
 # AI FINANCIAL ASSISTANT PAGE
