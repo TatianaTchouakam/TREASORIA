@@ -162,9 +162,17 @@ def _create_new_vector_store(
     gold_path: Path = dataset_path / "gold"
 
     if gold_path.exists():
+        # gold_receivables_aging.csv is excluded here: unpaid
+        # invoices have an empty payment_date, which pandas reads
+        # as NaN (a float, not text) -- SimpleDirectoryReader
+        # crashes trying to serialize it as a CSV row string.
+        # Not a real gap: exact receivables answers (open amount,
+        # average collection time, late invoices) already come
+        # through the SQL layer, not this document index.
         rag_source_files.extend(
             sorted(
-                gold_path.glob("*.csv")
+                f for f in gold_path.glob("*.csv")
+                if f.name != "gold_receivables_aging.csv"
             )
         )
     else:
