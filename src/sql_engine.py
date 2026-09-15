@@ -332,6 +332,40 @@ def get_lowest_cash_flow_month() -> pd.Series:
 
     return result.iloc[0]
 
+def get_liquidity_risk_summary() -> dict:
+    """
+    Computes the full liquidity risk assessment on demand, reusing
+    exactly the same logic as the Liquidity Risk page -- not a
+    separate or simplified version.
+    """
+
+    from src.forecast_display import load_forecast
+    from src.liquidity_risk import run_all_liquidity_checks
+
+    forecast = load_forecast(Path("."), "daily")
+
+    monthly = pd.read_csv(DATASET_PATH / "gold" / "gold_monthly_cash_flow.csv")
+    monthly["month"] = pd.to_datetime(monthly["month"])
+
+    transactions = pd.read_csv(
+        DATASET_PATH / "silver" / "fact_checking_main.csv",
+        parse_dates=["date"],
+    )
+    customer_invoices = pd.read_csv(
+        DATASET_PATH / "silver" / "fact_customer_invoice.csv"
+    )
+
+    return run_all_liquidity_checks(
+        forecast_df=forecast,
+        monthly_df=monthly,
+        transactions_df=transactions,
+        customer_invoices_df=customer_invoices,
+        average_monthly_outflow=17008.75,
+    )
+
+
+
+
 def get_top_expense_category() -> pd.Series:
     """
     Return the expense category with the highest total spending,
@@ -524,7 +558,13 @@ def detect_sql_intent(
         and ("sell" in q or "selling" in q or "popular" in q)
     ):
         return "top_selling_product"
-
+    if (
+        "liquidity risk" in q
+        or "cash risk" in q
+        or "am i at risk" in q
+        or "financial risk" in q
+    ):
+        return "liquidity_risk_summary"
     return None   
     
 
@@ -675,7 +715,20 @@ def answer_sql_question(
             f"({row['category']}), with an estimated "
             f"EUR {row['estimated_revenue']:,.2f} in revenue."
         )
+    if intent == "liquidity_risk_summary":
+        result = get_liquidity_risk_summary()
 
+        lines = [f"Your overall liquidity status is {result['overall_severity']} {result['overall_icon']}."]
+        concerning = [s for s in result["signals"] if s["severity"] != "Stable"]
+
+        if concerning:
+            lines.append("Here's what's worth your attention:")
+            for s in concerning:
+                lines.append(f"- {s['signal']}: {s['justification']}")
+        else:
+            lines.append("Everything looks stable right now.")
+
+        return "\n".join(lines)
     return None
    
 
