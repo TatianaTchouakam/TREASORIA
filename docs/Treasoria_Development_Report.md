@@ -15,6 +15,7 @@
 | Transactions | pandas, altair | Filterable ledger, 1,306 transactions, CSV export | 1 classification bug |
 | Cash-Flow Forecast | statsmodels/Prophet/XGBoost (Aysenur's pipeline), pandas, altair | Daily 90-day forecast connected to the dashboard, with business-friendly summary and directional status | — |
 | Liquidity Risk | pandas | 6 risk signals connected to the forecast, transaction history, and customer invoices | — |
+| What-if Simulator | pandas | 7 combinable scenarios, connected to Liquidity Risk and the AI Assistant | 1 session-state bug |
 
 ---
 
@@ -284,3 +285,47 @@ While reviewing the dashboard, a real bug was found in the Monthly Net Cash Flow
 
 ### Issues found and fixed
 No bugs in the risk logic itself. Two rounds of language review were needed before the signals were fully free of technical jargon (see "Plain-language rewrite" above) — the first pass looked correct in isolation but still read as written for an analyst, not a business owner.
+
+---
+
+## 9. What-if Simulator
+
+### Purpose
+Lets a business owner test how a decision would affect cash before making it — seven plain-language scenarios, combinable, closing the full Predict → Explain → Simulate → Decide loop by connecting directly to both the Liquidity Risk module and the AI Assistant. Built with **pandas** *(prepares the dated cash-flow adjustments)*.
+
+### The 7 scenarios
+
+| Scenario | What the user enters |
+|---|---|
+| Customer payment delay | Amount, expected date, days late |
+| Expense increase | Extra monthly amount, start date |
+| Sales decrease | Reduced monthly amount, start date |
+| Product change | Product, sales volume or price, percent change, start date, duration |
+| New hire | Monthly salary, start date |
+| Equipment purchase | Cost, purchase date |
+| Loan repayment | Monthly payment, start date, number of months |
+
+Multiple scenarios can be selected and run together in a single simulation (e.g. a late payment and an expense increase tested at once).
+
+### Built on Aysenur's tested integration layer, not reimplemented
+Rather than writing new logic to shift cash-flow values, every scenario translates into a dated `net_flow_delta_eur` adjustment and is applied through `apply_cash_flow_adjustments()` and summarised through `summarize_cash_risk()` — both already written and tested by Aysenur in `src/forecast/integration.py` as part of the forecast handoff. This avoids duplicating validated logic and guarantees the same reconciliation guarantees (e.g. a delayed receipt cannot silently vanish from the scenario).
+
+### Key functions (`src/what_if.py`)
+
+| Function | Role |
+|---|---|
+| `scenario_customer_payment_delay`, `scenario_expense_increase`, `scenario_sales_decrease`, `scenario_new_hire`, `scenario_equipment_purchase`, `scenario_loan_repayment`, `scenario_product_change` | Each translates one plain-language scenario into a small table of dated EUR adjustments |
+| `build_summary_sentence` | Turns the two numeric summaries (before/after) into one plain-English sentence |
+
+### Connected to Liquidity Risk, not a separate risk logic
+The result includes a fifth metric, "Liquidity status", computed by calling `evaluate_low_balance()` directly from the Liquidity Risk module on the scenario's resulting forecast — the same thresholds already validated (3 / 1.5 months of average spending), not a new or looser rule invented for this page.
+
+### Connected to the AI Assistant
+An "Ask Treasoria AI: Explain this scenario" button sends the actual computed figures (amounts, dates, lowest balance, liquidity status) as a pre-filled question to the existing chat engine, and displays the answer inline. This is the first point in the app where Forecast, Liquidity Risk, and the AI Assistant are used together in one user action, rather than as three separate features.
+
+### Product change scenario — data provenance note
+This scenario reads from `fact_product_sales.csv` (see Section 8's data provenance note) — a synthetic, illustrative revenue breakdown, not real per-product transaction history. Monthly revenue for a product is derived by dividing its total estimated revenue by the 24 months represented in the dataset.
+
+### Issues found and fixed
+**Result disappearing after asking the AI to explain it** — `st.button()` in Streamlit is only `True` on the exact page rerun it triggers. Clicking "Ask Treasoria AI" triggered a new rerun where the "Run simulation" button evaluated to `False` again, so the result and comparison chart — which were rendered inside that button's own `if` block — disappeared, even though the simulation itself was still valid.
+→ *Fixed* by storing the full scenario result in `st.session_state` when the simulation runs, and rendering the result, metrics, and chart from that stored state outside the button's `if` block — so they persist across any later interaction on the page, including asking the AI to explain them.
